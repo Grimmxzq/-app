@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>添加收货地址</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/mui.picker.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+    </head>
+    <body class="site">
+        <div class="min-box">
+            <header class="mui-bar mui-bar-nav" data-header>
+                <a class="mui-action-back c-icon-back mui-pull-left"></a>
+                <h1 class="mui-title"></h1>
+                <button class="mui-pull-right b-right" @tap="onbtn" style="color: #333;background-color: transparent;">保存</button>
+            </header>
+            <div class="mui-content" data-content>
+                <ul class="main">
+                    <li class="li">
+                        <span class="title">收货人</span>
+                        <input type="text" name="name" id="name" v-model="name" placeholder="请输入收货人姓名" />
+                    </li>
+                    <li class="li">
+                        <span class="title">联系电话</span>
+                        <input type="text" name="phone" id="phone" v-model="phone" placeholder="请输入手机号码" />
+                    </li>
+                    <li class="li seit" @tap="onads" >
+                        <span class="title">地址</span>
+                        <input type="text" name="seit" id="seit"  placeholder="省/市/县" readonly="readonly" />
+                        <div class="right"></div>
+                    </li>
+                        <textarea class="adss" v-model="ads" placeholder="详细地址：如道路、门牌号、小区、楼栋号、单元号等"></textarea>
+                    <li class="li border">
+                        <span class="title">设为默认地址</span>
+                        <div class="mui-switch switch-color mui-switch-mini" :class="{'mui-active':isf=='1'}" @tap='onswitch' >
+                            <div class="mui-switch-handle"></div>
+                        </div>
+                    </li>
+                    <li class="li delect border" @tap="delect" :class="{'active':del=='true'}" >删除收货地址</li>
+                </ul>
+            </div>
+        </div>
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/city.data-3.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/mui.picker.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/site.js"></script>
+    </body>
+</html>

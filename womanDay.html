@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/vant.css"/>
+    <link rel="stylesheet" type="text/css" href="css/womanDay.css"/>
+    <script src="js/initsize.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <style>
+        .mui-bar-nav~.mui-content .mui-slider.mui-fullscreen{
+			top: 72px;
+			height: auto;
+		}
+    </style>
+    <title>三八节活动</title>
+</head>
+<body>
+    <div id="womanDay">
+        <header class="mui-bar mui-bar-nav" data-header>
+            <a class="c-icon-back mui-pull-left mui-icon mui-icon-back" style="color:#fff" @tap="back"></a>
+            <h1 class="mui-title">三八专场</h1>
+        </header>
+        <div class="mui-content">
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll">
+						<!-- <a class="mui-control-item mui-active" href="#item1mobile" data-wid="1.html">
+							推荐
+						</a>
+						<a class="mui-control-item" href="#item2mobile" data-wid="2.html">
+							热点
+						</a>
+						<a class="mui-control-item" href="#item3mobile" data-wid="3.html">
+							北京
+						</a>
+						<a class="mui-control-item" href="#item4mobile" data-wid="4.html">
+							社会
+						</a>
+						<a class="mui-control-item" href="#item5mobile" data-wid="5.html">
+							娱乐
+                        </a> -->
+                        <a class="mui-control-item" v-for="(item,index) in get_menus_key" :data-wid="index+'.html?item='+get_menus_value[index]" :href="'#item'+index+'mobile'">
+                            <div class="item_name" >
+                                {{item}}
+                            </div>
+                        </a>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+</body>
+<script src="js/mui.min.js"></script>
+<script src="js/jquery2.1.0.min.js"></script>
+<script src="js/common2.0.0.js"></script>
+<script src="js/webviewGroup.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/vant.min.js"></script>
+<script src="js/md5.js"></script>
+<script src="js/post_sign.js"></script>
+<script src="js/womanDay.js"></script>
+</html>

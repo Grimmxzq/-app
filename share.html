@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>分享</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+        <link rel="stylesheet" type="text/css" href="css/share.css" />
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/iphonex.css"/>
+    </head>
+
+    <body >
+        <div class="share" id="share">
+            <header class="mui-bar mui-bar-nav" data-header>
+                <a class="mui-action-back c-icon-back mui-pull-left mui-icon mui-icon-back" style="color:#333"></a>
+                <h1 class="mui-title">分享</h1>
+            </header>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="item in share_img">
+                        <img :src='item' alt="">
+                    </div>
+                </div>
+            <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+            <!-- <div class="certainImg">
+                <img src="./img/redRight.png" alt="">
+                
+            </div> -->
+            <div class="shareMenu">
+                <ul>
+                    <li>
+                        <p><img src="" alt=""></p>
+                        <p class="sharename"></p>
+                    </li>
+                    <li>
+                        <p><img src="" alt=""></p>
+                        <p class="sharename"></p>
+                    </li>
+                    <li>
+                        <p><img src="" alt=""></p>
+                        <p class="sharename"></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script src="js/swiper.min.js"></script>
+        <script src="js/mui.min.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/utils.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/share.js"></script>
+    </body>
+
+</html>

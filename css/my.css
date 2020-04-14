@@ -1,0 +1,22 @@
+
+
+
+#myself{
+    width: 100%;
+    height:100%;
+    background-color:blue;
+};
+#myself .myselfTop{
+    height:7.875rem;
+    width:100%;
+    background-color: red;
+};
+#myself #myselfTop .myselfTopImg{
+    width:30%;
+    height:7.875rem;
+    float: left;
+};
+#myself #myselfTop .myselfTopImg img{
+    width:3.5rem;
+    height:3.5rem;
+}

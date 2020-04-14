@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>确认订单</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/iphonex.css"/>
+		<style type="text/css">
+			.mui-popup .mui-popup-buttons .mui-popup-button-bold {color: #f1341c;}
+			.affirm .nohave {padding-top: .5rem;}
+			.affirm .top-das {height: auto;padding-bottom: 1rem;}
+			.affirm .nohave .nop {
+				font-size: .65rem;
+				color: #333;
+				padding-bottom: .4rem;
+			}
+			.affirm .nohave .add {
+				height: 1.8rem;
+				background: #fff;
+				color: #f1341c;
+				font-size: .75rem;
+				line-height: 1.8rem;
+				border-radius: 2rem;
+				border: 1px solid #f1341c;
+				width: 70%;
+				margin: 0 auto;
+                text-align: center;
+			}
+		</style>
+    </head>
+    <body class="affirm">
+        <div id="main-box">
+            <div class="mask" @tap="maskh"></div>
+            <footer class="fot" @tap="convert">
+                <div class="immiteChange">立即兑换</div>
+            </footer>
+            <header class="mui-bar mui-bar-nav confirmOrder" data-header>
+                <a class="mui-action-back c-icon-back mui-pull-left"></a>
+                <h1 class="mui-title">确认订单</h1>
+            </header>
+            <div class="mui-content" data-content>
+                <div class="top-das" @tap="setads">
+                    <div class="nohave" :class=" hasads ? '' : 'active'">
+                        <p class="nop">您还没有收货地址哦~添加一个吧！</p>
+                        <div class="add">添加收货地址</div>
+                    </div>
+                    <div class="ads" :class=" hasads ? 'active' : ''">
+                        <p class="p1"><span class="myname">收货人：{{name}}</span><span class="pnone">{{phone}}</span></p>
+                        <div class="myads">收货地址：{{ads}}</div>
+                    </div>
+                    <div class="right"></div>
+                </div>
+                <p class="dai"></p>
+                <div class="con ovf">
+                    <div class="img"><img :src="face"/></div>
+                    <div class="text">
+                        <p class="title">{{goods_name}}</p>
+                        <div class="con-msg"><span class="money">{{shop_point}}<em>积分</em></span><span class="oldmoney">￥{{shop_price}}</span><span class="sub">X{{subval}}</span></div>
+                    </div>
+                </div>
+                <div class="main" >
+                    <div class="userknow-msg" style="height:15rem">
+                        <iframe src="http://www.ycyz-yt.com/wap/sp/index/id/2.html" width="100%" height="150%"  frameborder="no" scrolling="yes" ></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/affirm.js"></script>
+    </body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>搜索</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <link rel="stylesheet" type="text/css" href="css/animate.css" />
+        <link rel="stylesheet" href="css/vant.css">
+        <link rel="stylesheet" type="text/css" href="css/search.css" />
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+    </head>
+    <body >
+        <div id="pagesearch" class="pagesearch" style="height:100%;width:100%">
+            <header class="mui-bar mui-bar-nav" data-header>
+                <a class="mui-action-back c-icon-back mui-pull-left"></a>
+                <div class="input-box mui-search">
+                    <input type="search"  maxlength="50" v-on:input="oninput()" name="search-input" onkeyup="this.value=this.value.replace(/[^\u4e00-\u9fa5a-zA-Z0-9\w]/g,'')" v-model="searchval" class="search-input" id="search-input" value="" placeholder="复制淘宝标题搜索" oninput="listenMsg()"/>
+                    <span class="closemsg" id="closemsg" @tap="closeAllmsg"></span>
+                </div>
+                <a class="search-btn" @tap="onsbtn" ><em class="only-android">搜索</em></a>
+                <!-- <div class="nav">
+                    <a class="new">实时上新</a>
+                    <a class="sork" @tap="onsork">{{innerhtml}}<em class="em"></em></a>
+                    <div class="onsork-box">
+                        <a v-for="(item,index) in innerhtmllist" @tap="onsorka(item,index)">{{item}}</a>
+                    </div>
+                </div> -->
+                <div class="sort">
+                    <a class="change_tab active" data-id="0" @tap="all_goods">
+                        全部
+                    </a>
+                    <a class="change_tab sale" data-id="1" @tap="change_sale_sort">
+                        <div>销量</div>
+                        <div class="change_sale_sort" >
+                            <i class="sale_up"></i>
+                            <i class="sale_down"></i>
+                        </div>
+                    </a>
+                    <a class="change_tab price" data-id="2" @tap="change_price_sort">
+                        <div>价格</div>
+                        <div class="change_price_sort" >
+                            <i class="price_up"></i>
+                            <i class="price_down"></i>
+                        </div>
+                    </a>
+                    <a class="change_tab" data-id="3" @tap="icon_change_list">
+                        <i class="icon_change_list"></i>
+                    </a>
+                </div>
+            </header>
+            <div class="mui-content"  data-content>
+                <div id="pullrefresh" class="mui-content mui-scroll-wrapper wrapper">
+                    <div class="mui-scroll">
+                        <ul class="content lists">
+                            <li class="con" v-for="item in con" @tap="onstorecon(item.itemId,item.hascoupon,item.title,item.zk_final_price,item.afterCouponPrice,item.biz30day,item.pictUrl)" :id="item.itemId">
+                                <div class="img">
+                                    <img v-bind:src="item.pictUrl+'_300x300.jpg'" style="background-color: #e6e6e6;" />
+                                    <div class="contentMsg">
+                                        <h3 >{{item.title}}</h3>
+                                        <div style="height:0.7rem;margin-top: 0.2rem;">
+                                            <span class="jifen">
+                                                <span>{{item.pt}}</span>
+                                                <div>{{item.shop_title}}</div>
+                                            </span>
+                                            <span class="saleNum">
+                                                <img src="./img/icon_ones2.png" alt="">
+                                                {{item.biz30day}}
+                                            </span>
+                                        </div>
+                                        <!-- 如果商品有券后价就显示 -->
+                                        <div class="contentPrice" :class="{'active' :item.hascoupon==0}">
+                                            <div class="afterCouponPrice">¥{{item.afterCouponPrice}}</div>
+                                            <span class="couponPrice" >
+                                                <div class="leftPrice">{{item.couponPrice}}</div>
+                                                <div class="rightName">优惠券</div>
+                                            </span>
+                                        </div>
+                                        <!-- 如果商品没有券后价就显示 -->
+                                        <div class="contentPrice" :class="{'active' :item.hascoupon!=0}">
+                                            <div class="afterCouponPrice">¥{{item.zk_final_price}}</div>
+                                            <div class="noCouponPrice" >
+                                                <span>无券</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="content row_list active">
+                            <li class="row " v-for="item in con" @tap="onstorecon(item.itemId,item.hascoupon,item.title,item.zk_final_price,item.afterCouponPrice,item.biz30day,item.pictUrl)" :id="item.itemId">
+                                <div class="img">
+                                    <img v-bind:src="item.pictUrl+'_300x300.jpg'" alt="">
+                                </div>
+                                <div class="content">
+                                    <h1>{{item.title}}</h1>
+                                    <div class="shop">
+                                        <div class="left_shopname">
+                                            <span>{{item.pt}}</span>
+                                            <div>&nbsp{{item.shop_title}}</div>
+                                        </div>
+                                        <div class="sale_num">
+                                            销量：{{item.biz30day}}
+                                        </div>
+                                    </div>
+                                    <div class="zk_final_price">¥{{item.zk_final_price}}</div>
+                                     <!-- 如果商品有券后价就显示 -->
+                                     <div class="contentPrice" :class="{'active' :item.hascoupon==0}">
+                                        <span class="couponPrice" >
+                                            <div class="leftPrice">{{item.couponPrice}}</div>
+                                            <div class="rightName">优惠券</div>
+                                        </span>
+                                    </div>
+                                    <!-- 如果商品没有券后价就显示 -->
+                                    <div class="contentPrice" :class="{'active' :item.hascoupon!=0}">
+                                        <div class="noCouponPrice" >
+                                            <span>无券</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="main">
+                    <p class="title">搜APP内</p>
+                    <div class="boxt">
+                        <p class="p1">历史搜索</p>
+                        <a class="link" v-for="item in mainalink" @tap="onolda(item)">{{item}}</a>
+                    </div>
+                    <div class="btnclear">
+                        <p class="btn-p" @tap="onclear"><em class="only-android">清除历史搜索</em></p>
+                    </div>
+                </div>            
+            </div>
+            <div class="mui-loading" id="loading">
+                <div class="mui-spinner loadingInfo">
+                </div>
+            </div>
+        </div>
+            
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/vant.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/search.js"></script>
+    </body>
+</html>

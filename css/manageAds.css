@@ -1,0 +1,27 @@
+.addInfo{
+    padding:1rem 0;
+}
+.addInfo .addInfo_editChoose img.active{
+    float: left;
+    width:1.25rem;
+    height:1.25rem;
+    margin-top: 0.5rem;
+    margin-left:0.4rem;
+    display: none;
+}
+.addInfo .addInfo_editChoose img{
+    float: left;
+    width:1.25rem;
+    height:1.25rem;
+    margin-top: 0.5rem;
+    margin-left: 0.4rem;
+    display: block;
+}
+.addInfo{
+    margin:0 0;
+}
+.addInfo_editChoose{
+    width:2rem;
+    height:2.2rem;
+    float: left;
+}

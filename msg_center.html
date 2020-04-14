@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>站内信</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <link rel="stylesheet" type="text/css" href="css/msg_center.css"/>
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+    </head>
+    <body class="msg_center" >
+        <header class="mui-bar mui-bar-nav" data-header>
+            <a class="mui-action-back c-icon-back mui-pull-left"></a>
+            <h1 class="mui-title">站内信</h1>
+        </header>
+        <div class="mui-content" id="msg_center" data-content>
+            <div class="mui-scroll-wrapper" data-content>
+                <div class="no_msg" :class="{'active':hide }">
+                    <img :src="no_msg" alt="">
+                </div>
+                <div class="mui-scroll" >
+                    <ul class="mui-table-view" :class="{'active':!hide }">
+                        <li class="mui-table-view-cell"  v-for="(item,index) in msgs">
+                            <div class="mui-slider-right mui-disabled" >
+                                <a class="mui-btn mui-btn-red"   style="background-color:#f1341c"  @tap="delete_msg(index,item.id)">删除</a>
+                            </div>
+                            <div class="mui-slider-handle" @tap="go_msg(item.id,item.title)">
+                                <div class="msgs">
+                                    <div class="msg_top">
+                                        <div class="title">
+                                            {{item.title}}
+                                        </div>
+                                        <div class="msg_time">
+                                            {{common.get_parmas(item.create_time)}}
+                                        </div>
+                                    </div>
+                                    <div class="msg_content">
+                                        {{item.description}}
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/msg_center.js"></script>
+    </body>
+</html>

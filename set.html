@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>设置</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <link rel="stylesheet" type="text/css" href="css/animate.css" />
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <style type="text/css">
+        	.set .mui-content .btn {
+        		position: absolute;
+        		bottom: 2.6rem;
+        		left: 0;
+        		right: 0;
+        		margin-top: 0;
+        	}
+        </style>
+    </head>
+    <body class="set" id="set">
+    	<header class="mui-bar mui-bar-nav" data-header>
+            <a class="mui-action-back c-icon-back mui-pull-left"></a>
+            <h1 class="mui-title">设置</h1>
+       </header>
+        <div class="mui-content" data-content>
+            <ul class="main">
+                <li class="lst setads" @tap="setads">我的收货地址<a class="right"></a></li>
+                <!-- <li class="lst setphone" @tap="setphone">手机号更换<a class="right"></a></li> -->
+                <!-- <li class="lst setpsw" @tap="setpsw">修改登录密码<a class="right"></a></li> -->
+                <li class="lst about" @tap="about">关于我们<a class="right"></a></li>
+                <!-- <li class="lst setpsw" @tap="clearCache">清除缓存<a class="right"></a></li> -->
+            </ul>
+            <div class="btn btn-public">
+                <div class="btns" @tap="exit">退出登录</div>
+            </div>
+        </div>
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/set.js"></script>
+    </body>
+</html>

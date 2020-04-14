@@ -1,0 +1,267 @@
+
+
+
+html,body{
+    background-color: #fff;
+}
+.integralTop-row{
+    width: 100%;
+    height:2.2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.header_top{
+    position: fixed;
+    top:0;
+    z-index: 999999999;
+}
+.integralTop-row .input-integral{
+    width:15.5rem;
+    height:1.5rem;
+    background-color: #fff;
+    border-radius: 100px;
+    background-image: url(../img/icon_search.png);
+    background-size: 1rem 1.05rem;
+    background-repeat: no-repeat;
+    background-position: 10px 5px;
+}
+.integralTop-row span{
+    font-size: 0.7rem;
+    color:#fff;
+}
+.integral_top_bg{
+    width:100%;
+    height:12.2rem;
+    background-image: url(../img/bg.png);
+    background-size: 100% 12.2rem;
+    padding-top: 3.3rem;
+}
+.integral_top_bg h1{
+    width: 100%;
+    height:2rem;
+    line-height: 2rem;
+    text-align: center;
+    color:#fff;
+    font-size: 0.8rem;
+}
+.integralMenu{
+    width:100%;
+    height:6.875rem;
+}
+.integralMenu .integralMenuli_1{
+    float: left;
+    height:6.875rem;
+    background: url("../img/bg_1.png") no-repeat;
+    background-size: 4.075rem 6.875rem;
+    margin-left: 0.5rem;
+}
+.integralMenu .integralMenuli_1 .integralMenuli_1_first{
+    width:4.075rem;
+    height:4.75rem;
+    text-align: center;
+    line-height: 4.75rem;
+}
+.integralMenu .integralMenuli_1 .integralMenuli_1_second{
+    width:4.075rem;
+    height:0.85rem;
+    line-height: 0.85rem;
+    color:#fff;
+    font-size: 0.65rem;
+    margin-top: 0.25rem;
+    text-align: center;
+}
+.integralMenu .integralMenuli_1 .integralMenuli_1_third{
+    width:4.075rem;
+    height:0.725rem;
+    line-height: 0.725rem;
+    color:#fff;
+    font-size: 0.5rem;
+    text-align: center;
+}
+.integralMenu .integralMenuli_1 .integralMenuliImg_1{
+    width:3.425rem;
+    height:1.825rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+.integralMenu .integralMenuli_2{
+    float: left;
+    height:6.875rem;
+    background: url("../img/bg_2.png") no-repeat;
+    background-size: 4.075rem 6.875rem;
+    margin-left: 0.5rem;
+}
+.integralMenu .integralMenuli_2 .integralMenuli_2_first{
+    width:4.075rem;
+    height:4.75rem;
+    text-align: center;
+    line-height: 4.75rem;
+  }
+.integralMenu .integralMenuli_2 .integralMenuli_2_second{
+    width:4.075rem;
+    height:0.85rem;
+    line-height: 0.85rem;
+    color:#fff;
+    font-size: 0.65rem;
+    margin-top: 0.25rem;
+    text-align: center;
+  }
+.integralMenu .integralMenuli_2 .integralMenuli_2_third{
+    width:4.075rem;
+    height:0.725rem;
+    line-height: 0.725rem;
+    color:#fff;
+    font-size: 0.5rem;
+    text-align: center;
+  }
+.integralMenu .integralMenuli_2 .integralMenuliImg_2{
+    width:3.425rem;
+    height:1.825rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  
+.integralMenu .integralMenuli_3{
+    float: left;
+    height:6.875rem;
+    background: url("../img/bg_3.png") no-repeat;
+    background-size: 4.075rem 6.875rem;
+    margin-left: 0.5rem;
+  }
+.integralMenu .integralMenuli_3 .integralMenuli_3_first{
+    width:4.075rem;
+    height:4.75rem;
+    text-align: center;
+    line-height: 4.75rem;
+  }
+.integralMenu .integralMenuli_3 .integralMenuli_3_second{
+    width:4.075rem;
+    height:0.85rem;
+    line-height: 0.85rem;
+    color:#fff;
+    font-size: 0.65rem;
+    margin-top: 0.25rem;
+    text-align: center;
+  }
+.integralMenu .integralMenuli_3 .integralMenuli_3_third{
+    width:4.075rem;
+    height:0.725rem;
+    line-height: 0.725rem;
+    color:#fff;
+    font-size: 0.5rem;
+    text-align: center;
+  }
+.integralMenu .integralMenuli_3 .integralMenuliImg_3{
+    width:3.425rem;
+    height:1.825rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  
+.integralMenu .integralMenuli_4{
+    float: left;
+    height:6.875rem;
+    background: url("../img/bg_4.png") no-repeat;
+    background-size: 4.075rem 6.875rem;
+    margin-left: 0.5rem;
+  }
+.integralMenu .integralMenuli_4 .integralMenuli_4_first{
+    width:4.075rem;
+    height:4.75rem;
+    text-align: center;
+    line-height: 4.75rem;
+  }
+.integralMenu .integralMenuli_4 .integralMenuli_4_second{
+    width:4.075rem;
+    height:0.85rem;
+    line-height: 0.85rem;
+    color:#fff;
+    font-size: 0.65rem;
+    margin-top: 0.25rem;
+    text-align: center;
+  }
+.integralMenu .integralMenuli_4 .integralMenuli_4_third{
+    width:4.075rem;
+    height:0.725rem;
+    line-height: 0.725rem;
+    color:#fff;
+    font-size: 0.5rem;
+    text-align: center;
+  }
+.integralMenu .integralMenuli_4 .integralMenuliImg_4{
+    width:3.425rem;
+    height:1.825rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+.content{
+    background-color: #fff;
+    overflow: hidden;
+    padding: 0 .5rem;
+}
+.content .con{
+    position: relative;
+    float: left;
+    width: 49%;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: .4rem;
+    box-shadow:1px 3px 0.5rem 1px #f0f0f0;
+}
+.content .con img{
+  height: 8.5rem;
+  overflow: hidden;
+}
+.content .con .img img {
+    width: 100%;
+    height: 100%;
+    vertical-align: text-top;
+    background-color: #e6e6e6;
+}
+.content .text {
+    position: relative;
+    z-index: 99;
+    width: 100%;
+    padding: 0 0.5rem .25rem .5rem;
+}
+.content .text .cn-title {
+    font: 0.65rem/1.25rem '';
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.content .text .cn-money {
+    color: #f75b47;
+    font: 0.75rem / 0.8rem "";
+}
+.content .con:nth-of-type(2n) {
+    float: right;
+}
+
+
+
+/* 覆盖样式 */
+.van-list__error-text, .van-list__finished-text, .van-list__loading-text{
+    display: inline-block;
+    width:100%;
+}
+.mui-bar{
+    z-index: 9999999;
+}
+
+/* 显示正在加载中 */
+#show-loading{
+    display: none;
+    position: fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom: 0;
+    margin:auto;
+    font-size: 0.8rem;
+}

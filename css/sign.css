@@ -1,0 +1,660 @@
+
+/* 签到 */
+
+
+
+/* 引入字体 */
+@font-face {
+    font-family:"hy";
+    src:url("../fonts/HY.ttf") format("truetype");
+    font-weight:normal;
+    font-style:normal;
+}
+/* 显示正在加载中 */
+#show-loading{
+    position: fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom: 0;
+    margin:auto;
+    font-size: 0.8rem;
+    z-index: 99999;
+    background-color: #fff;
+}
+
+#sign header{
+    box-shadow: 0 2px 0 rgba(219, 219, 219, 0.5);
+}
+
+#sign .clickSign{
+    width:18.75rem;
+    height:10rem;
+    background-image: url(../img/signbg.png);
+    background-size: 18.75rem 10rem;
+    /* margin-top: 22px; */
+    position: relative;
+}
+
+#sign .clickSign .goSign{
+    width:4.625rem;
+    height:2rem;
+    background-image: url(../img/clickSign.png);
+    background-size: 100% 100%;
+    margin: auto;
+    margin-top:0.5rem;
+    text-align: center;
+    line-height: 2rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color:#f1341c; 
+}
+
+#sign .clickSign .goSign .goshop{
+    display: none;
+}
+#sign .clickSign .goSign .goshop.active{
+    display: block;
+}
+#sign .clickSign .goSign .playBigBox{
+    display: none;
+}
+#sign .clickSign .goSign .playBigBox.active{
+    display: block;
+}
+
+#sign .clickSign .signRule{
+    position: absolute;
+    right:0.5rem;
+    top:0.5rem;
+    font-size: 0.6rem;
+    /* font-weight: bold; */
+    color:#333;
+    padding:0.2rem 0.4rem;
+    background-color: #ffca28;
+    border-radius: 1000px;
+}
+
+#sign .clickSign .record{
+    position: absolute;
+    right:0.5rem;
+    top:2rem;
+    font-size: 0.6rem;
+    /* font-weight: bold; */
+    color:#fff;
+    padding:0.2rem 0.4rem;
+    background-color: #ff6028;
+    border-radius: 1000px;
+}
+
+#sign .clickSign .showIntegral{
+    width:10.5rem;
+    height:7rem;
+    background-image: url(../img/cloudy.png);
+    background-size: 10.5rem 7rem;
+    margin:auto;
+}
+
+#sign .clickSign .showIntegral .integral{
+    line-height: 2.45rem;
+    height:2.45rem;
+    font-size: 1.7rem;
+    /* font-family: "hy"; */
+    color:#f1341c;
+    text-align: center;
+    padding-top: 2.8rem;
+    font-weight: bold;
+}
+
+#sign .clickSign .showIntegral .line{
+    margin-top: 1.2rem;
+    text-align: center;
+}
+
+#sign .clickSign .showIntegral .line img{
+    width: 6rem;
+    margin:auto;
+}
+
+#sign .clickSign .showIntegral .tomorrow{
+    text-align: center;
+    font-size: 0.6rem;
+    color:#f1341c;
+    font-weight: bold;
+}
+
+
+
+#sign .nowDayPrize .nowDayPrize_title{
+    width:100%;
+    height:1.675rem;
+    line-height: 1.675rem;
+    font-size: 0.65rem;
+    text-align: center;
+}
+#sign .nowDayPrize .nowDayPrize_title .leftline{
+    width:2.5rem;
+    height:1px;
+    background-color: #333;
+    float: left;
+    margin-top: 0.8rem;
+    margin-left: 24%;
+}
+#sign .nowDayPrize .nowDayPrize_title .title{
+    float: left;
+    margin-left: 0.5rem;
+    font-weight: bold;
+    color:#333;
+}
+#sign .nowDayPrize .nowDayPrize_title .rightLine{
+    width:2.5rem;
+    height:1px;
+    background-color: #333;
+    float: left;
+    margin-top: 0.8rem;
+    margin-left: 0.5rem;
+}
+
+#sign .nowDayPrize .Showprize{
+    height:4rem;
+    /* background-color: #333; */
+}
+#sign .nowDayPrize .Showprize ul{
+    display:flex;
+    justify-content:space-around;
+}
+#sign .nowDayPrize .Showprize li{
+    /* float: left; */
+}
+#sign .nowDayPrize .Showprize li img{
+    width:3rem;
+    height:2.5rem;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+}
+#sign .nowDayPrize .Showprize li p{
+    font-size: 0.5rem;
+    text-align: center;
+    line-height: 1rem;
+}
+
+
+#sign .continuousSign {
+    width:11.75rem;
+    height:9.5rem;
+    background-color: #fff;
+    border-radius: 5px;
+    margin:auto;
+    overflow: hidden;
+    position: relative;
+    margin-top: 0.5rem;
+}
+#sign .continuousSign .playTip{
+    position: absolute;
+    right:0.1rem;
+    top:2rem;
+    font-size: 0.5rem;
+    width:3rem;
+    height:1.2rem;
+    text-align: center;
+    line-height: 1.2rem;
+    /* font-weight: bold; */
+    color:#333;
+    /* background-image: url(../img/playTip.png);
+    background-size: 100% 100%; */
+}
+#sign .continuousSign .playTip span{
+    float: left;
+    font-size: 0.3rem;
+    margin-right:0.2rem;
+}
+
+
+#sign .continuousSign .playTip .mui-switch{
+    width:30px;
+    height:20px;
+    margin-left: 0.7rem;
+}
+.mui-switch .mui-switch-handle{
+    width:15px;
+    height:17px;
+}
+
+#sign .continuousSign .continuousSign_title{
+    width:100%;
+    height:1.625rem;
+    background-color: #f1341c;
+    text-align: center;
+
+}
+#sign .continuousSign .continuousSign_title .leftPoint{
+    float: left;
+    width:12px;
+    height:12px;
+    background-color: #c20000;
+    border-radius: 50%;
+    margin-left: 0.3rem;
+    margin-top: 0.3rem;
+}
+#sign .continuousSign .continuousSign_title .rightPoint{
+    float: right;
+    width:12px;
+    height:12px;
+    background-color: #c20000;
+    border-radius: 50%;
+    margin-right: 0.3rem;
+    margin-top: 0.3rem;
+}
+#sign .continuousSign .continuousSign_title .title{
+    font-family: "hy";
+    color:#fff;
+    font-size: 0.85rem;
+    height:100%;
+    float: left;
+    margin-left:2rem; 
+    line-height: 100%;
+    margin-top: 0.4rem;
+}
+#sign .continuousSign .lastDay{
+    width:4.625rem;
+    height:3.75rem;
+    background-image: url(../img/goldBox.png);
+    background-size: 100% 100%;
+    margin:auto;
+    margin-top:0.5rem;
+}
+#sign .continuousSign .lastDay div{
+    width:4.25rem;
+    height:2.25rem;
+    background-image: url(../img/kuang.png);
+    background-size: 100% 100%;
+    text-align: center;
+    line-height: 2.25rem;
+    color:#f1341c;
+    font-family: "hy";
+    margin-top:0.6rem;
+    float: left;
+    transform:rotate(-20deg);
+}
+
+#sign .continuousSign .line{
+    width:80%;
+    height:1px;
+    background-color:#f1341c;
+    margin: auto;
+    margin-top: 0.5rem;
+}
+#sign .continuousSign .msg{
+    text-align: center;
+    font-family: "hy";
+    line-height: 1rem;
+    font-size: 0.6rem;
+    color:#f1341c;
+    height:1rem;
+}
+#sign .continuousSign .progress{
+    width:70%;
+    height:4px;
+    background-color: #ffe36e;
+    margin: auto;
+    border-radius: 1000px;
+}
+#sign .continuousSign .progress ul{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.3rem;
+}
+#sign .continuousSign .progress li{
+    width:0.5rem;
+    height:0.5rem;
+    background-color: #ffe36e;
+    border-radius: 50%;
+    float: left;
+    margin-top: -0.15rem;
+    font-size: 0.01rem;
+}
+
+#sign .continuousSign .progressNext{
+    width:85%;
+    height:4px;
+    margin: auto;
+    border-radius: 1000px;
+    font-size: 0.1rem;
+}
+#sign .continuousSign .progressNext ul{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.3rem;
+}
+#sign .continuousSign .progressNext li{
+    width:2rem;
+    height:1rem;
+    border-radius: 50%;
+    float: left;
+    margin-top: -0.1rem;
+    text-align: center;
+}
+/* 热门推荐 */
+#sign .hotRecommend .nowDayPrize_title{
+    width:100%;
+    height:1.675rem;
+    line-height: 1.675rem;
+    font-size: 0.65rem;
+    text-align: center;
+}
+#sign .hotRecommend .nowDayPrize_title .leftline{
+    width:2.5rem;
+    height:1px;
+    background-color: #333;
+    float: left;
+    margin-top: 0.8rem;
+    margin-left: 27%;
+}
+#sign .hotRecommend .nowDayPrize_title .title{
+    float: left;
+    margin-left: 0.5rem;
+    font-weight: bold;
+    color:#333;
+}
+#sign .hotRecommend .nowDayPrize_title .rightLine{
+    width:2.5rem;
+    height:1px;
+    background-color: #333;
+    float: left;
+    margin-top: 0.8rem;
+    margin-left: 0.5rem;
+}
+#sign .hotRecommend ul{
+    /* display: flex;
+    justify-content: space-around; */
+    width:100%;
+    height:100%;
+    display:inline-block;
+    /* overflow-x:auto;
+    white-space:nowrap;
+    width:100%; */
+}
+#sign .hotRecommend ul li{
+    float: left;
+    width: 50%;
+    text-align: center;
+    /* padding:0.5rem; */
+    /* display: inline-block; */
+}
+#sign .hotRecommend ul li img{
+    width:8.75rem;
+    height:5rem;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+}
+.ys-scroll-btm{
+    /* position: absolute;
+    bottom:0;
+    left:0; */
+}
+
+/* 宝贝推荐 */
+#sign .goodsRecommend .nowDayPrize_title{
+    width:100%;
+    height:1.675rem;
+    line-height: 1.675rem;
+    font-size: 0.65rem;
+    text-align: center;
+}
+#sign .goodsRecommend .nowDayPrize_title .leftline{
+    width:2.5rem;
+    height:1px;
+    background-color: #333;
+    float: left;
+    margin-top: 0.8rem;
+    margin-left: 27%;
+}
+#sign .goodsRecommend .nowDayPrize_title .title{
+    float: left;
+    margin-left: 0.5rem;
+    font-weight: bold;
+    color:#333;
+}
+#sign .goodsRecommend .nowDayPrize_title .rightLine{
+    width:2.5rem;
+    height:1px;
+    background-color: #333;
+    float: left;
+    margin-top: 0.8rem;
+    margin-left: 0.5rem;
+}
+#sign .goodsRecommend ul{
+    width:100%;
+    height:100%;
+    display: inline-block;
+    padding: 0 0.5rem;
+    background-color: #f0f0f0;
+}
+#sign .goodsRecommend li{
+    float: left;
+    width: 48.5%;
+    border-radius: .4rem;
+    overflow: hidden;
+    background-color: #fff;
+    margin-bottom: .55rem;
+    box-shadow: 1px 3px .5rem 1px #f0f0f0;
+}
+#sign .goodsRecommend li:nth-of-type(2n){
+    float: right;
+}
+#sign .goodsRecommend li .img{
+    position: relative;
+    width: 100%;
+    height:9rem;
+}
+#sign .goodsRecommend li .img img{
+    width:100%;
+    height:9rem;
+    background-color: #e6e6e6;
+}
+#sign .goodsRecommend li .title-p{
+    font-size: 0.7rem;
+    color: #494949;
+    line-height: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0.25rem 0.5rem 0 0.5rem;
+    text-overflow: ellipsis;
+    font-weight: 600;
+}
+#sign .goodsRecommend li .change-bottom{
+    color: #666;
+    font-size: .5rem;
+    line-height: 0.725rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+#sign .goodsRecommend li .change-bottom .title1 .face{
+    float: right;
+    background: url(../img/icon_ones2.png) no-repeat 0 center;
+    padding-left: .6rem;
+    background-size: auto 70%;
+}
+#sign .goodsRecommend li .change-bottom .title2{
+    line-height: 1.5rem;
+    position: relative;
+}
+#sign .goodsRecommend li .change-bottom .title2 .money{
+    color:#f1341c;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+#sign .goodsRecommend li .change-bottom .title2 .bbb{
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height:0.65rem;
+}
+#sign .goodsRecommend li .change-bottom .title2 .bbb .a1 {
+    background-color: #fff;
+    color: #f1341c;
+    border: 1px solid #f1341c;
+    border-radius: .25rem 0 0 .25rem;
+    font-size: .425rem;
+    padding: 0 .2rem;
+}
+#sign .goodsRecommend li .change-bottom .title2 .bbb .a2 {
+    background-color: #f1341c;
+    color: #fff;
+    border: 1px solid #f1341c;
+    border-radius: 0 .25rem .25rem 0;
+    font-size: .425rem;
+    padding: 0 .2rem;
+}
+
+/* 签到规则 */
+#sign .ruleDetail{
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    z-index: 9999;
+    display: none;
+}
+#sign .ruleDetail .right{
+    position: fixed;
+    top:8rem;
+    bottom:0;
+    left:10%;
+    right:0;
+    width:80%;
+    height:60%;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 10px;
+    padding:0.5rem 0.5rem;
+}
+#sign .ruleDetail .rule_Bottom{
+    height:1rem;
+    width:100%;
+    background-color: #fff;;
+}
+/* 置顶图标 */
+.moveTop{
+    position: fixed;
+    bottom:1rem;
+    right:1rem;
+    z-index: 10;
+    width:2rem;
+    height:2rem;
+    display: none;
+}
+.moveTop img{
+    width:2rem;
+    height:2rem;
+}
+
+/* 开宝箱样式+效果 */
+.playBox{
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    z-index: 99;
+    display: none;
+}
+.playBox div{
+    position: fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto;
+    width:6.5rem;
+    height:5rem;
+    animation: shake 1s;
+}
+.playBox div img{
+    width:6.5rem;
+    height:5rem;
+}
+/* 奖品展示 */
+.getPrize{
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    z-index: 99;
+    display: none;
+    
+}
+.getPrize .redBox{
+    position: fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto;
+    width:80%;
+    height:11rem;
+    background-image: url(../img/prizeBg.png);
+    background-size: 100% 100%;
+    animation: zoomIn 0.3s;
+}
+.getPrize .redBox .closeBox{
+    text-align: right;
+    margin-top:3.5rem; 
+    margin-right: 2rem;
+}
+.getPrize .redBox .closeBox img{
+    width:1rem;
+    height:1rem;
+}
+.getPrize .redBox .content{
+    margin-top: 1rem;
+    line-height: 2rem;
+    height:2rem;
+    text-align: center;
+    color:#fff;
+}
+.getPrize .redBox .certain{
+    line-height: 2rem;
+    height:2rem;
+    text-align: center;
+    color:#fff;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+.getPrize .redBox .certain span{
+    padding:0.3rem 1rem;
+    background-color: #f8e437;
+    border-radius:1000px; 
+    color:#f33b3d;
+}
+
+
+/* 覆盖common.css样式 */
+.ys-scroll-btm{
+    height:2rem;
+    line-height: 2rem;
+}
+.ys-scroll-top{
+    display: none
+}
+.mui-bar-nav ~ .mui-content{
+    padding-top: 0.8rem;
+}
+.mui-switch.mui-active{
+    border-color: #f1341c;
+    background-color: #f1341c;
+}
+.mui-popup .mui-popup-text{
+    text-align: center;
+}
+.mui-popup .mui-popup-button{
+    color:#666;
+}
+.mui-popup .mui-popup-button ~ .mui-popup-button-bold{
+    color:#f1341c;
+}

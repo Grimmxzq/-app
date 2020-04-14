@@ -1,0 +1,32 @@
+.mui-bar input[type=search]{
+    height:1.2rem;
+}
+.mui-search input[type=search]{
+    padding-left: 40px;
+}
+.closemsg{
+    position: absolute;
+    right:0.8rem;
+    top:0.5rem;
+    z-index: 9999;
+    width:0.7rem;
+    height:0.7rem;
+    background-image: url(../img/icon_close.png);
+    background-size: 100% 100%;
+    display: none;
+}
+.closemsg.active{
+    display: block;
+}
+.pagesearch .mui-scroll{
+    background-color: #fff;
+}
+
+input[type=search]{
+    text-align: left;
+}
+.ys-scroll-btm{
+    width:100%;
+    height:3.5rem;
+    line-height: 3.5rem;
+}

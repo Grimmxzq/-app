@@ -1,0 +1,159 @@
+
+
+.banner_img{
+    display: block;
+    height: 17.75rem;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.title{
+    padding:0.5rem 0.5rem;
+    font-size: 0.7rem;
+    color:#333;
+    line-height: 0.7rem;
+}
+.msg{
+    padding:0 0.5rem;
+    display:flex;
+    justify-content: space-between;
+    /* border-bottom: 1px solid #f0f0f0; */
+    align-items: center;
+}
+.left_msg{
+    display: flex;
+    align-items: center;
+}
+.msg .get_ticket{
+    width:2.2rem;
+    height:1rem;
+    background-color: #f1341c;
+    border-radius: 100px;
+    color: #fff;
+    font-size: 0.5rem;
+    text-align: center;
+    line-height: 1.1rem;
+}
+.msg .small_icon{
+    height:0.5rem;
+    font-size: 0.5rem;
+    color: #f1341c;
+    margin-left: 13px;
+}
+.msg .money{
+    font-size: 1rem;
+    color: #f1341c;
+    margin-left: 3px;
+}
+.msg .oldprice{
+    font-size: 0.6rem;
+    color: #666;
+    margin-left: 10px;
+    text-decoration: line-through;
+    margin-top: 3px;
+}
+.ticket{
+    margin:0 0.5rem;
+    height: 3rem;
+    background-image: url(../img/ticket@2x.png);
+    background-size: 100% 100%;
+    display: flex;
+    color:#fff;
+}
+.ticket .money_ticket{
+    width:70%;
+    text-align: center;
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction:column;
+    margin-top: 0.5rem;
+}
+.ticket .buy{
+    width:30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+}
+.msg_twoline{
+    display: flex;
+    justify-content: space-between;
+    padding:0 0.5rem;
+    font-size: 0.6rem;
+    color: #999;
+    height:1.5rem;
+    align-items: center;
+}
+.msg_twoline .back_integral{
+    color:#f1341c;
+    font-weight: 550;
+}
+.shop_addvice{
+    padding: 0 00.5rem;
+    
+}
+.shop_addvice .saying{
+    line-height:0.75rem;
+    font-size: 0.5rem;
+    color:#f1341c;
+}
+.shop_addvice .shopname{
+    display: flex;
+    align-items: center;
+    height:2.2rem;
+}
+.shop_addvice .shopname img{
+    width:1.5rem;
+    height:1.5rem;
+    border-radius: 50%;
+}
+.shop_addvice .shopname div{
+    font-size: 0.6rem;
+    color: #333;
+    padding-left: 0.5rem;
+}
+.right_msg{
+    font-size: 0.6rem;
+    color:#999;
+}
+.skin_img{
+    height: 1.75rem;
+    line-height: 1.75rem;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.6rem;
+    text-align: center;
+    color:#333;
+}
+.imgs{
+    padding-bottom: 3.5rem;
+}
+.show_img img{
+    width:100%;
+    height:17.75rem;
+    background-color: #fff;
+}
+.footers{
+    position: fixed;
+    bottom:0;
+    left:0;
+    height:3rem;
+    z-index: 1;
+    background: #fff;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footers .buy{
+    width: 16.75rem;
+    height:2rem;
+    background-color: #f1341c;
+    color:#fff;
+    border-radius: 100px;
+    text-align: center;
+    line-height: 2rem;
+    font-size: 0.8rem;
+}
+
+
+

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/vant.css"/>
+    <link rel="stylesheet" type="text/css" href="css/womanDay.css"/>
+    <script src="js/initsize.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <title>三八节活动</title>
+    <style>
+        [v-cloak]{
+            display: none
+        }
+    </style>
+</head>
+<body>
+    <div id="womanDay">
+        <div class="ruleDetail" @tap="hideRule">
+            <div class="box_rule" >
+                <img src="./img/close_2.png" alt="">
+                <iframe src="http://www.ycyz-yt.com/wap/sp/index/id/9.html" width="100%" height="90%"  frameborder="no" scrolling="yes" ></iframe>
+            </div>
+        </div>
+        <div id="woman_content"> 
+            <div class="womanDay_img">
+                <div class="mui-pull-right bg_rules">
+                    <span class="rules" @tap="rules">活动规则</span>
+                    <!-- 活动规则：http://www.ycyz-yt.com/wap/sp/index/id/9.html -->
+                </div>
+                <img :src="text_img" alt="" >
+            </div>
+			<van-list class="ul_goods"
+				v-model="loading"
+				:finished="finished"
+				finished-text="没有更多了"
+                @load="goods()"
+                offset='888'
+			>
+			<li class="many_goods" v-cloak v-for="item in datalist"  :key="item" @tap="go_buy(item.itemId,item.title,item.zk_final_price,item.afterCouponPrice,item.couponPrice,item.shop_title,item.biz30day,item.pictUrl,1)">
+				<div class="goods_img">
+					<img :src="item.pictUrl" alt="">
+				</div>
+				<div class="goods_msg">
+					<div class="goods_price">
+						<a>¥{{item.afterCouponPrice}}</a>
+						<a class="old_price">¥{{item.zk_final_price}}</a>
+					</div>
+					<h1 class="goods_title">
+						{{item.title}}
+					</h1>
+					<div class="goods_shopName">
+						<div class="shopname">{{item.shop_title}}</div>
+						<div>已售：{{item.biz30day}}</div>
+					</div>
+					<div class="cheap">
+						<div class="quan">优惠券:{{item.couponPrice}}元</div>
+						<!-- <div class="jifen">返佣:{{Math.round(item.tkmoney*pointpre)/returnpre}}积分</div> -->
+					</div>
+				</div>
+			</li>
+		</van-list>
+						
+                
+        </div>
+    </div>
+</body>
+<script src="js/mui.min.js"></script>
+<script src="js/jquery2.1.0.min.js"></script>
+<script src="js/common2.0.0.js"></script>
+<script src="js/webviewGroup.js"></script>
+<script src="js/vant.min.js"></script>
+<script>
+	
+function GetQueryString(name) {  
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");  
+    var r = window.location.search.substr(1).match(reg);  //获取url中"?"符后的字符串并正则匹配
+    var context = "";  
+    if (r != null)  
+         context = r[2];  
+    reg = null;  
+    r = null;  
+    return context == null || context == "" || context == "undefined" ? "" : context;  
+}
+var item = GetQueryString("item");
+mui.init({
+    swipeBack: false,
+});
+
+var womanDay = new Vue({
+    el:"#womanDay",
+    data:{
+        swiper1:null,
+        datalist:[],
+        pointpre:null,
+        returnpre:null,
+        active:2,
+        loading: false,
+        finished: false,
+        index_page:1,
+        shopindex:1,
+        get_menus:{},
+        get_menus_key:[],
+        get_menus_value:[],
+        item,item,
+        get_woman_img:[],
+        text_img:localStorage.get_woman_img_url
+    },
+    methods:{
+        rules:function(){
+            $(".ruleDetail").show();
+        },
+        goods(){
+            console.log("加载数据")
+            var vm =this;
+            $.ajax({
+                type: "get",
+                url: common.config + '/newapi/index/search_tywl',
+                dataType:'json',
+                data: {
+                    sokey:decodeURI(vm.item),
+                    sort:3,//销量由高到底
+                    quan :1,
+                    page:vm.index_page,
+                    size:20,
+                },
+                success: function(data) {
+                    console.log(data);
+                     // 数据全部加载完成
+                    if(data.data.length<20){
+                        vm.finished = true;
+                    }
+                    // 加载状态结束
+                    if(vm.index_page==1){
+                        console.log(vm.index_page)
+                        vm.datalist = data.data;
+                        vm.loading = false;
+                    }else{
+                        console.log(vm.index_page)
+                        for (let i = 0; i < data.data.length; i++) {
+                            var item = data.data[i]
+                            vm.datalist.push(item);
+                        }
+                        vm.loading = false;
+                    }
+                    vm.index_page++;
+                    console.log(vm.index_page);
+                }
+            }) 
+        },
+        back:function(){
+            backview();
+        },
+        hideRule:function(){
+            $(".ruleDetail").hide();
+        },
+        go_buy:function(oid,title,oldprice,newprice,cheapprice,guide_title,saled,img,woman_num){
+            console.log(guide_title);
+            //   mui预加载参考  http://ask.dcloud.net.cn/article/12575
+          	if(!!localStorage.userKey) {
+                localStorage.goodisId = oid;
+                var titleNView = {
+                    backgroundColor: '#fff',//导航栏背景色
+                    titleText: '商品详情',//导航栏标题
+                    titleColor: '#333',//文字颜色
+                    type:'transparent',//透明渐变样式
+                    autoBackButton: true,//自动绘制返回箭头
+                    splitLine:{//底部分割线
+                        color:'#cccccc'
+                    }
+                }
+                mui.plusReady(function() {  
+                    //预加载详情页  
+                    webview_detail = mui.preload({  
+                        url:"newparticulars.html?that=1&&dataid="+oid+"&&woman_num="+woman_num,  
+                        id: 'newparticulars',  
+                        styles: {  
+                            "render": "always",//一直渲染  
+                            "popGesture": "hide",  
+                            "titleNView": titleNView//使用原生渐变导航  
+                        }  
+                    });  
+                    mui.fire(webview_detail, 'newparticulars', {  
+                        oid:oid,
+                        title:title,
+                        oldprice:oldprice,
+                        newprice:newprice,
+                        cheapprice:cheapprice,
+                        guide_title:guide_title,
+                        saled:saled,
+                        img:img
+                    });
+                });
+                mui.openWindow({
+                    url:"newparticulars.html?that=1&&dataid="+oid+"&&woman_num="+woman_num,  
+                    id:"newparticulars",
+                    styles:{
+                        titleNView:titleNView
+                    },
+                    show:{
+                        autoShow:true,
+                        aniShow:"slide-in-right",
+                        duration:300,
+                    }
+                });
+          	}else{
+                mui.openWindow({
+                    url:"login.html",
+                    id:"login"
+                });
+            }
+        }
+    },
+    updated:function(){
+        // $(".mui-control-item").eq(0).addClass('mui-active')
+    },
+    mounted:function(){
+        console.log(window.location.href)//获取url地址查看参数是否传递
+        this.goods();
+    }
+})
+
+
+</script>
+
+</html>

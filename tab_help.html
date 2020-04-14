@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>帮助中心</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/tab_help.css">
+		<script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+		<script src="js/vue-resource.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/iphonex.css"/>
+	</head>
+	<body>
+		<div id="help">
+			<header class="mui-bar mui-bar-nav" data-header>
+				<h1 class="mui-title">帮助中心</h1>
+			</header>
+			<div class="top" data-content>
+				<div class="msg-box" @tap="kf_link">
+					<a class="shipments">联系客服</a>
+					<!-- <a class="indent">订单问题</a> -->
+				</div>
+			</div>
+			<div class="mui-scroll-wrapper msg-wrapper" data-content>
+				<div class="mui-scroll msg">
+					<div class="msg-title">常见问题解答</div>
+					<div class="li" v-for="(item,index) in msgli" @tap="onmsgli(index) " :class="{active:item.active}">
+						<p class="li-p">{{item.title}}
+							<a class="right"></a>
+						</p>
+						<p class="li-text">{{item.content}}</p>
+					</div>
+					<div class="kf-box">
+						<p class="kf-p">客服服务时间: 9:00~22:00</p>
+					</div>
+				</div>
+			</div>
+			<li class="set" @tap="text">
+					<div>测试</div>
+					<a class="lr"></a>
+				</li>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/jquery2.1.0.min.js"></script>
+	<script src="js/common2.0.0.js"></script>
+	<script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+	<script src="js/tab_help.js"></script>
+</html>

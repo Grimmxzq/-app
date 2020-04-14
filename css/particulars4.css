@@ -1,0 +1,85 @@
+
+
+.banner_img{
+    display: block;
+    height: 17.75rem;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.title{
+    padding:0.5rem 0.5rem;
+    font-size: 0.7rem;
+    color:#333;
+    line-height: 0.7rem;
+}
+.msg{
+    padding:0 0.5rem;
+    display:flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #f0f0f0;
+    align-items: center;
+}
+.left_msg{
+    display: flex;
+    align-items: center;
+}
+.msg .get_ticket{
+    width:2.2rem;
+    height:1rem;
+    background-color: #f1341c;
+    border-radius: 100px;
+    color: #fff;
+    font-size: 0.5rem;
+    text-align: center;
+    line-height: 1.05rem;
+}
+.msg .small_icon{
+    height:0.5rem;
+    font-size: 0.5rem;
+    color: #f1341c;
+    margin-left: 13px;
+}
+.msg .money{
+    font-size: 1rem;
+    color: #f1341c;
+    margin-left: 3px;
+}
+.right_msg{
+    font-size: 0.6rem;
+    color:#999;
+}
+.skin_img{
+    height: 1.75rem;
+    line-height: 1.75rem;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.6rem;
+    text-align: center;
+    color:#333;
+}
+.show_img img{
+    width:100%;
+    height:100%;
+}
+.footers{
+    position: fixed;
+    bottom:0;
+    left:0;
+    height:3rem;
+    z-index: 1;
+    background: #fff;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footers .buy{
+    width: 16.75rem;
+    height:2rem;
+    background-color: #f1341c;
+    color:#fff;
+    border-radius: 100px;
+    text-align: center;
+    line-height: 2rem;
+    font-size: 0.8rem;
+}

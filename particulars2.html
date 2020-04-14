@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>有券商品详情</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/animate.css" />
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/iphonex.css"/>
+        <link rel="stylesheet" type="text/css" href="css/particulars.css" />
+    </head>
+    <style>        
+                      
+    </style> 
+    <body class="particulars" >
+            <!-- loading加载动画 -->
+        <!-- <div class="mui-loading " id="particularsLoading" style="position: fixed;left:0;right: 0;top:0;bottom:0;margin:auto;z-index: 999999;color:#000;width:2rem;height:2rem; display: none;" :class="active?'flag':''">
+            <div class="mui-spinner" >
+            </div>
+        </div> -->
+        <div id="particularsTop">
+            <div id="main-box" >
+
+                <div class="mask" @tap="onmask"></div>
+                <div class="porer">
+                    <div class="seiecolor">
+                        <p class="close"><em class="em"></em></p>
+                        <div class="con">
+                            <div class="img"><img :src="banner" /></div>
+                            <div class="text">
+                                <p class="p1" v-html="datas.jifen+'<em>积分</em>'"></p>
+                            </div>
+                        </div>
+                        <!-- <div class="set-box">
+                            <div class="set-title">颜色</div>
+                            <div class="cloexbox">
+                                <a class="set-a" v-for="(con,index) in textcolor" :class="{'active':ocolor==index}" @tap="oncolor(con,index)"><em class="only-android" ></em>{{con}}</a>
+                            </div>
+                        </div>
+                        <div class="set-box">
+                            <div class="set-title">尺寸</div>
+                            <div class="cloexbox">
+                                <a class="set-a" v-for="(con,index) in textsize" :class="{active:osize==index}" @tap="onsize(con,index)"><em class="only-android">{{con}}</em></a>
+                            </div>
+                        </div> -->
+                        <!-- <div v-for="(item,index) in datas.attr" :key="index">
+                            <div class="set-box">
+                                <div class="set-title" :title="index">{{item[0]}}</div>
+                                <div class="cloexbox">
+                                    <a class="set-a 'i'" v-for="(con,i) in item[1]" :num = i :class="{active:ocolor==i}" :class="{active:osize==i}" ><em class="only-android" ></em>{{con}}</a>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div v-for="(item,index) in datas.attr" :key="index">
+                            <div class="set-box">
+                                <div class="set-title" :title="index">{{item[0]}}</div>
+                                <div class="cloexbox">
+                                    <a class="set-a" v-for="(con,i) in item[1]" :num = i  :class="i" @tap="choose(con,index)"><em class="only-android" ></em>{{con}}</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pay-box">
+                            <div class="set-title">购买数量</div>
+                            <div class="sub-box">
+                                <a class="pay-jia" @tap="onupsub"></a>
+                                <input type="number" class="sub" id="sub" v-model="subval" @blur="valblur" />
+                                <a class="pay-jian" @tap="ondownsub"></a>
+                            </div>
+                        </div>
+                        <div class="porer-public" @tap="onbtn">确定</div>
+                    </div>
+                    <div class="show">
+                        <div class="p-title">产品参数</div>
+                        <div class="p-li" ><span class="s1">颜色</span><span class="s2" >{{textcolor[0]}}</span></div>
+                        <div class="p-li"><span class="s1">尺寸</span><span class="s2">{{textsize[0]}}</span></div>
+                        <div class="porer-public" @tap="onmask">确定</div>
+                    </div>
+
+                </div>
+                <footer class="fot" :class="type === 2 ? 'active' : '' " @tap="affirm">
+                    <div class="changeGoods">
+                        马上兑换
+                    </div> 
+                </footer>
+                <footer class="fots" :class="type === 1 ? 'active' : '' ">
+                    <!-- <a class="success" @tap="onnoover">
+                        <div class="creditsExchange">积分兑换</div>
+                    </a> -->
+                    <a class="buy" @tap="buy">
+                        <div class="getTicketAndBuy">领券购买</div>
+                    </a>
+                </footer>
+                <div class="mui-content" data-content :class="type === 3 ? '' : 'active' " >
+                    <div class="top">
+                        <div class="taobao-banner" ><a><img :src=banner /></a></div>
+                        <div class="title" v-text="type === 1 ? title : datas.title"></div>
+                        <!-- 有券就显示 -->
+                        <div :class="">
+                            <div class="money-box">
+                                <div class="money-em" :class="{'active' :type === 1}">券后价</div>
+                                <div class="money-ems" :class="{'active' :type === 1}">￥</div>
+                                <div class="money" v-html="type === 1?newprice: datas.jifen+'<em>积分</em>'"></div>
+                                <div class="msg-oldmoney" :class="type === 1 ? 'active' : '' " v-text='"原价："+oldprice'></div>
+                            </div>
+                            <p class="money-msg" :class="type === 3 ? 'active' : '' ">产品参数：{{datas.goods_color}}，{{datas.goods_size}}</p>
+                            <p class="money-msg" :class="type === 1 ? 'active' : '' ">
+                                <!-- <span class="msg-faceint">返佣：{{Math.round(tkmoney*pointpre)/returnpre}}积分</span> -->
+                                <span style="float: left;">已售</span>
+                                <span class="msg-face" v-text="saled < 10000 ? saled :  (saled / 10000).toFixed(1)+'万'"></span>
+                                
+                            </p>
+                            <div class="discount">
+                                <div class="discount-coupin">
+                                    <div class="discountMoney">{{cheapprice}}元优惠券</div>
+                                    <div class="englishDiscount">DISCOUNT COUPIN</div>
+                                </div>
+                                <div class="getTicket" @tap="buy">立即领券</div>
+                            </div>
+                        </div>
+                        
+                        <!-- 有券就显示 -->
+
+                        <!-- 没券就显示这里 -->
+
+                    </div>
+                    <div class="show-title">
+                        <span class="span" v-text="picAndFontDetail"></span>
+                    </div>
+                    <div class="show-img-box">
+                        <!-- type=1表示是首页商城的商品 -->
+                        <div class="img-box" :class="type === 1 ? 'active' : '' ">
+                            
+                            <ul>
+                                <li v-for="(item,index) in detailAllImg" :key="index">
+                                    <!-- {{item[1]}} -->
+                                    <div v-html="type === 1 ? '' : item[1]"></div>
+                                    <img :src="type === 1 ? item : '' " alt="">
+                                </li>
+                                <li>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- 积分商城的商品 -->
+                        <div class="img-box" :class="type === 2 ? 'jifen' : '' ">
+                            <div class="detailMsg" v-html="detailImg"></div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/mui.min.js"></script>
+        <script type="text/javascript" src="http://g.alicdn.com/mtb/lib-applink/0.3.8/??callApp.js,linksdk.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/particulars2.js"></script>
+    </body>
+
+</html>

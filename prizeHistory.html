@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>中奖记录</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <link rel="stylesheet" type="text/css" href="css/animate.css" />
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/setads.css"/>
+        <link rel="stylesheet" type="text/css" href="css/prizeHistory.css"/>
+    </head>
+    <body>
+        <div id="prizeHistory">
+            <header class="mui-bar mui-bar-nav"  data-header>
+                <a class="mui-action-back c-icon-back mui-pull-left"></a>
+                <h1 class="mui-title">中奖记录</h1>
+            </header>
+            <div class="mui-content" data-content>
+                <div class="content mui-content mui-scroll-wrapper wrapper" id="refreshContainer" data-content>
+                    <div class="mui-scroll" style="height:100%;">
+                            <ul>
+                                <li v-for="(item,index) in prizeLi">
+                                    <!-- <div class="getTime" v-html="item.create_time" :type="item.type"></div> -->
+                                    <div class="bigBox">
+                                        <div class="box" >
+                                            <div class="li">
+                                                <div class="title">
+                                                    <p>{{item.name}}</p>
+                                                    <p>{{item.create_time}}</p>
+                                                </div>
+                                                <div class="click_button">
+                                                    <!-- 1.积分 已领取 status=0 type=1 表示用户已领取 -->
+                                                    <button class="get_one" v-text="item.type==1? '已领取' : ''" :class="item.type==1? '':'active'"></button>
+                                                                                                    
+                                                    <!-- 2.现金 type=3 status=0 表示用户未领取 -->
+                                                    <button class="get_two" v-text="item.type==3&item.status==0? '领取' : ''" :class="item.type==3&item.status==0? '':'active'" @tap="showCashTip"></button>
+                                                    <!-- 2.现金 type=3 status=3 表示用户已领取 -->
+                                                    <button class="get_two" v-text="item.type==3&item.status!=0? '已领取' : ''" :class="item.type==3&item.status!=0? 'get':'active'"></button>
+
+                                                    <!-- 3.实物 type=2 status=0 表示用户未领取 -->
+                                                    <button class="get_three" v-text="item.type==2&item.status==0? '领取' : ''" :class="item.type==2&item.status==0? '':'active'" @tap="show(item.id)"></button>
+                                                    <!-- 3.实物 type=2 status=1 表示用户添加了收货地址 可查看 -->
+                                                    <button class="get_three" v-text="item.type==2&item.status==1? '查看' : ''" :class="item.type==2&item.status==1? 'look':'active'" @tap="look(item.id)"></button>
+                                                    <!-- 3.实物 type=2 status=2 表示用户已领取 -->
+                                                    <button class="get_three" v-text="item.type==2&item.status==2? '已领取' : ''" :class="item.type==2&item.status==2? 'look_two':'active'"></button>
+                                                </div>
+                                                
+                                                <!-- <div class="num">
+                                                    <span>+{{item.num}}</span>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- 添加收货地址 -->
+            <div class="hideAddress">
+                <div class="whiteBox">
+                    <div class="close"> 
+                        <span @tap="close">
+                            <img src="./img/close_2.png" alt="">
+                        </span>
+                    </div>
+                    <ul>
+                        <li class="userAddress" v-for="(item,index) in items">
+                            <div class="nameAndPhone">
+                                <span class="username">
+                                    {{item.real_name}}
+                                </span>
+                                <span class="userPhone">
+                                    {{item.phone}}
+                                </span>
+                            </div>
+                            <div class="addressMsg">
+                                <span class="whether" :class="{'active' : item.is_default!=1}">
+                                    默认地址
+                                </span>
+                                <span class="detailAddress">
+                                    {{item.province}}{{item.city}}{{item.area}}{{item.address}}
+                                </span>
+                            </div>
+                            <div class="whatDo">
+                                <span class="certain" @tap="certain(item.address_id,index)">
+                                    确定
+                                </span>
+                                <span class="edit">
+                                    <img src="./img/icon_ads_bj.png" alt="">
+                                    <span @tap="edit(item.address_id)">
+                                        编辑
+                                    </span>
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="addAddress">
+                        <div @tap="addAddress">
+                            添加收货地址
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 用户点击确定选择收货地址，出现用户确认的地址 -->
+            <div class="certainBox">
+                <div class="box">
+                    <div class="title">
+                        收货地址
+                    </div>
+                    <div class="sendMsg">
+                        <div class="sendInfo_one">
+                            <span class="consignee">{{certainAddress.real_name}}</span>
+                            <span class="phone">{{certainAddress.phone}}</span>
+                        </div>
+                        <div class="sendInfo_two">
+                            {{certainAddress.province}}{{certainAddress.city}}{{certainAddress.area}}{{certainAddress.address}}
+                        </div>
+                        <div class="close" @tap="closeBox">
+                            <span>关闭</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 显示现金弹框 -->
+            <div class="cashTip">
+                <div class="cashBox">
+                    <div class="title">
+                            现金领取
+                            <i class="closeCashBox" @tap="closeCashBox"></i>
+                    </div>
+                    <div class="cashBox_center">
+                            添加客服微信 &nbsp ytxlkf &nbsp 领取现金
+                    </div>
+                    <div class="cashBox_bottom">
+                         <!-- <input type="button" onClick="copyUrl2()" value="点击复制代码" class="copy" @tap="copy" /> -->
+                         <!-- <span class="copyRight" id="copyRight" v-text="111"></span> -->
+                         <input type="text" value="ytxlkf" class="copyRight" id="copyRight" readonly=”readonly>
+                    </div>
+                    <div class="clickCopy">
+                        <span class="copy" @tap="copy">
+                            点击复制
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- 点击查看 -->
+            <div class="check_Look">
+                <div class="check_LookBox" v-for="item in checkPrize">
+                    <h1>中奖详情</h1>
+                    <div class="prizeTitle">
+                        <h2>奖品：{{item.name}} *1</h2>
+                        <div>
+                            <img :src="item.picurl" alt="">
+                        </div>
+                    </div>
+                    <div class="userMsg">
+                        <p>
+                            <span>收件人：</span>
+                            {{item.real_name}}
+                        </p>
+                        <p>
+                            <span>手机号：</span>
+                            {{item.phone}}
+                        </p>
+                        <p>
+                            <span>收货地址：</span>
+                            {{item.province}}{{item.city}}{{item.area}}{{item.address}}
+                        </p>
+                        <p>
+                            <span>时间：</span>
+                            {{item.create_time}}
+                        </p>
+                    </div>
+                    <div class="expressage">
+                        <p>
+                            <span>快递名称：</span>
+                            {{item.express_name}}
+                        </p>
+                        <p>
+                            <span>快递单号：</span>
+                            {{item.express_no}}
+                        </p>
+                    </div>
+                    <div class="close">
+                        <span @tap="close_check_Look">
+                            关闭
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="js/mui.js"></script>
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/prizeHistory.js"></script>
+    </body>
+</html>

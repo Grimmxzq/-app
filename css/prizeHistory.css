@@ -1,0 +1,554 @@
+#prizeHistory{
+    width:100%;
+    height:100%;
+}
+#prizeHistory .content{
+    width:100%;
+    height:100%;
+    background-color: #f0f0f0;
+}
+#prizeHistory .content ul{
+    padding:0 0.5rem;
+    /* padding-top: 44px; */
+}
+#prizeHistory .content ul li{
+    margin-top: 0.5rem;
+}
+#prizeHistory .content ul li:last-child{
+    margin-bottom: 1rem;
+}
+
+#prizeHistory .content ul .getTime{
+    height:2.8rem;
+    line-height: 2.2rem;
+    font-size: 0.75rem;
+    color:#333;
+    font-weight: 545;
+    margin-left: 0.5rem;
+}
+#prizeHistory .content ul .bigBox{
+    border-radius: 5px;
+    overflow: hidden;
+}
+#prizeHistory .content ul .box{
+    border-bottom: 1px solid #f0f0f0;
+}
+#prizeHistory .content ul .box:last-child{
+    border:0;
+}
+#prizeHistory .content ul .box .li{
+    background-color: #fff;
+    width:100%;
+    height:3.2rem;
+}
+#prizeHistory .content ul .box .li .click_button{
+    float: right;
+    width:20%;
+    height:3.2rem;
+    background-color: #fff;
+    text-align: center;
+}
+#prizeHistory .content ul .box .li .title{
+    float: left;
+    font-size: 0.7rem;
+    width:8rem;
+    height:3.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 0.5rem;
+    color: #333;
+}
+#prizeHistory .content ul .box .li .num{
+    float: left;
+    line-height: 3.2rem;
+    text-align: right;
+    margin-right:0.5rem;
+    font-size: 0.8rem;
+    width:25%;
+}
+#prizeHistory .content ul .box .li .title p{
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #333;
+    margin-top: 0.5rem;
+}
+#prizeHistory .content ul .box .li .title p:nth-child(2){
+    font-size: 0.5rem;
+}
+#prizeHistory .content ul .box .li .integral{
+    float: right;
+    margin-right: 0.5rem;
+    color:#333;
+    font-size: 0.75rem;
+    line-height: 3.2rem;
+    height:3.2rem;
+}
+#prizeHistory .content ul .box .li .get_one{
+    /* float: right; */
+    font-size: 0.6rem;
+    padding:0.25rem 0.5rem;
+    background-color: #f0f0f0;
+    border-radius: 1000px;
+    color:#333;
+    margin-top: 0.9rem;
+    /* margin-right: 0.5rem;  */
+}
+#prizeHistory .content ul .box .li .get_one.active{
+    display: none;
+}
+#prizeHistory .content ul .box .li .get_two{
+    /* float: right;
+    font-size: 0.6rem;
+    padding:0.25rem 0.5rem;
+    background-color: #f1341c;
+    border-radius: 1000px;
+    color:#fff;
+    margin-top: 0.9rem; */
+    /* margin-right: 0.5rem;  */
+    /* float: right; */
+    font-size: 0.6rem;
+    padding:0.25rem 0.5rem;
+    background-color: #f1341c;
+    border-radius: 1000px;
+    color:#fff;
+    margin-top: 0.9rem;
+    /* margin-right: 0.3rem;  */
+}
+#prizeHistory .content ul .box .li .get_two.get{
+    /* float: right;
+    font-size: 0.6rem;
+    padding:0.25rem 0.5rem;
+    background-color: #f1341c;
+    border-radius: 1000px;
+    color:#fff;
+    margin-top: 0.9rem; */
+    /* margin-right: 0.5rem;  */
+    /* float: right; */
+    font-size: 0.6rem;
+    padding:0.25rem 0.5rem;
+    background-color: #f0f0f0;
+    border-radius: 1000px;
+    color:#333;
+    margin-top: 0.9rem;
+    /* margin-right: 0.3rem;  */
+}
+#prizeHistory .content ul .box .li .get_two.active{
+    float: right;
+    font-size: 0.6rem;
+    padding:0.25rem 0.5rem;
+    background-color: #f1341c;
+    border-radius: 1000px;
+    color:#fff;
+    margin-top: 0.9rem;
+    margin-right: 0.5rem; 
+    display: none;
+}
+#prizeHistory .content ul .box .li .get_three{
+    /* float: right;
+    font-size: 0.6rem;
+    padding:0.25rem 0.5rem;
+    background-color: #f1341c;
+    border-radius: 1000px;
+    color:#fff;
+    margin-top: 0.9rem;
+    margin-right: 0.5rem;  */
+    /* float: right; */
+    font-size: 0.6rem;
+    padding:0.25rem 0.5rem;
+    background-color: #f1341c;
+    border-radius: 1000px;
+    color:#fff;
+    margin-top: 0.9rem;
+    /* margin-right: 0.5rem;  */
+    /* display: none; */
+}
+#prizeHistory .content ul .box .li .get_three.look{
+    /* float: right; */
+    font-size: 0.6rem;
+    padding:0.25rem 0.5rem;
+    background-color: #e6e6e6;
+    border-radius: 1000px;
+    color:#333;
+    margin-top: 0.9rem;
+    /* margin-right: 0.5rem;  */
+}
+#prizeHistory .content ul .box .li .get_three.look_two{
+    /* float: right; */
+    font-size: 0.6rem;
+    padding:0.25rem 0.5rem;
+    background-color: #e6e6e6;
+    border-radius: 1000px;
+    color:#333;
+    margin-top: 0.9rem;
+    /* margin-right: 0.5rem;  */
+}
+#prizeHistory .content ul .box .li .get_three.active{
+    float: right;
+    font-size: 0.6rem;
+    padding:0.25rem 0.5rem;
+    background-color: #f0f0f0;
+    border-radius: 1000px;
+    color:#000;
+    margin-top: 0.9rem;
+    margin-right: 0.5rem; 
+    display: none;
+}
+
+
+/* 客户地址 */
+.hideAddress{
+    height:100%;
+    width:100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom:0;
+    top:0;
+    z-index: 100;
+    display: none;
+    
+}
+.hideAddress .whiteBox{
+    width:100%;
+    height:22.5rem;
+    background-color: #fff;
+    position: fixed;
+    bottom:0;
+    left:0;
+    animation: slideInUp 0.5s;
+}
+.hideAddress .whiteBox .close{
+   position: absolute;
+   right:0.5rem;
+   top:0.5rem;
+   width:1rem;
+   height:1rem;
+}
+.hideAddress .whiteBox .close img{
+    width:1rem;
+    height:1rem;
+}
+.hideAddress .whiteBox ul{
+    height:90%;
+    padding:0 1rem;
+    overflow-y: scroll;
+    margin-top: 1rem;
+}
+.hideAddress .whiteBox ul li{
+    margin-top:1rem;
+}
+.hideAddress .whiteBox ul li:last-child{
+    margin-bottom: 4rem;
+}
+.hideAddress .whiteBox ul li .nameAndPhone{
+    width:100%;
+    height:0.825rem;
+    line-height: 0.825rem;
+    font-size: 0.8rem;
+}
+.hideAddress .whiteBox ul li .nameAndPhone .username{
+    font-weight: bold;
+    color:#333;
+}
+.hideAddress .whiteBox ul li .nameAndPhone .userPhone{
+    color:#999;
+    font-size: 0.5rem;
+    margin-left: 0.5rem;
+}
+.hideAddress .whiteBox ul li .addressMsg{
+    width:100%;
+    line-height: 0.825rem;
+    font-size: 0.6rem;
+}
+.hideAddress .whiteBox ul li .addressMsg .whether{
+    padding:0 0.2rem;
+    background-color: #f0f0f0;
+    color:#666;
+    margin-right: 0.2rem;
+}
+.hideAddress .whiteBox ul li .addressMsg .whether.active{
+    display: none;
+    padding:0 0.2rem;
+    background-color: #f0f0f0;
+    color:#666;
+}
+.hideAddress .whiteBox ul li .addressMsg .detailAddress{
+    color:#333;
+    line-height: 1rem;
+}
+.hideAddress .whiteBox ul li .whatDo{
+    height:1rem;
+}
+.hideAddress .whiteBox ul li .whatDo .edit{
+    float: right;
+} 
+.hideAddress .whiteBox ul li .whatDo .edit img{
+    width:0.8rem;
+    height:0.8rem;
+} 
+.hideAddress .whiteBox ul li .whatDo .edit span{
+    font-size: 0.6rem;
+    padding-right: 0.5rem;
+    margin-top: 0.25rem;
+    padding-left: 0.2rem;
+    float: right;
+} 
+.hideAddress .whiteBox ul li .whatDo .certain{
+    float: right;
+    font-size: 0.6rem;
+    padding:0.2rem 0.5rem;
+    background-color: #f1341c;
+    border-radius: 1000px;
+    color:#fff;
+} 
+/* 添加收货地址按钮 */
+.hideAddress .whiteBox .addAddress{
+    position: absolute;
+    bottom:0;
+    left:0;
+    background-color: #fff;
+    height:4rem;
+    width:100%;
+}
+.hideAddress .whiteBox .addAddress div{
+    width:80%;
+    margin-left: 10%;
+    margin-top: 1rem;
+    background-color: #f1341c;
+    color: #fff;
+    border-radius: 1000px;
+    text-align: center;
+    font-size: 0.75rem;
+    height:2rem;
+    line-height: 2rem;
+}
+/* 用户点击确定选择收货地址，出现用户确认的地址 */
+.certainBox{
+    position: absolute;
+    width:100%;
+    height:100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    bottom: 0;
+    left:0;
+    display: none;
+}
+.certainBox .box{
+    width:90%;
+    margin-left: 5%;
+    margin-top:6.875rem;
+    height:11rem;
+    background-color: #fff;
+    border-radius: 10px;
+    animation: pulse 1s;
+}
+.certainBox .box .title{
+    text-align: center;
+    font-weight: bold;
+    height:2.9rem;
+    line-height: 2.9rem;
+    margin-bottom: 0.5rem;
+    color:#333;
+}
+.certainBox .box .sendMsg{
+    padding:0 .5rem;
+}
+.certainBox .box .sendMsg .sendInfo_one .consignee{
+    font-weight: bold;
+    font-size: .7rem;
+    color:#333;
+} 
+.certainBox .box .sendMsg .sendInfo_one .phone{
+    font-size: .5rem;
+    color:#999;
+} 
+.certainBox .box .sendMsg .sendInfo_two{
+    font-size: .7rem;
+    color:#333;
+} 
+.certainBox .box .sendMsg .close{
+    margin-top: 0.5rem;
+    text-align: center;
+    line-height: 3.5rem;
+    height:3.5rem;
+} 
+.certainBox .box .sendMsg .close span{
+    padding:0.4rem 1.75rem;
+    background-color: #f1341c;
+    border-radius: 1000px;
+    color:#fff;
+    font-size: 0.75rem;
+} 
+/* 现金弹框 */
+.cashTip{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0, .5);
+    z-index: 100;
+    display: none;
+}
+.cashTip .cashBox{
+    position: fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    margin:auto;
+    width:80%;
+    height:9rem;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.cashTip .cashBox .title{
+    text-align: center;
+    line-height: 2.2rem;
+    font-weight: bold;
+    color:#333;
+    background-color: #f0f0f0;
+}
+.cashTip .cashBox .title .closeCashBox{
+    width:1rem;
+    height:1rem;
+    background-image: url(../img/close_2.png);
+    background-size: 100% 100%;
+    position: absolute;
+    right:0.5rem;
+    top:0.6rem;
+}
+.cashTip .cashBox .cashBox_center{
+    text-align: center;
+    line-height: 2rem;
+    color:#333;
+    padding:0 0.5rem;
+    font-size: 0.8rem;
+}
+.cashTip .cashBox .cashBox_bottom{
+    line-height: 2rem;
+    font-weight: bold;
+    color:#333;
+    padding:0 0.5rem;
+    font-size: 0.8rem;
+    width:100%;
+    height:2rem;
+    text-align: center;
+}
+.cashTip .cashBox .clickCopy{
+    border:0;
+    text-align: center;
+    margin-top: .5rem;
+}
+.cashTip .cashBox .clickCopy .copy{
+    font-size: .6rem;
+    background-color: #f1341c;
+    color: #fff;
+    padding:.4rem .8rem;
+    border-radius: 1000px;
+}
+.cashTip .cashBox .cashBox_bottom .copyRight{
+    border:0;
+    width:30%;
+    text-align: center;
+    background-color: #f0f0f0;
+    border-radius: 1000px;
+    height:1.5rem;
+}
+/* 用户点击查看 */
+.check_Look{
+    position: absolute;
+    left:0;
+    top:0;
+    background-color: rgba(0,0,0, .5);
+    z-index: 100;
+    width:100%;
+    height:100%;
+    display: none;
+}
+.check_Look .check_LookBox{
+    position: fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto;
+    width: 90%;
+    height:18rem;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.check_Look .check_LookBox h1{
+    text-align: center;
+    height:2.2rem;
+    line-height: 2.2rem;
+    font-weight: bold;
+    color:#333;
+    background-color: #f0f0f0;
+}
+.check_Look .check_LookBox .prizeTitle{
+    text-align: center;
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color:#333;
+}
+.check_Look .check_LookBox .prizeTitle img{
+    margin-top: .25rem;
+    width:3.55rem;
+    height:3.3rem;
+}
+.check_Look .check_LookBox .userMsg{
+    text-align: left;
+    margin-top: 0.25rem;
+    font-size: 0.7rem;
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    padding: 0.25rem 0.25rem;
+}
+.check_Look .check_LookBox .userMsg p{
+    font-size: 0.7rem;
+    color:#333;
+}
+.check_Look .check_LookBox .userMsg p span{
+    font-weight: bold;
+}
+.check_Look .check_LookBox .expressage{
+    text-align: left;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.25rem;
+}
+.check_Look .check_LookBox .expressage p{
+    font-size: 0.7rem;
+    color:#333;
+}
+.check_Look .check_LookBox .expressage span{
+    font-weight: bold;
+}
+.check_Look .check_LookBox .close{
+    text-align: center;
+    font-size: 0.7rem;
+    margin: 0 0.25rem;
+    margin-top: .5rem;
+}
+.check_Look .check_LookBox .close span{
+    padding:0.35rem 1.5rem;
+    background-color: #f1341c;
+    color:#fff;
+    border-radius: 100px;
+}
+
+
+/* 覆盖common样式 */
+.ys-scroll-top, .ys-scroll-btm{
+    width:100%;
+    height:3rem;
+    line-height: 3rem;
+    text-align: center;
+    font-size: 0.7rem;
+    color:#333;
+}

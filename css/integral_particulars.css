@@ -1,0 +1,322 @@
+
+
+
+html,body{
+    background-color: #fff;
+}
+.banner_img{
+    display: block;
+    height: 17.75rem;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.title{
+    font-size: 0.75rem;
+    padding:0.5rem 0.5rem;
+    font-weight: 550;
+}
+.integral{
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    font-size:  0.75rem;
+    font-weight: 550;
+    color: #f1341c;
+    border-bottom: 1px solid #f0f0f0;
+}
+.integral .price{
+    font-size:  0.6rem;
+    color: #ccc;
+    font-weight: 500;
+    text-decoration: line-through;
+    padding-left: 1rem;
+}
+.mui-table-view-cell:after{
+    left:0;
+}
+.color,.size,.servie{
+    display: flex; 
+    padding:0 0.5rem;
+    justify-content: space-between;
+    font-size: 0.6rem;
+    height:2.2rem;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+}
+.color i,.size i{
+    display: inline-block;
+    width:8px; 
+    height: 16px;
+    background-image: url(../img/icon_ro.png);
+    background-size: 100% 100%;
+}
+.servie .servie_content{
+    display: flex;
+    width:90%;
+    justify-content: space-around;
+    align-items: center;
+}
+.servie .servie_content .lists{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.servie .servie_content .circle{
+    display: inline-block;
+    width:7px;
+    height:7px;
+    background-color: #333;
+    border-radius: 50%;
+    margin-right: 3px;
+}
+.imgs_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:2rem;
+    font-size: 0.7rem;
+}
+.imgs{
+    padding-bottom: 3rem;
+}
+.show_img img{
+    width:100%;
+    height:100%;
+}
+.footers{
+    position: fixed;
+    bottom: 0;
+    left:0;
+    height:3rem;
+    width: 100%;
+    background-color: #fff;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    box-shadow: 0px -2px 13px 0px rgba(37, 6, 21, 0.1);
+}
+.footers .buy{
+    width:90%;
+    height:2rem;
+    background-color: #f1341c;
+    color:#fff;
+    border-radius: 100px;
+    text-align: center;
+    line-height: 2rem;
+}
+
+
+/* 产品参数弹框 */
+.gray_bg_canshu{
+    position: fixed;
+    top: 0;
+    left:0;
+    z-index: 9999;
+    height:100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+.canshu{
+    position: fixed;
+    bottom: 0;
+    left:0;
+    z-index: 9999;
+    height:15rem;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #fff;
+    animation: slideInUp .3s;
+}
+.canshu .canshu_title{
+    margin-top: 1rem;
+    height:1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    font-size: 0.7rem;
+}
+.color_canshu{
+    height:1.5rem;
+    line-height: 1.5rem;
+    display: flex;
+    font-size: 0.75rem;
+    color:#333;
+}
+.color_canshu,.size_canshu{
+    height:1.5rem;
+    line-height: 1.5rem;
+    margin:0 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.75rem;
+    color:#333;
+    border-bottom: 1px solid #f0f0f0;
+}
+.color_canshu .color_name,.size_canshu .size_name{
+    width:10%;
+    text-align: center;
+}
+.color_canshu .color_s,.size_canshu .size_s{
+    width:75%;
+    text-align: left;
+}
+.canshu .certain{
+    position: fixed;
+    bottom: 0;
+    left:0;
+    height:2rem;
+    background-color: #f1341c;
+    width:100%;
+    text-align: center;
+    line-height: 2rem;
+    color:#fff;
+    font-size: 0.8rem;
+}
+.close_canshu{
+    position: absolute;
+    top:1rem;
+    right:0.5rem;
+    width:1rem;
+    height:1rem;
+    background-image: url(../img/close_2.png);
+    background-size: 100% 100%;
+    margin:0.5rem 0.5rem;
+}
+/* 选择颜色弹框 */
+.gray_bg_choose{
+    position: fixed;
+    top: 0;
+    left:0;
+    z-index: 9999;
+    height:100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+.gray_bg_choose .choose_box{
+    position: fixed;
+    bottom: 0;
+    left:0;
+    z-index: 99999;
+    height:21.75rem;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #fff;
+    animation: slideInUp .3s;
+}
+.gray_bg_choose .choose_box .box_top{
+    margin:0 0.5rem;
+    padding-top: 0.5rem;
+    display: flex;
+    border-bottom: 1px solid #f0f0f0;
+}
+.goods_img{
+   width:6rem;
+   height:6rem;
+   padding:0.5rem 0.5rem;
+}
+.goods_img img{
+    width: 100%;
+    height:100%;
+    border-radius: 5px;
+}
+.jifen_num{
+    padding:0.5rem 0.5rem;
+    display: flex;
+    align-items: flex-end;
+    color:#f1341c;
+    padding-bottom: 1rem;
+}
+.jifen_num span{
+    font-size: 0.7rem;
+    margin-bottom: 4px;
+}
+.close_choose{
+    position: absolute;
+    right:0.5rem;
+    top:0.5rem;
+    width:1rem;
+    height:1rem;
+    background-image: url(../img/close_2.png);
+    background-size: 100% 100%;
+    margin:0.5rem 0.5rem;
+}
+.choose_box_color{
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    font-size: 0.8rem;
+}
+.choose_box_color .choose_color_title{
+    height:1.55rem;
+    line-height: 1.55rem;
+    padding-left: 0.5rem;
+    color:#666;
+}
+.choose_box_color .colors{
+    display: flex;
+    padding-left: 0.5rem;
+    height:2.5rem;
+    align-items: center;
+    font-weight: 550;
+}
+.choose_box_color .colors div{
+    min-width:2.5rem;
+    height:1.5rem;
+    padding:0 0.5rem;
+    background-color: #f0f0f0;
+    text-align: center;
+    line-height: 1.5rem;
+    border-radius: 100px;
+    color: #333;
+    margin-right: 0.5rem;
+}
+.choose_box_color .colors div.active{
+    min-width:2.5rem;
+    height:1.5rem;
+    padding:0 0.5rem;
+    background-color: #ffe9e6;
+    text-align: center;
+    line-height: 1.5rem;
+    border-radius: 100px;
+    color: #333;
+    margin-right: 0.5rem;
+    border:1px solid #f1341c;
+}
+.buy_num{
+    padding: 0 1rem;
+    font-size: 0.8rem;
+    color:#666;
+    height:2.5rem;
+    line-height: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+.buy_num .sub{
+    width:1.5rem;
+    height:0.75rem;
+    text-align: center;
+    color:#333;
+    background-color: #e6e6e6;
+    border:none;
+}
+.goods_num .pay-jia,.goods_num .pay-jian{
+    display: inline-block;
+    color: #333;
+    width:1rem;
+    height:1rem;
+    line-height: 1rem;
+    text-align: center;
+}
+.choose_certain{
+    position: fixed;
+    bottom: 0;
+    left:0;
+    z-index: 99999;
+    width:100%;
+    height: 2rem;
+    line-height: 2rem;
+    background-color: #f1341c;
+    color:#fff;
+    text-align: center;
+    font-size: 0.9rem;
+}

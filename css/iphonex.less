@@ -1,0 +1,23 @@
+@supports (bottom: constant(safe-area-inset-bottom)) {
+    body {
+        background-color: #fff !important;
+        padding-bottom: constant(safe-area-inset-bottom);
+    }
+    .index-ft.ovf,
+    .fots,
+    .fot {
+        margin-bottom: constant(safe-area-inset-bottom);
+    }
+}
+
+@media only screen and (device-width: 375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {
+    body {
+        background-color: #fff !important;
+        padding-bottom: 34px;
+    }
+    .index-ft.ovf,
+    .fots,
+    .fot {
+        margin-bottom: 34px;
+    }
+}

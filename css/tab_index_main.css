@@ -1,0 +1,43 @@
+html,body {
+    background-color: #efeff4;
+}
+.mui-bar-tab .mui-tab-item.mui-active{
+    color:#f1341c;
+}
+.mui-bar-tab .mui-tab-item{
+    display: flex;
+    width:25%;
+    float: left;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 0.5rem; 
+    background-size: 1.2rem 1.1rem;
+    background-position:1.75rem 5px;
+    background-repeat: no-repeat;
+}
+.mui-bar-tab .footer-store{
+    background-image: url(../img/footer1_0.png);
+}
+.mui-bar-tab .footer-store.mui-active{
+    background-image: url(../img/footer1_1.png);
+}
+.mui-bar-tab .footer-integral{
+    background-image: url(../img/footer2_0.png);
+}
+.mui-bar-tab .footer-integral.mui-active{
+    background-image: url(../img/footer2_1.png);
+}
+.mui-bar-tab .footer-help{
+    background-image: url(../img/footer3_0.png);
+}
+.mui-bar-tab .footer-help.mui-active{
+    background-image: url(../img/footer3_1.png);
+}
+.mui-bar-tab .footer-my{
+    background-image: url(../img/footer4_0.png);
+}
+.mui-bar-tab .footer-my.mui-active{
+    background-image: url(../img/footer4_1.png);
+}
+
+

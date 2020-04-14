@@ -1,0 +1,31 @@
+
+
+
+header.mui-bar {
+    box-shadow:0 0.1rem #eee
+  }
+.setpsw .mui-content{
+    background-color: #fff;
+}
+.setpsw .lst {
+    margin: 0 2%;
+    display: flex;
+    display: -webkit-flex;
+    height: 2.5rem;
+    width: 96%;
+    background-color: #fff;
+    border-bottom: 1px solid #f0f0f0;
+    box-shadow: 0 0 0 0;
+    border-radius: 0;
+}
+.setpsw .lst .title{
+    margin-left: 0;
+}
+.setpsw .lst .getcode{
+    font:0.65rem / 2.5rem "";
+}
+.setpsw .lst .getcode span{
+    background-color: #f0f0f0;
+    padding:0.5rem 0.5rem;
+    border-radius: 1000px;
+}

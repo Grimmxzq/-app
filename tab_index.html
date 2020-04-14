@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>首页商城</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/vant.css">
+		<link rel="stylesheet" href="css/tab_index.css">
+		<script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+		<script src="js/vue-resource.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/iphonex.css"/>
+	</head>
+	<body>
+		<div id="tab_index">
+			<header class="mui-bar mui-bar-nav mui-bar-transparent" data-header>
+				<div class="index_top_header">
+					<div class="logo"></div>
+					<div class="go_search" @tap="onsearch"></div>
+					<div class="go_help" @tap="go_msg_center"></div>
+				</div>
+			</header>
+			<van-pull-refresh disabled v-model="isLoading" @refresh="onRefresh" loosing-text	= ' ' loading-text = ' ' pulling-text = ' '>
+				<div>
+					<!-- 首页商城广告栏banner -->
+					<div>
+						<div class="slider_banner">
+							<li v-for="(item,index) in banner" :key="index">
+								<img :src="item.picurl" @tap="banner_url(item.url)">
+							</li>
+						</div>
+						<div class="mui-slider slider_banner2" id="slider">
+							<div class="mui-slider-group mui-slider-loop">
+								<div class="mui-slider-item mui-slider-item-duplicate">
+									<a @tap="banner_url(bannerfrist.url)">
+										<img :src="bannerfrist.picurl"/>
+									</a>
+								</div>
+								<div class="mui-slider-item" v-for="(item,index) in banner">
+									<a @tap="banner_url(item.url)"><img :src="item.picurl" /></a>
+								</div>
+								<div class="mui-slider-item mui-slider-item-duplicate">
+									<a @tap="banner_url(bannerlast.url)"><img :src="bannerlast.picurl" /></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 首页商城广告栏banner -->
+					<!-- 首页商城目录 -->
+					<div class="index-link-box">
+						<ul class="moveArea">
+							<li v-for="(info,index) in menus" :key="index" class="MenuLi">
+								<a @tap="gotolist(info.num)">
+									<img :src=info.icon alt="" class="smallIcon">
+									<div v-html="info.text"></div>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!-- 首页商城目录 -->
+					<!-- 首页商城广告栏2banner -->
+					<div class="activeImg">
+						<div class="show_one">
+							<div v-for="(item,index) in indexBanner2" :key="index">
+								<a @tap="banner_url(item.url)">
+									<img :src="item.picurl" alt="">
+								</a>
+							</div>
+						</div>
+						<div class="show_two">
+							<div class="mui-slider">
+								<div class="mui-slider-group">
+									<div class="mui-slider-item sliderImg" v-for="(item,index) in indexBanner2" :key="index">
+										<a @tap="banner_url(item.url)">
+											<img :src="item.picurl" alt="">
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 首页商城广告栏2banner -->
+					<!-- 首页商城活动栏 -->
+					<div class="activeInfo">
+						<div class="activeTop">
+							<div class="activeTopLeft" >
+								<a @tap="onupdate(0)">
+									<div class="leftInfo">
+										<div class="detailLeft">
+											<div class="todayNews1" >今日上新</div>
+											<div class="todayNews2">单手秒收</div>
+											<div class="todayNews3">挡风遮阳黑科技</div>
+										</div>
+										<div class="iconMore">
+											<span class="GotoMore">GO</span>
+											<div class="GotoMoreImg"></div>
+										</div>
+									</div>
+									<div class="rightInfo">
+										<img src="./img/home_img_babycar.png" alt="" class="detailRight">
+									</div>
+								</a>
+							</div>
+							<div class="activeTopRight">
+								<div class="activeTopRight_one">
+									<a @tap="onupdate(1)">
+										<div class="rightInfo_one">
+											<div class="detailRight">
+												<div class="todayNews1_one">9.9包邮</div>
+												<div class="todayNews2_one">加绒加厚</div>
+												<div class="todayNews3_one">让你无惧寒冬</div>
+											</div>
+										</div>
+										<div class="rightImg_one">
+											<img src="./img/home_img_clothes.png" alt="" class="detailRight_one">
+										</div>
+									</a>
+								</div>
+								<div class="activeTopRight_two">
+									<a @tap="onupdate(2)">
+										<div class="rightInfo_two">
+											<div class="detailRight_two">
+												<div class="todayNews1_two">品牌精选</div>
+												<div class="todayNews2_two">优选大牌</div>
+												<div class="todayNews3_two">大牌好券领不停</div>
+											</div>
+										</div>
+										<div class="rightImg_two">
+											<img src="./img/home_img_bag.png" alt="" class="detailRight_two">
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div>
+							<div class="activeBottomlLeft_three">
+								<a @tap="onupdate(3)">
+									<div class="rightInfo_three">
+										<div class="detailRight_3">
+											<div class="todayNews1_three">热销榜单</div>
+											<div class="todayNews2_three">最火最热</div>
+											<div class="todayNews3_three">看看大家都在买什么</div>
+										</div>
+									</div>
+									<div class="rightImg_three">
+										<img src="./img/home_img_doll.png" alt="" class="detailRight_three">
+									</div>
+								</a>
+							</div>
+							<div class="activeBottomlLeft_three">
+								<a @tap="onupdate(4)">
+									<div class="rightInfo_three">
+										<div class="detailRight_3" style="margin-left:0rem">
+											<div class="todayNews1_three">超值特惠</div>
+											<div class="todayNews2_three" style="backgroundColor:#c747f7">省钱秘笈</div>
+											<div class="todayNews3_three" style="color:#c747f7">省出一部iPhone X</div>
+										</div>
+									</div>
+									<div class="rightImg_three">
+										<img src="./img/home_img_sweater.png" alt="" class="detailRight_three">
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- 首页商城活动栏 -->
+	
+					<div class="title-main">
+						<div class="leftRecommendImg"></div>
+						<div class="centerRecommend">优选推荐</div>
+						<div class="rightRecommendImg"></div>
+					</div>
+					
+					<!-- 商品列表 -->
+					<van-list
+						v-model="loading"
+						:finished="finished"
+						finished-text="没有更多了"
+						@load="getshop"
+						class="main"
+					>
+						<li class="con" v-for="item in shop_list" @tap="onstorecon(item.itemid,item.itemtitle,item.itemendprice,item.itemprice,item.couponmoney,item.guide_article,item.itemsale,item.itempic)" :id="item.itemid">
+							<div class="img">
+								<img v-bind:src="item.itempic+'_310x310.jpg'" alt="">
+							</div>
+							<p class="title-p" v-html = "item.itemtitle"></p>
+							<div class="change-bottom">
+								<div class="title1" v-text="'返佣：'+Math.round(item.tkmoney*pointpre)/returnpre+'积分'"><span class="face" v-text=" item.itemsale < 10000 ? item.itemsale :  (item.itemsale / 10000).toFixed(1)+'万'"></span></div>
+								<div class="title2"><span class="money" v-text = "'￥'+item.itemendprice"></span>
+									<p class="bbb">
+										<span class="a1" v-text="item.couponmoney+'元'"></span><span class="a2" v-text="'优惠券'"></span>
+									</p>
+								</div>
+							</div>
+						</li>
+					</van-list>
+					<!-- 商品列表 -->
+					<div class="to_top" id="scroll">
+						<img src="./img/moveTop.png" alt="">
+					</div>
+				</div>
+			</van-pull-refresh>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/jquery2.1.0.min.js"></script>
+	<script src="js/common2.0.0.js"></script>
+	<script src="js/vant.min.js"></script>
+	<script src="js/md5.js"></script>
+	<script src="js/post_sign.js"></script>
+	<script src="js/tab_index.js"></script>
+</html>

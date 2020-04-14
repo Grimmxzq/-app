@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>首页</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/tab_index_main.css">
+		<script src="js/initsize.js"></script>
+	</head>
+
+	<body>
+		<nav class="mui-bar mui-bar-tab">
+			<a id="defaultTab" class="mui-tab-item footer-store mui-active" href="tab_index.html">
+				<span class="mui-tab-label">首页商城</span>
+			</a>
+			<a id="integral" class="mui-tab-item footer-integral" href="tab_integral.html">
+				<span class="mui-tab-label">积分商城</span>
+			</a>
+			<a class="mui-tab-item footer-help" href="tab_help.html">
+				<span class="mui-tab-label">帮助中心</span>
+			</a>
+			<a id="my" class="mui-tab-item footer-my" href="tab_my.html">
+				<span class="mui-tab-label">个人中心</span>
+			</a>
+		</nav>
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery2.1.0.min.js"></script>
+		<script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+		<script src="js/common2.0.0.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			 //mui初始化
+			mui.init();
+			var subpages = ['tab_index.html', 'tab_integral.html', 'tab_help.html', 'tab_my.html'];
+			var subpage_style = {
+				top: '0',
+				bottom: '51px'
+			};
+			
+			var aniShow = {};
+			
+			 //创建子页面，首个选项卡页面显示，其它均隐藏；
+			mui.plusReady(function() {
+				//  // 关闭侧滑返回功能
+				// var old_back = mui.back;
+				// var clickNum = 0;
+				// mui.back = function() {
+				// 	clickNum++;
+				// 	if(clickNum > 1) {
+				// 		plus.runtime.quit();//关闭应用
+				// 		// mui.back();
+				// 	} else {
+				// 		mui.toast('再按一次退出应用', {
+				// 			duration: 2000,
+				// 			type: 'div'
+				// 		})
+				// 	}
+				// 	setTimeout(function() {
+				// 		clickNum = 0
+				// 	}, 2000);
+				// 	return false;
+				// }
+				document.addEventListener("netchange", function(){//获取当前切换的网络状态
+					var nt = plus.networkinfo.getCurrentType();
+					switch ( nt ) {
+						case plus.networkinfo.CONNECTION_ETHERNET:
+						case plus.networkinfo.CONNECTION_WIFI:
+							mui.toast("当前网络为wifi!"); 
+						break; 
+						case plus.networkinfo.CONNECTION_CELL2G:
+							mui.toast("当前网络为2G网络!"); 
+						case plus.networkinfo.CONNECTION_CELL3G:
+							mui.toast("当前网络为3G网络!"); 
+						case plus.networkinfo.CONNECTION_CELL4G:
+							mui.toast("当前网络为4G网络!"); 
+						break; 
+						default:
+							mui.toast("无网络!"); 
+						break;
+					}
+				}, false );
+				
+				document.getElementById("integral").addEventListener('tap',function () {
+					//获得主页面的webview
+					var main = plus.webview.getWebviewById('tab_integral.html')
+					console.log(main);
+					//触发主页面的gohome事件
+					mui.fire(main, 'show',{});
+				});
+
+				var self = plus.webview.currentWebview();
+				for (var i = 0; i < 4; i++) {
+					var temp = {};
+					var sub = plus.webview.create(subpages[i], subpages[i], subpage_style);
+					if (i > 0) {
+						sub.hide();
+					}else{
+						temp[subpages[i]] = "true";
+						mui.extend(aniShow,temp);
+					}
+						self.append(sub);
+				}
+			});
+			//当前激活选项
+			var activeTab = subpages[0];
+			var click_my_time = 1;
+			document.getElementById("my").addEventListener('tap',function () {
+				//获得主页面的webview
+				var main = plus.webview.getWebviewById('tab_my.html')
+				console.log(main);
+				//触发主页面的change_point事件
+				if(!!localStorage.userKey && click_my_time==1){
+					click_my_time++;
+					mui.fire(main,'change_point');
+				}
+			});
+			// var title = document.getElementById("title");
+			 //选项卡点击事件
+			mui('.mui-bar-tab').on('tap', 'a', function(e) {
+				if(this.getAttribute('href') == subpages[3] && !localStorage.userKey){	//点击个人中心时，判断是否登录
+					// alert("这是个人中心页面");
+					mui.openWindow({
+						url:"login.html?from_main=1",
+						id:"login"
+					});
+					// common.pageTransition('login.html');
+					activeTab = targetTab;
+					return false;
+				}else{
+					var targetTab = this.getAttribute('href');//即将跳转去的页面
+					console.log(activeTab);//当前页面
+					if (targetTab == activeTab) {
+						return;
+					}
+					//更换标题
+					// title.innerHTML = this.querySelector('.mui-tab-label').innerHTML;
+					//显示目标选项卡
+					//若为iOS平台或非首次显示，则直接显示
+					if(mui.os.ios||aniShow[targetTab]){
+						plus.webview.show(targetTab);
+					}else{
+						//否则，使用fade-in动画，且保存变量
+						var temp = {};
+						temp[targetTab] = "true";
+						mui.extend(aniShow,temp);
+						plus.webview.show(targetTab,"fade-in",300);
+					}
+					//隐藏当前;
+					plus.webview.hide(activeTab);
+					//更改当前活跃的选项卡
+					activeTab = targetTab;
+				}
+				
+			});
+
+
+			//自定义事件，模拟点击“积分选项卡”
+			document.addEventListener('gohome', function() {
+				var activeTab = subpages[1];
+				var targetTab = "tab_integral.html";//即将跳转去的页面
+
+				//使用fade-in动画，且保存变量
+				var temp = {};
+				temp[targetTab] = "true";
+				mui.extend(aniShow,temp);
+				plus.webview.show(targetTab,"fade-in",300);
+				//隐藏当前;
+				plus.webview.hide(activeTab);
+
+
+				var integral = document.getElementById("integral");
+				//模拟首页点击
+				mui.trigger(integral, 'tap');
+				//切换选项卡高亮
+				var current = document.querySelector(".mui-bar-tab>.mui-tab-item.mui-active");
+				if (integral !== current) {
+					current.classList.remove('mui-active');
+					integral.classList.add('mui-active');
+				}
+			});
+
+			 //退出登录跳转到 home页面
+			 document.addEventListener('home',function(){
+				// 		console.log('home home home home');
+				var id = plus.webview.getWebviewById(subpages[0]);
+				id && mui.fire(id,'Refresh', {});
+				
+                plus.webview.hide('tab_my.html');
+				
+				var doms = document.getElementsByClassName('mui-tab-item');
+				for(var i =0;i<doms.length;i++){
+					var item = doms[i];
+					item.classList.remove('mui-active');
+					if(i == 0){
+						item.classList.add('mui-active');
+					}
+				}
+				plus.webview.show('tab_index.html');
+			});
+
+			
+			var flag = false;
+			//创建遮罩蒙板
+			var mask = mui.createMask(function() {
+				//设置点击蒙板不会自动消失
+				//但调用close方法关闭mask时，必须返回true
+				return flag;
+			}); 
+			//监听自定事件
+			//打开遮罩蒙板
+			window.addEventListener("openMask", function(e) {
+					mask.show(); //显示遮罩
+			});
+			//关闭遮罩蒙板
+			window.addEventListener("closeMask", function(e) {
+					flag = true;
+					mask.close();
+			});
+
+			
+		</script>
+	</body>
+
+</html>

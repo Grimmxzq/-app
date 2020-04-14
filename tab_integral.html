@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>积分商城</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/vant.css">
+		<link rel="stylesheet" href="css/tab_integral.css">
+		<script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+		<script src="js/vue-resource.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/iphonex.css"/>
+	</head>
+	<style>
+		.mui-bar-nav{box-shadow: none; background:rgba(247,247,247,0)}
+		.mui-bar-nav.active{
+			background:rgba(247,247,247,1);
+			transition: background 1s;
+         	/* Firefox 4 */
+           	-moz-transition:background 1s;
+         	/* Safari and Chrome */
+         	-webkit-transition:background 1s;
+         	/* Opera */
+          	-o-transition:background 1s;
+		}
+		.integralTop-row span.active{
+			color:rgb(82, 82, 82);
+		}
+	</style>
+	<body>
+		<div id="tab_integral">
+			<div v-show="showLoading" id="show-loading">
+				正在加载中...
+			</div>
+			<header class="mui-bar mui-bar-nav mui-bar-transparent" data-header v-show="!showLoading">
+                <div class="integralTop-row" >
+                    <div class="input-integral" @tap="onsearchHistory">
+                        <div class="integralInput"></div>
+                    </div>
+                    <!-- <span @tap="harvest">历史</span> -->
+                </div>
+			</header>
+			<div class="integral_top_bg" v-show="!showLoading">
+				<h1>积分商城</h1>
+				<div class="integralMenu">
+					<ul>
+						<li class="integralMenuli_1" v-for="item in integralMenu"  @tap=gotodetail(item.num,item.img,item.price,item.title,item.jifen)>
+							<div class="integralMenuli_1_first" >
+								<img :src="item.img" alt="" class="integralMenuliImg_1" style="width:90%;height:70%;">
+							</div>
+							<div class="integralMenuli_1_second" v-html="item.text"></div>
+							<div class="integralMenuli_1_third" v-html="item.msg"></div>
+						</li>
+						<!-- <li class="integralMenuli_2"  @tap=gotodetail(2,6)>
+							<div class="integralMenuli_2_first">
+								<img src="http://www.ycyz-yt.com/uploads/goods/2cc1bda6c63605229c7550e76198a90b.jpeg" alt="" class="integralMenuliImg_2" style="width:90%;height:70%;">
+							</div>
+							<div class="integralMenuli_2_second">明星同款</div>
+							<div class="integralMenuli_2_third">时尚潮流运动</div>
+						</li>
+						<li class="integralMenuli_3"  @tap=gotodetail(2,13)>
+							<div class="integralMenuli_3_first">
+								<img src="http://www.ycyz-yt.com/uploads/goods/c732f7a6adbbbc7f2dfcd029f68f1140.jpeg" alt="" class="integralMenuliImg_3" style="width:90%;height:70%;">
+							</div>
+							<div class="integralMenuli_3_second">便携办公</div>
+							<div class="integralMenuli_3_third">科技改变生活</div>
+						</li>
+						<li class="integralMenuli_4"  @tap=gotodetail(2,38)>
+							<div class="integralMenuli_4_first">
+								<img src="http://www.ycyz-yt.com/uploads/goods/33bcca2048eb8c8776885d5529f248c7.jpeg" alt="" class="integralMenuliImg_4" style="width:90%;height:70%;">
+							</div>
+							<div class="integralMenuli_4_second">时尚女装</div>
+							<div class="integralMenuli_4_third">全民潮流女装</div>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+			<van-tabs v-show="!showLoading">
+				<van-tab v-for="item in IntegralDirectory">
+					<div class="tab-title" slot="title" @click="get_goods(item.id,1)">{{ item.title }}</div>
+					<div class="tab-content">
+							<van-list
+								v-model="loading"
+								:finished="finished"
+								finished-text="没有更多了"
+								@load="get_goods(item.id,0)"
+								class="content"
+						  	>
+								<div class="con" @tap="particulars(con.id,con.picurl,con.price,con.title,con.jifen)" v-for="con in integralcon" v-for="con in integralcon">
+									<div class="img"><img :src="con.picurl" /></div>
+									<div class="text">
+										<div class="cn-title">{{con.title}}</div>
+										<div class="cn-money">{{con.jifen}}积分</div>
+									</div>
+								</div>
+						  	</van-list>
+					</div>
+				</van-tab>
+			</van-tabs>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/jquery2.1.0.min.js"></script>
+	<script src="js/common2.0.0.js"></script>
+	<script src="js/vant.min.js"></script>
+	<script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+	<script src="js/tab_integral.js"></script>
+</html>

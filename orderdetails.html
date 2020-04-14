@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>订单详情</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+    </head>
+    <body class="order orderdetails">
+        <div id="orderdetails-box">
+            <div class="top" data-header>
+                <header class="mui-bar mui-bar-nav" data-header>
+                    <a class="mui-action-back c-icon-back mui-pull-left"></a>
+                    <h1 class="mui-title">订单详情</h1>
+                </header>
+                <p class="sit" :class="type === 3 ? 'ovr' : 'wating' " v-text="type === 3 || order_ro != 2? '完成' : '待收货' " ></p>
+                <div class="top-msg"> <em class="li-d"></em>感谢您在本商城兑换商品，欢迎您再次光临！</div>
+            </div>
+            <div class="mui-content" data-content>
+                <div class="main">
+                    <div class="list">
+                        <div class="con">
+                            <div class="img" :class="order_ro == 1 ? 'active' : ''"><img v-bind:src="img"/></div>
+                            <div class="text">
+                                <p class="p-title">{{content}}</p>
+                                <p class="integraltime">{{new Date(parseInt(start_time) * 1000).format('yyyy-M-d ')+'至'+new Date(parseInt(over_time) * 1000).format(' yyyy-M-d')}} </p>
+                            </div>
+                            <div class="money-box">
+                                <p class="money">￥{{money}}</p>
+                                <p class="oldintegral" >{{oldmoney}}</p>
+                                <p class="sub">x{{sub}}</p>
+                            </div>
+                        </div>
+                        <div class="service" @tap="service"> <em class="services">客服</em></div>
+                    </div>
+                    <div class="list">
+                        <p class="oederid">订单编号：{{oederid}}</p>
+                        <p class="oedertime">兑换时间：{{new Date(parseInt(oedertime) * 1000).format('yyyy-M-d h:m:s')}}</p>
+                    </div>
+                    <div class="list" :class="order_ro == 1 ? 'active' : ''">
+                        <p class="mymsg"><em class="name">{{name}}</em><em class="phone">{{phone}}</em></p>
+                        <p class="ads">地址：{{ads}}</p>
+                    </div>
+                    <div class="list" :class="type === 3 ? 'active' : ''">
+                        <p class="order-tail" :class="{'active':index==0}" v-for="(item,index) in site">{{item.log}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/orderdetails.js"></script>
+    </body>
+</html>

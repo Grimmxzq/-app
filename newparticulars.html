@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>商品详情</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/animate.css" />
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/iphonex.css"/>
+        <link rel="stylesheet" type="text/css" href="css/newparticulars.css" />
+    </head>
+    <style>        
+           .mui-preview-image.mui-fullscreen {
+				position: fixed;
+				z-index: 999999999;
+				background-color: #000;
+			}
+			.mui-preview-header,
+			.mui-preview-footer {
+				position: absolute;
+				width: 100%;
+				left: 0;
+				z-index: 10;
+			}
+			.mui-preview-header {
+				height: 44px;
+				top: 0;
+			}
+			.mui-preview-footer {
+				height: 50px;
+				bottom: 0px;
+			}
+			.mui-preview-header .mui-preview-indicator {
+                /* 隐藏字体 */
+				display: none;
+				line-height: 25px;
+				color: #fff;
+				text-align: center;
+				margin: 15px auto 4;
+				width: 70px;
+				background-color: rgba(0, 0, 0, 0.4);
+				border-radius: 12px;
+				font-size: 16px;
+			}
+			.mui-preview-image {
+				display: none;
+				-webkit-animation-duration: 0.5s;
+				animation-duration: 0.5s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+			}
+			.mui-preview-image.mui-preview-in {
+				-webkit-animation-name: fadeIn;
+				animation-name: fadeIn;
+			}
+			.mui-preview-image.mui-preview-out {
+				background: none;
+				-webkit-animation-name: fadeOut;
+				animation-name: fadeOut;
+			}
+			.mui-preview-image.mui-preview-out .mui-preview-header,
+			.mui-preview-image.mui-preview-out .mui-preview-footer {
+				display: none;
+			}
+			.mui-zoom-scroller {
+				position: absolute;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				-webkit-backface-visibility: hidden;
+			}
+			.mui-zoom {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+			.mui-slider .mui-slider-group .mui-slider-item img {
+				width: auto;
+				height: auto;
+				max-width: 100%;
+				max-height: 100%;
+			}
+			.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+				width: 100%;
+			}
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+				display: inline-table;
+			}
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			.mui-preview-loading {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			.mui-preview-loading.mui-active {
+				display: block;
+			}
+			.mui-preview-loading .mui-spinner-white {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -25px;
+				margin-top: -25px;
+				height: 50px;
+				width: 50px;
+			}
+			.mui-preview-image img.mui-transitioning {
+				-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+				transition: transform 0.5s ease, opacity 0.5s ease;
+			}
+			@-webkit-keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			@-webkit-keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			@keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			.banner_img img {
+				width: 100%;
+				height: 100%;
+			}              
+    </style> 
+    <body class="particulars" >
+        <div id ="newparticulars">
+            <div class="mui-content" >
+                <div class="mui-scroll-wrapper">
+                    <div class="mui-scroll">
+                        <div class="banner_img">
+                            <img :src="banner" data-preview-src="" data-preview-group="0" />
+                        </div>
+                        <div class="title" v-html="title"></div>
+                        <div class="msg">
+                            <div class="left_msg">
+                                <div class="get_ticket" >券后价</div>
+                                <span class="small_icon" >¥</span>
+                                <span class="money" v-html="oldprice"></span>
+                                <span class="oldprice" v-html="'原价:'+newprice"></span>
+                            </div>
+                        </div>
+                        <div class="msg_twoline">
+                            <div class="saled" v-html="'已售'+saled"></div>
+                            <!-- <div class="back_integral">返佣：2.2积分</div> -->
+                        </div>
+                        <div class="ticket">
+                            <div class="money_ticket">
+                                <div v-html="cheapprice+'元优惠券'"></div>
+                                <div>DISCOUNT COUPIN</div>
+                            </div>
+                            <div class="buy" @tap="buy">
+                                立即领券
+                            </div>
+                        </div>
+                        <div class="shop_addvice">
+                            <div class="shopname">
+                                <img src="./img/img_7.png" alt="">
+                                <div>
+                                    小编推荐
+                                </div>
+                            </div>
+                            <div class="saying" v-html="guide_title"></div>
+                        </div>
+                        <div class="skin_img">
+                            <div v-html='addvice'></div>
+                        </div>
+                        <div>
+                            <!-- 展示商品图 -->
+                            <ul class="imgs">
+                                <li v-for="(item,index) in detailAllImg" :key="index" class="show_img">
+                                    <img :src="item" data-preview-src="" alt="" >
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footers">
+                        <div class="buy" @tap="buy">
+                            <div class="getTicketAndBuy">立即购买</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/mui.min.js"></script>
+        <script type="text/javascript" src="http://g.alicdn.com/mtb/lib-applink/0.3.8/??callApp.js,linksdk.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/mui.zoom.js"></script>
+        <script src="js/mui.previewimage.js"></script> 
+        <script src="js/newparticulars.js"></script>
+    </body>
+
+</html>

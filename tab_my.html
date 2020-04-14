@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>个人中心</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/tab_my.css">
+		<script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+		<script src="js/vue-resource.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/iphonex.css"/>
+	</head>
+	<body>
+		<div id="tab_my">
+			<!-- <header class="mui-bar mui-bar-nav" data-header>
+					
+			</header> -->
+			<div >
+				<div class="top">
+					<div class="tp-box">
+
+						<!-- 设置头像 -->
+						<!-- <div class="img" @tap="upimg"><img :src="myurl" /></div> -->
+						<!-- 取消设置头像功能 12.20 -->
+
+						<div class="img" @tap="upimg">
+							<img :src="face" />
+						</div>
+						<div class="text">
+							<p class="p1 ovf">
+								<span class="name"><em class="only-android">{{ name }}</em></span>
+							</p>
+							<p class="p2">ID：{{mid}}</p>
+							<p class="p3">手机号码：{{phone}}</p>
+						</div>
+						<div class="edd" @tap="edd" style="  width: 10%;
+						height: 1.8rem;
+						float: right;
+						color:#333;
+						margin-top: 1rem;
+						font-size: 0.7rem;
+						font-weight: bold;">编辑</div>
+					</div>
+				</div>
+				<div class="my-msg">
+					<ul>
+						<li  @tap="goSign">
+							<img src="./img/sign.png" alt="">
+							<p>
+								签到领钱
+							</p>
+						</li>
+						<li @tap="kf_link">
+							<img src="./img/icon_msg_dd.png" alt="">
+							<p>
+								联系客服
+							</p>
+						</li>
+						<li @tap="share">
+							<img src="./img/icon_share.png" alt="">
+							<p>
+								好友分享
+							</p>
+						</li>
+						<li @tap="packet">
+							<img src="./img/icon_aboutUs.png" alt="">
+							<p>
+								我的钱包
+							</p>
+						</li>
+						<!-- <li @tap="text">
+							<img src="./img/icon_aboutUs.png" alt="">
+							<p>
+								38活动专场
+							</p>
+						</li> -->
+					</ul>
+				</div>
+				<ul class="main">
+					<li class="service" @tap="goIntegralstate">
+						<div>我的积分</div>
+						<a class="lr"></a>
+						<span class="myIntegral">{{point}}积分</span>
+					</li>
+					<li class="indent" @tap="indent">
+						<div>我的订单</div>
+						<a class="lr"></a>
+						<p>查看全部</p>
+					</li>
+					<li class="teach_You" @tap="teach_You">
+						<div>新手教程</div>
+						<a class="lr"></a>
+						<span class="myIntegral"></span>
+					</li>
+					<li class="set" @tap="set">
+						<div>设置</div>
+						<a class="lr"></a>
+					</li>
+					<li class="set" @tap="text">
+						<div>测试</div>
+						<a class="lr"></a>
+					</li>
+				</ul>
+				<div class="myselfImg">
+					<div class="show_one">
+						<div>
+							<a @tap="banner_url(banner.url)">
+								<img :src="banner.picurl== null ? './img/text.jpg' : banner.picurl" alt="" style="width:100%;height:5rem;border-radius: 5px;"> 
+							</a>
+						</div>
+					</div>
+					<div class="show_two"  style="display:none">
+						<div class="mui-slider">
+							<div class="mui-slider-group">
+								<div class="mui-slider-item sliderImg" v-for="(item,index) in my_banner2" :key="index">
+									<a @tap="banner_url(item.url)">
+										<img :src='item.picurl' alt="" style="width:100%;height:5rem;border-radius: 5px;"> 
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/jquery2.1.0.min.js"></script>
+	<script src="js/common2.0.0.js"></script>
+	<script src="js/vuex.js"></script>
+	<script src="js/store.js"></script>
+	<script src="js/md5.js"></script>
+    <script src="js/post_sign.js"></script>
+	<script src="js/tab_my.js"></script>
+</html>

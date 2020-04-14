@@ -1,0 +1,16 @@
+
+/* 注册 */
+
+.register .getcode {
+    top: 9.65rem;
+}
+.register .isok {
+    top: 4rem;
+}
+.register .registerDiscount{
+    color:#333;
+}
+
+.register header.mui-bar {
+    background: transparent;
+}

@@ -1,0 +1,68 @@
+
+
+body{
+    width:100%;
+    height:100%;
+    background-image: url(../img/packet_memory.png);
+    background-size: 100% 100%;
+}
+header.mui-bar {
+    background: url(../img/packet_memoryheader.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+header.mui-bar a{
+    color:#e6cea0 !important;
+}
+.mui-content{
+    background-color: transparent;
+}
+.red_top{
+    padding-top: 0.4rem;
+    text-align: center;
+    color:#e6cea0;
+}
+.red_top .title_one{
+    height:2.5rem;
+    line-height: 2.5rem;
+    font-size: 1.5rem;
+}
+.red_top .title_two{
+    height:1.875rem;
+    line-height: 1.875rem;
+    font-size: 0.875rem;
+}
+.red_top .title_num{
+    margin-top: 1rem;
+    line-height: 3rem;
+    font-size: 2.5rem;
+}
+.red_top .title_num span{
+    font-size: 0.9rem;
+}
+.red_top .title_tip{
+    line-height: 2rem;
+    font-size: 0.95rem;
+}
+.white_bottom{
+    padding-top: 3.5rem;
+    text-align: center;
+}
+.white_bottom .money_name{
+    color:#d3af74;
+    line-height: 5rem;
+}
+.white_bottom .allmsg{
+    
+}
+.white_bottom .allmsg ul{
+    padding:0 0.5rem;
+}
+.white_bottom .allmsg li{
+    height:1.625rem;
+    line-height: 1.625rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #f0f0f0;
+    color:#333;
+    font-size: 0.75rem;
+}   

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/vant.css"/>
+    <link rel="stylesheet" type="text/css" href="css/order_index_all.css"/>
+    <script src="js/initsize.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <title>订单-首页商品-待返佣</title>
+</head>
+<style>
+    [v-cloak]{
+        display: none;
+    }
+</style>
+<body>
+    <div id="order_index_all">
+        <van-list
+            v-model="loading"
+            :finished="finished"
+            finished-text="没有更多商品了..."
+            @load="get_alls"
+        >
+            <div class="lists" v-for = "(item,index) in lists" v-cloak>
+                <div class="shop_name">
+                    <div class="shop_title">
+                        <div>{{item.seller_shop_title}}</div>
+                        <div class="active_title">{{item.act_name}}</div>
+                    </div>
+                    <div class="atitude">
+                        {{item.tk_status_text}}
+                    </div>
+                </div>
+                <div class="goods_content">
+                    <div class="goods_info">
+                        <div class="img">
+                            <img :src="item.pict_url" alt="">
+                        </div>
+                        <div class="goods_msg">
+                            <h1 class="title">{{item.item_title}}</h1>
+                            <div class="price">
+                                <div class="now_price">¥{{item.price}}</div>
+                                <div class="count_price">¥{{item.pay_price}}</div>
+                            </div>
+                            <div class="back_integral">
+                                返佣：{{item.fanli_point}}积分
+                            </div>
+                            <div class="buy_num">
+                                <div>购买数量</div>
+                                <div class="num">X{{item.item_num}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="code" :iid="index">
+                        <div class="code_num" >
+                            <div>订单号：</div>
+                            <input type="text" :iid="index" :value="item.trade_id" class="copyRight" id="copyRight" readonly=”readonly>
+                        </div>
+                        <div class="copy_code" @tap="copyCode(index)">复制订单号</div>
+                    </div>
+                    <div class="active_packet" :class="{'active': item.have_hb===1}">
+                        <div class="packet_tip">
+                            {{item.act_tip}}
+                        </div>
+                        <div class="packet_msg">
+                            <img src="./img/red_packet2.png" alt="" class="packet_img">
+                            <div class="packet_title">
+                                {{item.hb_status}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </van-list>
+        
+    </div>
+</body>
+<script src="js/mui.min.js"></script>
+<script src="js/jquery2.1.0.min.js"></script>
+<script src="js/common2.0.0.js"></script>
+<script src="js/vant.min.js"></script>
+<script src="js/webviewGroup.js"></script>
+<script src="js/md5.js"></script>
+<script src="js/post_sign.js"></script>
+<script src="js/vant.min.js"></script>
+<script>
+    mui.init({
+        swipeBack: false,
+    });
+
+    var order_index_all = new Vue({
+        el:"#order_index_all",
+        data:{
+            lists:[],
+            pointpre:'',
+            returnpre:'',
+            loading:false,
+            finished:false,
+            page:1
+        },
+        methods:{
+            get_alls(){
+                var vm = this;
+                var request_obj={
+                    fy_status:2,//待返佣
+                    page:vm.page,
+                    size:10
+                };
+                common.curl(common.config +"/newapi/tb/orders",request_obj,{sign:create_sign(request_obj),key: localStorage.userKey},'post',function(data){
+                    console.log(data);
+                    if(data.code==1){
+                        if(data.data.list.length<10){
+                            vm.finished = true;
+                        }
+                        if(vm.page == 1){
+                            vm.lists = data.data.list;
+                        }else{
+                            for (let i = 0; i < data.data.list.length; i++) {
+                                var item = data.data.list[i]
+                                vm.lists.push(item);
+                            }
+                        }
+                        vm.loading = false;
+                        vm.page++;
+                        console.log(vm.page);
+                    }
+                    
+                })
+            },
+            copyCode(index){
+                console.log(index);
+                if(!document.execCommand) {
+                    console.error('copy unsupport');
+                    return;
+                }
+                $(".code").find("#copyRight").eq(index).select();
+                console.log( $(".code").find("#copyRight").eq(index).length );
+                var result = document.execCommand('copy');//判断是否复制
+                if(result) {
+                    mui.toast("复制成功");
+                } else {
+                    mui.toast("复制失败");
+                }
+            }
+        },
+        created(){
+
+        }
+    })
+</script>
+</html>

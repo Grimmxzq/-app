@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>历史兑换</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+    </head>
+    <body class="harvest">
+        <div id="main-box">
+            <div class="harvest-kf" @tap="kf"></div>
+            <header class="mui-bar mui-bar-nav" data-header>
+                <a class="mui-action-back c-icon-back mui-pull-left"></a>
+                <h1 class="mui-title">历史兑换</h1>
+            </header>
+            <div class="mui-content" data-content>
+                <div id="pullrefresh" class="mui-content mui-scroll-wrapper wrapper" data-content>
+                  <div class="mui-scroll" >
+                    <ul class="mui-table-view mui-table-view-chevron">
+                        <li class="lst" v-unwrap="" v-for="(item,index) in items" @tap="orderdetails(item.order_id)">
+                            <div class="img"><img v-bind:src="common.config+item.banner"/></div>
+                            <div class="text">
+                                <div class="title">{{item.goods_name}}</div>
+                                <div class="time">有效期至：{{new Date(parseInt(item.over_time) * 1000).format('yyyy-M-d')}}</div>
+                            </div>
+                        </li>
+                    </ul>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/harvest.js"></script>
+        <script >
+            
+        </script>
+    </body>
+</html>

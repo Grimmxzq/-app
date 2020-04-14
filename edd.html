@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>编辑资料</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/mui.picker.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+    </head>
+    <body class="edd">
+        <div id="main-box">
+            <header class="mui-bar mui-bar-nav" data-header>
+                <a class="mui-action-back c-icon-back mui-pull-left"></a>
+                <h1 class="mui-title">编辑资料</h1>
+                <a class="mui-pull-right b-edd" @tap="onedd">保存</a>
+            </header>
+            <div class="mui-content" data-content>
+                <div class="lis">
+                    <p class="lit">昵称</p>
+                    <input type="text" maxlength="6" v-model="name" name="" id="" value="" placeholder="请输入姓名" />
+                </div>
+                <div class="lis">
+                    <p class="lit">性别</p>
+                    <a class="man" :class="{'active':sex=='boy'}" @tap="onsex('boy')">男</a>
+                    <a class="woman" :class="{'active':sex=='girl'}" @tap="onsex('girl')">女</a>
+                </div>
+                <div class="lis" @tap="onbirthday">
+                    <p class="lit">生日</p>
+                    <input type="text" v-model="birthday" name="demo2" id="demo2" value="" placeholder="请输入生日" readonly="readonly"  data-options='{"type":"date","beginYear":1900,"endYear":2018}'  />
+                </div>
+                <div class="lis ovf seit" @tap="onads">
+                    <p class="lit">所在地</p>
+                    <input type="text" v-model="ads"  name="seit" id="seit" value="" placeholder="请选择所在地"  readonly="readonly" />
+                    <em class="right"></em>
+                </div>
+                <div class="lis">
+                    <p class="lit">邮箱</p>
+                    <input type="email" v-model="email" name="" id="" value="" placeholder="请输入邮箱" />
+                </div>
+            </div>
+        </div>
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/city.data-3.js"></script>
+        <script src="js/mui.picker.min.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/edd.js"></script>
+    </body>
+</html>

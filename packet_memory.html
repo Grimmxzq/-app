@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>红包记录</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/packet_memory.css" />
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+    </head>
+    <body >
+        <div id="packrt_memory">
+            <header class="mui-bar mui-bar-nav" data-header>
+                <a class="mui-action-back mui-pull-left mui-icon mui-icon-back"></a>
+            </header>
+            <div class="mui-content" data-content>
+                <div class="red_top">
+                    <div class="title_one">
+                        {{title}}
+                    </div>
+                    <div class="title_two">
+                        {{description}}
+                    </div>
+                    <div class="title_num" v-html="money + '元'">
+                        0.00
+                        <span>元</span>
+                    </div>
+                    <div class="title_tip">
+                        已存入账户余额，可直接提现
+                    </div>
+                </div>
+                
+                <div class="white_bottom">
+                    <div class="money_name">
+                        红包记录
+                    </div>
+                    <div class="allmsg">
+                        <ul>
+                            <li class="item" v-for="item in packet_memorys">
+                                <div class="left_time">{{item.open_time}}</div>
+                                <div class="right_money">{{item.money}}元</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/utils.js"></script>
+        <script src="js/vuex.js"></script>
+        <script src="js/store.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/packet_memory.js"></script>
+        <script src="js/wallet.js"></script>
+    </body>
+</html>

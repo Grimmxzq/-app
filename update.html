@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>今日上新</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <link rel="stylesheet" type="text/css" href="css/update.css"/>
+        <link rel="stylesheet" href="css/vant.css">
+        <link rel="stylesheet" type="text/css" href="css/animate.css" />
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+    </head>
+    <body class="update" id="a update">
+        <div id="main-box">
+            <header class="mui-bar mui-bar-nav" data-header>
+                <a class="mui-action-back c-icon-back mui-pull-left"></a>
+                <h1 class="mui-title headTitle" v-text="that==0? '今日上新' : that==1? '9.9包邮':that==2? '品牌精选':that==3?'热销榜单':'超值特惠'" :class="that ? '' : 'active'"></h1>
+                <h1 class="mui-title headTitle " v-text="num==2? '男装' : num==1? '女装':num==4? '美妆':num==7?'箱包':num == 6 ?'鞋具':num == 9 ?'母婴':'美食'" :class="num ? '' : 'active'"></h1>
+                <a class="mui-pull-right ranking" @tap="muea" v-html="shork"><em class="em"><img src="img/women_triangle.png" /></em></a>
+            </header>
+            <div class="muea-bbox" data-content>
+                <div class="muea-box" :class="openmuea ? 'active' : ''" >
+                    <p class="muea-l" v-for="(item,index) in shorks" @tap="onshork(item,index)" v-html="item"></p>
+                </div>
+            </div>
+            <div class="mask" :class="openmuea ? 'active' : ''" @tap="offmuea"></div>
+            <!-- <div class="mui-content">
+                <div id="pullrefresh"  class="right mui-content mui-scroll-wrapper wrapper" data-content >
+                    <div class="mui-scroll" @scroll="onscroll" @dragend="oves">
+                        <ul class="main">
+                            <li class="con" v-for="item in indexcon" @tap="onstorecon(item.itemid,item.itemtitle,item.itemendprice,item.itemprice,item.couponmoney,item.guide_article,item.itemsale,item.itempic)" style="border:1px solid #f0f0f0">
+                                <div class="conDivImg mui-pull-left">
+                                    <img v-bind:src="item.itempic"/>
+                                </div>
+                                <div class="text mui-pull-left" style="margin-top: 0.5rem;">
+                                	<div class="con-text">
+                                		<p class="title-p mui-ellipsis-2" style="font-size: 0.5rem" v-html="item.itemtitle"></p>
+                                        <div class="h1" ><span class="money" v-html="'¥'+item.itemendprice"></span><span class="oldmoney" v-html="'¥'+item.itemprice"></span></div>
+                                        <div class="h1">
+                                            <span class="tkmoney" v-html="'返佣：'+Math.round(item.tkmoney*pointpre)/returnpre+'积分'"></span>
+                                        </div>
+                                    </div>
+                                    <div class="quan">
+                                    	<div><span class="l1">券</span><span class="l2" v-html="item.couponmoney+'元'"></span></div>
+                                    	<span class="face" v-text=" item.itemsale < 10000 ? item.itemsale :  (item.itemsale / 10000).toFixed(1)+'万'"></span>
+                                    </div>
+                                </div>
+                                
+                            </li>
+                        </ul>
+                        <div class="ys-scroll-btm">上拉加载更多</div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="list" :class="{'active':show_loading }">
+                <van-list
+                    v-model="loading"
+                    :finished="finished"
+                    finished-text="没有更多了"
+                    @load="getlist"
+                    class="main"
+                >
+                    <div class="con" v-for="item in indexcon" @tap="onstorecon(item.itemid,item.itemtitle,item.itemendprice,item.itemprice,item.couponmoney,item.guide_article,item.itemsale,item.itempic)" >
+                        <div class="conDivImg ">
+                            <img v-bind:src="item.itempic" class="img"/>
+                        </div>
+                        <div class="con-text">
+                            <p class="title" v-html="item.itemtitle"></p>
+                            <div class="h1" ><span class="money" v-html="'¥'+item.itemendprice"></span><span class="oldmoney" v-html="'¥'+item.itemprice"></span></div>
+                            <div class="h1">
+                                <span class="tkmoney" v-html="'返佣：'+Math.round(item.tkmoney*pointpre)/returnpre+'积分'"></span>
+                            </div>
+                            <div class="quan">
+                                <div><span class="l1" v-html="'券'"></span><span class="l2" v-html="item.couponmoney+'元'"></span></div>
+                                <span class="face" v-text=" item.itemsale < 10000 ? item.itemsale :  (item.itemsale / 10000).toFixed(1)+'万'"></span>
+                            </div>
+                        </div>
+                    </div>
+                </van-list>
+            </div>
+        </div>
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/vant.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/update.js"></script>
+    </body>
+</html>

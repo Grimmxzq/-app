@@ -1,0 +1,409 @@
+@charset "utf-8";
+html,
+body {
+  width: 100%;
+  height: 100%;
+  -webkit-user-select: none;
+}
+body {
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  color: #000;
+  background-color: #efeff4;
+  -webkit-overflow-scrolling: touch;
+}
+/**android 下解决中文文字未居中的问题**/
+
+.mui-android .only-android {
+    position: relative !important;
+    bottom: -1px !important;
+}
+/**沉浸式状态栏 定义背景颜色**/
+.immersedTop{
+    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 24px;
+    background-color: rgb(0,0,0);
+    z-index: 999999;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    opacity: 0.6;
+}
+a,
+button,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a,
+u {
+  text-decoration: none;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-appearance: none;
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.mui-android .only-android {
+    position: relative !important;
+    bottom: -1px !important;
+}
+body.mui-ios.mui-wechat {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+em,
+img,
+q,
+s,
+b,
+i,
+u,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+form,
+label,
+table,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+canvas,
+footer,
+header,
+nav,
+output,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  font: inherit;
+  font-size: 100%;
+}
+ol,
+ul {
+  list-style: none;
+}
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  font-size: 100%;
+  font-family: inherit;
+  outline-offset: 0;
+  outline-style: none;
+  background-image: none;
+}
+textarea,
+[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"],
+input[type="tel"] {
+  margin: 0;
+  padding: 0;
+  -webkit-user-select: text;
+}
+.mui-spinner {
+  width: 1rem;
+  height: 1rem;
+}
+.ys-modal-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 910;
+}
+.ys-modal-loading .spinner-content {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 0.4rem;
+  border-radius: 0.2rem;
+  font-size: 0.7rem;
+  color: #333;
+  text-align: center;
+}
+.ys-modal-loading .mui-spinner {
+  display: block;
+  margin: 0 auto;
+}
+.ys-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 900;
+}
+.ys-hidden {
+  display: none !important;
+}
+.ys-show {
+  display: block !important;
+}
+/*********************----- 图标 icon 覆盖mui  S ----***************************/
+.mui-title {
+  font-size: 0.85rem;
+  line-height: 2.2rem;
+  margin: 0 -0.5rem;
+}
+.mui-icon {
+  font-size: 1.2rem;
+}
+.mui-bar {
+  height: 2.2rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.mui-bar .mui-icon {
+  font-size: 1.2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.mui-bar .mui-title {
+  right: 2rem;
+  left: 2rem;
+}
+.mui-bar-nav {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+header.mui-bar {
+  height: 2.2rem;
+}
+header.mui-bar.color-header{
+  background: url(../img/bj.jpg) 0 0 no-repeat;
+  background-size: 100% auto;
+}
+header.mui-bar .mui-icon {
+  color: #333;
+}
+header.mui-bar .mui-title {
+  font-size: 0.9rem;
+  /* font-weight: 600; */
+  /* color: #fff; */
+}
+.mui-bar-nav.mui-bar .mui-icon {
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+.mui-bar-tab ~ .mui-content,
+.ys-bar ~ .mui-content {
+  padding-bottom: 2.5rem;
+}
+.mui-bar-tab ~ .mui-content > .mui-scroll-wrapper,
+.ys-bar ~ .mui-content > .mui-scroll-wrapper {
+  padding-bottom: 2.5rem;
+}
+.mui-bar-nav ~ .mui-content {
+  padding-top: 2.2rem;
+}
+.mui-bar-nav ~ .mui-content > .mui-scroll-wrapper {
+  padding-top: 2.2rem;
+}
+.mui-content {
+  height: 100%;
+  background-color: #f5f5f5;
+  overflow: auto;
+}
+.mui-content button:disabled {
+  background-color: #ccc;
+}
+.mui-bar-tab {
+  height: 2.5rem;
+  border-top: 1px solid #c6c6c6;
+}
+.mui-bar-tab .mui-tab-item {
+  height: 2.5rem;
+}
+.mui-bar-tab .mui-tab-item .mui-icon {
+  top: 0.15rem;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.mui-bar-tab .mui-tab-item .mui-icon ~ .mui-tab-label {
+  font-size: 0.6rem;
+}
+input[type=color],
+input[type=date],
+input[type=datetime-local],
+input[type=datetime],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week],
+select,
+textarea {
+  line-height: 1.05rem;
+  width: 100%;
+  height: 2rem;
+  margin-bottom: 0;
+  padding: 0;
+  -webkit-user-select: text;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  outline: 0;
+  background-color: #fff;
+  -webkit-appearance: none;
+}
+.mui-toast-container {
+  line-height: 0.85rem;
+  bottom: 3rem;
+}
+.mui-toast-message {
+  font-size: 0.7rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.3rem;
+}
+.mui-popup {
+  width: 90%;
+  border-radius: 0.6rem;
+}
+.mui-popup .mui-popup-inner {
+  padding: .1rem 2rem;
+  border-radius: 0.6rem 0.6rem 0 0;
+}
+.mui-popup .mui-popup-title {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 400;
+  position: relative;
+}
+.mui-popup .mui-popup-title:before {
+  content: "";
+  z-index: 15;
+  position: absolute;
+  top: 0.6rem;
+  left: 0;
+  display: block;
+  width: 35%;
+  height: 1px;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.mui-popup .mui-popup-title:after {
+  content: "";
+  z-index: 15;
+  position: absolute;
+  top: 0.6rem;
+  right: 0;
+  display: block;
+  width: 35%;
+  height: 1px;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.mui-popup .mui-popup-text {
+  font-size: 0.8rem;
+  color: #333;
+  margin-top: 3.25rem;
+  margin-bottom: 2.25rem;
+  line-height: 1.2rem;
+}
+.mui-popup .mui-popup-buttons {
+  height: 2.3rem;
+}
+.mui-popup .mui-popup-button {
+  border-radius: 0 0 0 0.6rem;
+  font-size: 0.8rem;
+  line-height: 2.3rem;
+  height: 2.3rem;
+  padding: 0 0.25rem;
+  color: #666666;
+  font-weight: 400;
+}
+.mui-popup .mui-popup-button ~ .mui-popup-button-bold {
+  font-weight: 400;
+  border-radius: 0 0 0.6rem;
+  color: #f1341c;
+  font-size: 0.8rem;
+}
+/*********************----- 图标 icon 覆盖mui  E ----***************************/
+/****** 加载刷新需要 *******/
+.ys-scroll-top,
+.ys-scroll-btm {
+  width: 100%;
+  height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  font-size: 0.7rem;
+  color: #666;
+}
+.ys-scroll-top .mui-spinner,
+.ys-scroll-btm .mui-spinner {
+  margin-top: 0.2rem;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+.ys-scroll-top {
+  position: absolute;
+  left: 0;
+  top: -2rem;
+}
+.ys-scroll-btm {
+  position: relative;
+  bottom: 0rem;
+  left: 0;
+}

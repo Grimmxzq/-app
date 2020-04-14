@@ -1,0 +1,178 @@
+
+html,body{
+    width:100%;
+    height:100%;
+    background-color: #f0f0f0;
+}
+#order_index_all{
+    padding-bottom: 180px;
+}
+.lists{
+    min-height:9.25rem;
+    width:100%;
+    padding:0 0.5rem;
+    display: inline-block;
+}
+.shop_name{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .7rem;
+    height:1.875rem;
+    padding:0 0.5rem;
+    font-weight: 550;
+}
+.shop_name .shop_title{
+    display: flex;
+}
+.shop_name .shop_title .active_title{
+    color:#f1341c;
+    margin-left: 0.5rem;
+}
+.atitude{
+    color:#f1341c;
+}
+.goods_content{
+    min-height:7.5rem;
+    width:100%;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.goods_content .goods_info{
+    height:6rem;
+    width:100%;
+    display: flex;
+}
+.goods_content .goods_info .img{
+    height:6rem;
+    width:6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:0 0.5rem;
+}
+.goods_content .goods_info .img img{
+    height:5rem;
+    width:5rem;
+    border-radius: 5px;
+}
+.goods_msg{
+    padding:0.5rem 0.5rem 0.5rem 0;
+    display: flex;
+    align-content: space-between;
+    flex-direction: column;
+}
+.goods_msg .title{
+    font-size: 0.7rem;
+    font-weight: 550;
+    line-height: 0.8rem;
+    display: inline-block;
+    /* margin-bottom: 0.25rem; */
+    /* padding-top: 0.1rem; */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.goods_msg .price{
+    font-size: 0.85rem;
+    height: 1.1rem;
+    line-height: 1.1rem;
+    padding: 0.25rem 0;
+}
+.goods_msg .price .now_price{
+    display: inline-block;
+    color:#f1341c;
+    font-weight: 550;
+}
+.goods_msg .price .count_price{
+    display: inline-block;
+    font-size: 0.65rem;
+    color: #999;
+    text-decoration: line-through;
+    margin-left: 5px;
+}
+.goods_msg .back_integral{
+    font-size: .65rem;
+    color:#666;
+    padding: 0.25rem 0;
+}
+.goods_msg .buy_num{
+    font-size: .65rem;
+    color:#666;
+    display: flex;
+    justify-content: space-between;
+}
+.goods_msg .buy_num .num{
+    font-size: .65rem;
+    color:#333;
+    font-weight: 550;
+    padding-top: 2px;
+}
+
+.code{
+    font-size: 0.5rem;
+    height:1.5rem;
+    line-height: 1.5rem;
+    margin: 0 0.5rem;
+    border-top:1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+}
+.code .code_num{
+    display: flex;
+}
+.code .code_num div{
+    width:37%;
+}
+.code .code_num .copyRight{
+    border:0;
+    height:1.35rem;
+    max-width: 100%;
+}
+.code .copy_code{
+    font-size: 0.7rem;
+}
+.active_packet{
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.6rem;
+    border-top:1px solid #f0f0f0;
+    margin:0 0.5rem;
+    height:1.5rem;
+    align-items: center;
+    display: none;
+}
+.active_packet.active{
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.6rem;
+    border-top:1px solid #f0f0f0;
+    margin:0 0.5rem;
+    height:1.5rem;
+    align-items: center;
+}
+.active_packet .packet_tip{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width:6rem;
+}
+.active_packet .packet_msg{
+    display: flex;
+    align-items: center;
+}
+.active_packet .packet_img{
+    width:1.5rem;
+    height:0.9rem;
+}
+.packet_title{
+    margin-left: 0.5rem;
+    min-width: 3rem;
+    height:1rem;
+    line-height: 1.1rem;
+    text-align: center;
+    background-color: #f1341c;
+    color:#fff;
+    border-radius: 100px;
+}

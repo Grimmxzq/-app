@@ -1,0 +1,26 @@
+.headers{
+    position: relative;
+    height:3rem;
+    width:100%;
+    background-color:#fff;
+    box-shadow: 0 2px 0 #eee;
+}
+.headers .back{
+    position: absolute;
+    top:1.7rem;
+    left:1rem;
+    color:#999;
+    width:0.8rem;
+    height:1rem;
+    background-image: url(../img/back_b2.png);
+    background-size: 100% 100%;
+}
+.headers h1{
+    text-align: center;
+}
+.headers h1 span{
+    margin-top: 1.6rem;
+    line-height: 1rem;
+    height:1rem;
+    display: inline-block;
+}

@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>签到领钱</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <!--主要覆盖mui.css的px大小-->
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/vant.css"/>
+        <link rel="stylesheet" type="text/css" href="css/sign.css"/>
+        <link rel="stylesheet" type="text/css" href="css/animate.css"/>
+        <!--控制 字体大小 rem iphone6下 以20px为准-->
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+    </head>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+    <body>
+        <div class="sign" id="sign" v-cloak>
+            <header class="mui-bar mui-bar-nav" data-header >
+                <a class="c-icon-back mui-pull-left mui-icon mui-icon-back" style="color:#333" @tap="back"></a>
+                <h1 class="mui-title">签到领钱</h1>
+            </header>
+            <div style="padding-top: 2.2rem;" >
+                <div  data-content>
+                        <!-- 签到头部 -->
+                        <div class="clickSign">
+                            <div class="signRule" @tap="signRule">
+                                签到规则
+                            </div>
+                            <div class="record" @tap="record">
+                                <div>中奖记录</div>
+                            </div>
+                            <div class="showIntegral">
+                                <div class="integral">{{integral}}</div>
+                                <div class="line">
+                                    <img src="./img/line.png" alt="">
+                                </div>
+                                <div class="tomorrow">
+                                    今日签到可领取{{integral}}积分
+                                </div>
+                            </div>
+                            <div class="goSign" @tap="clickButton">
+                                <!-- <span @tap="goSign" class="mustSign">立即签到</span>
+                                <span @tap="goshop" class="goshop">去商城兑换</span>
+                                <span @tap="playBigBox" class="playBigBox">打开宝箱</span> -->
+                                <span  class="mustSign" v-text="buttonMsg[index]"></span>
+                            </div>
+                        </div>
+                        <!-- 连续签到几天 -->
+                        <div class="continuousSign">
+                            <div class="continuousSign_title">
+                                <span class="leftPoint"></span>
+                                <span class="title">
+                                    已连续签到
+                                    <span style="float: right">天</span>
+                                    <span style="font-size: 1.3rem;font-weight: 100;margin-top: 0.1rem;float: right;"> {{signNum}} </span>
+                                </span>
+                                <span class="rightPoint"></span>
+                            </div>
+                            <div class="lastDay">
+                                <div>
+                                    还差{{need_sign_times}}天
+                                </div>
+                            </div>
+                            <!-- 打开提醒 -->
+                            <!-- <div class="playTip" >
+                                <div class="mui-switch mui-switch-mini" @tap="playTip">
+                                    <div class="mui-switch-handle"></div>
+                                </div>
+                                <div>打开提醒</div>
+                            </div> -->
+
+                            <div class="line">
+                                <span></span>
+                            </div>
+                            <div class="msg">
+                                连续签到{{day}}天开一次宝箱
+                            </div>
+                            <div class="progress">
+                                <ul>
+                                    <li v-for="(item,index) in day" key="index"></li>
+                                </ul>
+                            </div>
+                            <div class="progressNext">
+                                <ul>
+                                    <li v-for="(item,index) in rule" key="index">{{item.value}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 本期签到奖品 -->
+                        <div class="nowDayPrize">
+                            <div class="nowDayPrize_title">
+                                <span class="leftline"></span>
+                                <span class="title">本期签到奖品</span>
+                                <span class="rightLine"></span>
+                            </div>
+                            <div class="Showprize">
+                                <ul class="prizeul">
+                                    <li v-for="(item,index) in showPrize" :key="index">
+                                        <img :src="item.picurl" alt="">
+                                        <p>{{item.name}}</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 热门推荐 -->
+                        <div class="hotRecommend">
+                            <div class="nowDayPrize_title">
+                                <span class="leftline"></span>
+                                <span class="title">热门推荐</span>
+                                <span class="rightLine"></span>
+                            </div>
+                            <ul>
+                                <li v-for="(item,index) in hot_tuijian">
+                                    <img :src="item.picurl" alt="" @tap="jump_tuijian(item.url)">
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- 宝贝推荐 -->
+                        <div class="goodsRecommend">
+                            <div class="nowDayPrize_title">
+                                <span class="leftline"></span>
+                                <span class="title">宝贝推荐</span>
+                                <span class="rightLine"></span>
+                            </div>
+                            <van-list
+                                v-model="loading"
+                                :finished="finished"
+                                finished-text="没有更多了"
+                                @load="babySug"
+                                >
+                                <ul class="mui-table-view mui-table-view-chevron">
+                                    <li class="con" v-for="item in con" @tap="goDetail(item.itemid,item.itemtitle,item.itemendprice,item.itemprice,item.couponmoney,item.guide_article,item.itemsale,item.itempic)">
+                                        <div class="img">
+                                            <!-- <img v-bind:src="item.itempic+'_310x310.jpg'" /> -->
+                                            <img v-bind:src="item.itempic+'_310x310.jpg'" alt="">
+                                        </div>
+                                        <p class="title-p">{{item.itemtitle}}</p>
+                                        <div class="change-bottom">
+                                            <div class="title1">返佣：{{Math.round(item.tkmoney)}}积分<span class="face" v-text=" item.itemsale < 10000 ? item.itemsale :  (item.itemsale / 10000).toFixed(1)+'万'"></span></div>
+                                            <div class="title2">
+                                                <span class="money">￥{{item.itemendprice}}</span>
+                                                <p class="bbb">
+                                                    <span class="a1">{{item.couponmoney}}元</span><span class="a2">优惠券</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </van-list>
+                        </div>
+                </div>
+            </div>
+            <!-- 签到规则明细 -->
+            <div class="ruleDetail" @tap="hideRule">
+                <div class="mui-icon mui-icon-closeempty right" style="text-align: right;">
+                    <iframe src="http://www.ycyz-yt.com/wap/sp/index/id/6.html" width="100%" height="90%"  frameborder="no" scrolling="yes" ></iframe>
+                    <div class="rule_Bottom"></div>
+                </div>
+            </div>
+            <!-- 置顶 -->
+            <!-- <div class="moveTop" @tap="moveTop">
+                <img src="./img/moveTop.png" alt="">
+            </div> -->
+            <!-- 开宝箱 -->
+            <div class="playBox">
+                <div>
+                    <img src="./img/treasureBox.png" alt="">
+                </div>
+            </div>
+            <!-- 奖品展示 -->
+            <div class="getPrize">
+                <div class="redBox">
+                    <div>
+                        <div class="closeBox">
+                            <span @tap="close">
+                                <img src="./img/close.png" alt="">
+                            </span>
+                        </div>
+                        <div class="content">
+                            {{prizeName}}
+                        </div>
+                        <div class="certain">
+                            <span @tap="goHistory">查看详情</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/utils.js"></script>
+        <script src="js/vant.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/sign.js"></script>
+    </body>
+</html>

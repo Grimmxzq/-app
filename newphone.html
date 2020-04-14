@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>更换手机号</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+    </head>
+    <body class="changephone">
+        <header class="mui-bar mui-bar-nav" data-header>
+            <a class="mui-action-back c-icon-back mui-pull-left"></a>
+            <h1 class="mui-title">更换手机号</h1>
+        </header>
+        <div class="mui-content" data-content>
+            <div class="p1">更换后个人信息不变，下次可以使用新手机号登录</div>
+            <div class="lis">
+                <input type="number" name="phone" id="phone" value="" class="phone" v-model="phone" placeholder="请输入您的新手机号" />
+                <em class="getcode" @tap="ongetcode">验证</em>
+            </div>
+            <div class="lis"><input type="number" name="cord" id="cord" class="cord" v-model="code" value="" placeholder="验证码" /></div>
+            <div class="btn btn-public">
+                <div class="btns" @tap="changephone">更换手机号</div>
+            </div>
+        </div>
+        <script src="js/mui.min.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script>
+            
+            var is_code = true;
+            mui.init();
+            immersedStyle(0.5);
+            new Vue({
+                el: '.mui-content',
+                data: {
+                    phone:'',
+                    code:'',
+                },
+                methods: {
+                    ongetcode:function(){
+                        if(this.phone == ''||!common.checkType(this.phone,'phone')){
+                            mui.toast('请输入正确的手机号码',{duration:2000,type:'div'});
+                            return false;
+                        }else if(is_code){
+                            is_code = !is_code;
+                            document.querySelector(".getcode").classList.remove('active');
+                            var btnID = document.querySelector(".getcode");
+                            var times = 60;
+                            btnID.innerHTML = times+"s后重新发送";
+                            var outtime = setInterval(function(){
+                                times--;
+                                btnID.innerHTML = times+"s后重新发送";
+                                if(times<=0){
+                                    btnID.classList.add('active');
+                                    clearInterval(outtime);
+                                    btnID.innerHTML = "发送验证码";
+                                    is_code=true;
+                                }
+                            },1000);
+                            this.$http.post(common.config+'/index.php/api/index/sendCode', {
+                                mobile: this.phone,
+                            }).then(function (e) {
+                                console.log(e.body);
+                                if(e.body.error_code==0){
+                                }else{
+                                    clearInterval(outtime);
+                                    document.querySelector('.getcode').classList.add('active');
+                                    btnID.innerHTML = "发送验证码";
+                                    is_code=true;
+                                    mui.toast(e.body.error_msg)
+                                }
+                            }).catch(function (error) {
+                                console.log(error);
+                            });
+                        }
+                    },
+                    changephone:function(){
+                        this.$http.post(common.config+'/index.php/api/user/changePhone', {
+                            access_token:localStorage.access_token,
+                            mobile: this.phone,
+                            code:this.code,
+                        }).then(function (e) {
+                            console.log(e.body);
+                            if(e.body.error_code==0){
+                                mui.toast('修改成功！')
+                                localStorage.myphone=this.phone;
+                                setTimeout(function(){
+                                    mui.back();
+                                    var list = plus.webview.currentWebview().opener();//触发父页面的自定义事件(refresh),从而进行刷新
+                                    mui.fire(list, 'back');//返回true,继续页面关闭逻辑
+                                    return true;
+                                },1000);
+                            }else{
+                                mui.toast(e.body.error_msg)
+                            }
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
+
+                    },
+                }
+            })
+        </script>
+    </body>
+</html>

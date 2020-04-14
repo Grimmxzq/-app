@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>商品详情</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <link rel="stylesheet" type="text/css" href="css/animate.css" />
+        <link rel="stylesheet" type="text/css" href="css/integral_particulars.css" />
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/iphonex.css"/>
+    </head>
+    <style>        
+        .mui-preview-image.mui-fullscreen {
+            position: fixed;
+            z-index: 20;
+            background-color: #000;
+        }
+        .mui-preview-header,
+        .mui-preview-footer {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            z-index: 10;
+        }
+        .mui-preview-header {
+            height: 44px;
+            top: 0;
+        }
+        .mui-preview-footer {
+            height: 50px;
+            bottom: 0px;
+        }
+        .mui-preview-header .mui-preview-indicator {
+            /* 隐藏字体 */
+            display: none;
+            line-height: 25px;
+            color: #fff;
+            text-align: center;
+            margin: 15px auto 4;
+            width: 70px;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            font-size: 16px;
+        }
+        .mui-preview-image {
+            display: none;
+            -webkit-animation-duration: 0.5s;
+            animation-duration: 0.5s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+        .mui-preview-image.mui-preview-in {
+            -webkit-animation-name: fadeIn;
+            animation-name: fadeIn;
+        }
+        .mui-preview-image.mui-preview-out {
+            background: none;
+            -webkit-animation-name: fadeOut;
+            animation-name: fadeOut;
+        }
+        .mui-preview-image.mui-preview-out .mui-preview-header,
+        .mui-preview-image.mui-preview-out .mui-preview-footer {
+            display: none;
+        }
+        .mui-zoom-scroller {
+            position: absolute;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            -webkit-backface-visibility: hidden;
+        }
+        .mui-zoom {
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+        .mui-slider .mui-slider-group .mui-slider-item img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+            width: 100%;
+        }
+        .mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+            display: inline-table;
+        }
+        .mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .mui-preview-loading {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+        .mui-preview-loading.mui-active {
+            display: block;
+        }
+        .mui-preview-loading .mui-spinner-white {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -25px;
+            margin-top: -25px;
+            height: 50px;
+            width: 50px;
+        }
+        .mui-preview-image img.mui-transitioning {
+            -webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        @-webkit-keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @-webkit-keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        .banner_img img {
+            width: 100%;
+            height: 100%;
+        }  
+        [v-cloak]{
+            display: none;
+        }           
+    </style> 
+    <body>
+        <div id="integral_particulars" v-cloak>
+            <div class="mui-content">
+                <div class="mui-scroll-wrapper">
+                    <div class="mui-scroll">
+                        <div class="banner_img">
+                            <img :src="banner" alt="" data-preview-src="" data-preview-group="1" />
+                        </div>
+                        <div class="title">
+                            <h1>{{title}}</h1>
+                        </div>
+                        <div class="integral">
+                            <span class="num">{{jifen}}</span>积分
+                            <span class="price">原价¥{{price}}</span>
+                        </div>
+                        <div class="color" @tap = "show_choose_box">
+                            <div class="choose_color">选择颜色</div>
+                            <div class="more_color">
+                                <i></i>
+                            </div>
+                        </div>
+                        <div class="size" @tap = "show_canshu">
+                            <div class="choose_size">产品参数</div>
+                            <div class="more_size">
+                                <i></i>
+                            </div>
+                        </div>
+                        <div class="servie">
+                            <div class="servie_name">服务</div>
+                            <div class="servie_content">
+                                <div class="lists">
+                                    <i class="circle"></i>
+                                    不支持退换货
+                                </div>
+                                <div class="lists">
+                                    <i class="circle"></i>
+                                    正品授权
+                                </div>
+                                <div class="lists">
+                                    <i class="circle"></i>
+                                    本商城自营
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imgs_title">
+                            商品图文详情
+                        </div>
+                        <div class="imgs">
+                            <div class="show_img" v-html="imgs"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gray_bg_canshu">
+                <div class="canshu">
+                    <div class="close_canshu" @tap="close_canshu"></div>
+                    <div class="canshu_title">
+                        产品参数
+                    </div>
+                    <div class="color_canshu">
+                        <div class="color_name">颜色</div>
+                        <div class="color_s">红色，白色，蓝色</div>
+                    </div>
+                    <div class="size_canshu">
+                        <div class="size_name">尺码</div>
+                        <div class="size_s">无</div>
+                    </div>
+                    <div class="certain" @tap="close_canshu">
+                        确定
+                    </div>
+                </div>
+            </div>
+            <div class="gray_bg_choose">
+                <div class="choose_box">
+                    <div class="box_top">
+                        <div class="close_choose" @tap = "close_choose_box"></div>
+                        <div class="goods_img">
+                            <img :src="banner" alt="">
+                        </div>
+                        <div class="jifen_num">
+                            <span>¥</span>
+                            {{jifen}}积分
+                        </div>
+                    </div>
+                    <div class="choose_box_color" v-for="(item,i) in attr">
+                        <div class="choose_color_title">{{item[0]}}</div>
+                        <div class="colors" :data-id="i">
+                            <div class="many_colors" v-for="(temp,index) in item[1]" @tap = "get_msg(index,i)">{{temp}}</div>
+                        </div>
+                    </div>
+                    <div class="buy_num">
+                        <div>购买数量</div>
+                        <div class="goods_num">
+                            <a class="pay-jia" @tap="ondownsub">-</a>
+                            <input type="number" class="sub" id="sub" v-model="subval" @blur="valblur"/>
+                            <a class="pay-jian" @tap="onupsub">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="choose_certain" @tap="change_goods">确定</div>
+            </div>
+            <div class="footers" @tap="show_choose_box">
+                <div class="buy">
+                    <div class="getTicketAndBuy">马上兑换</div>
+                </div>
+            </div>
+        </div>
+        <script src="js/mui.min.js"></script>
+        <script type="text/javascript" src="http://g.alicdn.com/mtb/lib-applink/0.3.8/??callApp.js,linksdk.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/mui.zoom.js"></script>
+		<script src="js/mui.previewimage.js"></script>   
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/integral_particulars.js"></script>
+    </body>
+
+</html>

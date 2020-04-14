@@ -1,0 +1,250 @@
+
+
+ .top {
+    width:100%;
+    height:9.075rem;
+    background-size: 100% 100%;
+    background-color: #fff;
+    padding-top: 2.2rem;
+  };
+ .top .edd {
+    width: 10%;
+    height: 1.5rem;
+    float: right;
+    color:#333;
+    margin-top: 1rem;
+    font-size: 0.625rem;
+    font-weight: bold;
+  }
+ .top .tp-box {
+    position: relative;
+    display: flex;
+    display: -webkit-flex;
+    padding: 0 0.5rem;
+    align-items: center;
+    height: 6.875rem;
+  }
+ .top .tp-box .img {
+    width: 3.625rem;
+    height: 3.625rem;
+    border-radius: 1000px;
+    border:1px solid #ccc;
+    overflow: hidden;
+    float: left;
+    margin-left: 0.5rem;
+  }
+ .top .tp-box .img img {
+    width: 100%;
+    height: 100%;
+  }
+ .top .tp-box .text {
+    float: left;
+    width:60%;
+    height:6.875rem;
+    margin-left: 1rem;
+  }
+ .top .tp-box .p1 {
+    height: 2rem;
+    margin-top: 1rem;
+  }
+ .top .tp-box .p1 .name {
+    color: #333;
+    font: 0.8rem / 2rem "";
+    font-weight:bold;
+  }
+  /* .index .my .top .tp-box .p1 .label {
+    margin-left: 0.45rem;
+    margin-top: .35rem;
+    display: block;
+    width: 2.5rem;
+    height: 1.15rem;
+    background-color: #ccc;
+    border: solid 1px #ccc;
+    border-radius: 1000px;
+    color: #fff;
+    text-align: center;
+    font: 0.6rem / 1rem "";
+  }
+ .top .tp-box .p1 .gold {
+    background-color: #d3a243;
+    border: solid 1px #903e11;
+  }
+ .top .tp-box .p1 .silver {
+    background-color: #e4ebe9;
+    border: solid 1px #8f9d9f;
+    color: #34001b;
+  } */
+  /* .index .my .top .tp-box .p1 .jewel {
+    margin-left: 0.5rem;
+    display: block;
+    width: 1.9rem;
+    height: 100%;
+    background: url(../img/icon_zuanshi.png) no-repeat 0 0.25rem;
+    background-size: 1.85rem 1.85rem;
+  } */
+ .top .tp-box .p2,
+ .top .tp-box .p3 {
+    height: 1.25rem;
+    color: #333;
+    font: 0.7rem / 1.25rem "";
+    margin-bottom: 0;
+  }
+  /* .index .my .top .my-msg {
+    margin-top: 0.85rem;
+    margin-bottom: 0.45rem;
+    padding: 0 0.75rem;
+    overflow: hidden;
+  } */
+ .my-msg {
+    margin: 0.5rem 0.5rem;
+    overflow: hidden;
+    background-color:#fff;
+    border-radius: 0.5rem;
+  }
+ .my-msg li{
+    float: left;
+    width:25%;
+    height:4.5rem;
+    text-align: center;
+    animation: fadeIn 1s;
+  }
+ .my-msg li img{
+    width:2.25rem;
+    height:2.25rem;
+    margin-top: 0.5rem;
+  }
+ .my-msg li p{
+    line-height: 1.65rem;
+    font-size: 0.7rem;
+    color:#333;
+    text-align: center;
+  }
+  /* .index .my .top .my-msg .fans {
+    width: 32%;
+    text-align: start;
+  }
+ .top .my-msg .my-integral {
+    position: relative;
+    width: 36%;
+    text-align: center;
+  }
+ .top .my-msg .my-qrcord {
+    width: 32%;
+    text-align: end;
+  }
+ .top .my-msg a {
+    display: block;
+    height: 1.8rem;
+    float: left;
+    font: 0.6rem / 1.8rem "";
+    color: #fff;
+  }
+ .top .my-msg .my-integral:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7rem;
+    height: 0.5rem;
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+ .top .my-msg .my-integral:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0.7rem;
+    height: 0.5rem;
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+  } */
+ .myselfImg{
+    width:96%;
+    margin:0 2%;
+    height:5rem;
+    border-radius: 0.5rem;
+  };
+  
+ .main {
+    overflow: scroll;
+    background-color: #f5f5f5;
+    background-size: 100% 1.55rem;
+  }
+ .main li {
+    height:2.5rem;
+    line-height: 2.5rem;
+    color: #333;
+    font: 0.75rem / 2.6rem "";
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    background-color: #fff;
+  }
+ .main li .myIntegral{
+    display: block;
+    float: right;
+    min-width: 5rem;
+    height: 2.6rem;
+    /* margin-right:0.5rem; */
+    text-align: right;
+  }
+ .main li div{
+    float: left;
+    width:40%;
+    margin-left: 2.5rem;
+  }
+ .main li p{
+    float: right;
+    width:18%;
+  }
+ .main .service {
+    background: url(../img/jifen.png) no-repeat 0.75rem center #fff;
+    background-size: auto 34%;
+  }
+ .main .teach_You {
+    background: url(../img/teach_you.png) no-repeat 0.75rem center #fff;
+    background-size: auto 34%;
+  }
+ .main .record {
+    background: url(../img/record.png) no-repeat 0.75rem center #fff;
+    background-size: auto 34%;
+  }
+ .main .money {
+    background: url(../img/my_1.png) no-repeat 0.75rem center #fff;
+    background-size: auto 34%;
+  }
+ .main .becyber {
+    background: url(../img/my_3.png) no-repeat 0.75rem center #fff;
+    background-size: auto 34%;
+  }
+ .main .iscyber {
+    background: url(../img/my_4.png) no-repeat 0.75rem center #fff;
+    background-size: auto 34%;
+  }
+ .main .indent {
+    background: url(../img/my_5.png) no-repeat 0.75rem center #fff;
+    background-size: auto 34%;
+  }
+ .main .rule {
+    background: url(../img/my_6.png) no-repeat 0.75rem center #fff;
+    background-size: auto 34%;
+  }
+ .main .set {
+    background: url(../img/my_7.png) no-repeat 0.75rem center #fff;
+    background-size: auto 34%;
+  }
+ .main .lr {
+    display: block;
+    float: right;
+    width: 2.1rem;
+    height: 2.6rem;
+    background: url(../img/icon_ro.png) no-repeat center;
+    background-size: 0.5rem 0.9rem;
+  }
+  .index .store.active,
+  .index .integral.active,
+  .index .msg.active,
+  .index .my.active {
+    display: block;
+  }

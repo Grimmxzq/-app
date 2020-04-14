@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>历史搜索</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <link rel="stylesheet" type="text/css" href="css/animate.css" />
+        <link rel="stylesheet" type="text/css" href="css/searchHistory.css" />
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+    </head>
+    <body class="pagesearch">
+        <div id="pagesearch">
+            <header class="mui-bar mui-bar-nav"  data-header>
+                <a class="mui-action-back c-icon-back mui-pull-left"></a>
+                <div class="input-box">
+                    <input type="search" v-on:input="oninput()" name="search-input" v-model="searchval" class="search-input" id="search-input" value="" placeholder="输入搜索内容" oninput="listenMsg()"/>
+                    <span class="closemsg" id="closemsg" @tap="closeAllmsg"></span>
+                </div>
+                <a class="search-btn" @tap="onsbtn" ><em class="only-android">搜索</em></a>
+                <div class="nav">
+                    <a class="new">实时上新</a>
+                    <a class="sork" @tap="onsork">{{innerhtml}}<em class="em"></em></a>
+                    <div class="onsork-box">
+                        <a v-for="(item,index) in innerhtmllist" @tap="onsorka(item,index)">{{item}}</a>
+                    </div>
+                </div>
+            </header>
+            <div class="mui-content" data-content>
+                <div id="pullrefresh" class="mui-content mui-scroll-wrapper wrapper" data-content>
+                    <div class="mui-scroll">
+                        <ul class="content">
+                            <li class="con" v-for="item in integralcon" @tap="particulars(item.id)" :id="item.id" style="margin-top: 0.5rem;">
+                                <div class="img">
+                                    <!-- <img :src="common.config+item.banner" /> -->
+                                    <img :src="item.picurl" /> 
+                                    <div class="con-text">
+                                        <div class="h1"><span class="money">{{item.jifen}}积分</span></div>
+                                        <div class="h1"><span class="face">{{item.price}}</span></div>
+                                    </div>
+                                </div>
+                                <p class="title-p">{{item.title}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="main">
+                    <p class="title">搜APP内</p>
+                    <div class="boxt">
+                        <p class="p1">历史搜索</p>
+                        <a class="link" v-for="item in mainalink" @tap="onolda(item)">{{item}}</a>
+                    </div>
+                    <div class="btnclear">
+                        <p class="btn-p" @tap="onclear"><em class="only-android">清除历史搜索</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/searchHistory.js"></script>
+    </body>
+</html>

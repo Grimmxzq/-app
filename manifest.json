@@ -1,0 +1,1574 @@
+{
+	"@platforms": [
+		"android",
+		"iPhone",
+		"iPad"
+	],
+	"id": "H5AF4FEC2", /*必选，应用的标识*/
+	"name": "樱桃小利", /*必选，应用名称*/
+	"version": {
+		"name": "2.2.5", /*必选，版本名称*/
+		"code": 1901310001
+	},
+	"description": "", /*可选，应用描述信息*/
+	"icons": {
+		"72": "icon.png"
+	},
+	"launch_path": "tab_index_main.html", /*必选，应用的入口页面，默认为根目录下的index.html；也可以是网络地址，网络地址必须以http://或https://开头*/
+	"developer": {
+		"email": "", /*可选，开发者名称*/
+		"name": "", /*可选，开发者邮箱地址*/
+		"url": ""
+	},
+	"permissions": {
+		"Audio": {
+			"description": "访问麦克风"
+		},
+		"Camera": {
+			"description": "访问摄像头"
+		},
+		"Device": {
+			"description": "访问设备信息"
+		},
+		"Events": {
+			"description": "应用扩展事件"
+		},
+		"File": {
+			"description": "访问本地文件系统"
+		},
+		"Gallery": {
+			"description": "访问系统相册"
+		},
+		"Storage": {
+			"description": "管理应用本地数据"
+		},
+		"Runtime": {
+			"description": "访问运行期环境"
+		},
+		"XMLHttpRequest": {
+			"description": "跨域网络访问"
+		},
+		"Zip": {
+			"description": "文件压缩与解压缩"
+		},
+		"Webview": {
+			"description": "窗口管理"
+		},
+		"NativeUI": {
+			"description": "原生UI控件"
+		},
+		"Navigator": {
+			"description": "浏览器信息"
+		},
+		"Share": {
+			"description": "分享"
+		},
+		"Payment": {},
+		"Uploader": {},
+		"NativeObj": {},
+		"Invocation": {},
+		"OAuth": {},
+		"Share": {},"Statistic":{}
+	},
+	"plus": {
+		"statusbar": {
+			"immersed": true
+		},
+		"splashscreen": {
+			"autoclose": true, /*如果为true，程序启动的图片可以自动关闭，如果为false，开发者需要手动关闭*/
+			"waiting": false,
+			"delay": "1000"
+		},
+		"fullscree": true,
+		"popGesture": "close", /*设置应用默认侧滑返回关闭Webview窗口，none为无侧滑返回功能，hide为侧滑隐藏Webview窗口。参考ask.dcloud.net.cn/article/102*/
+		"runmode": "normal", /*两个值，liberate或normal，前者在应用安装时释放资源，后者不需要释放资源*/
+		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==", /*可选，保留给应用签名，暂不使用*/
+		"distribute": {
+			"plugins": {"statics":{"umeng":{"appkey_ios":"5c905fe12036575bc70006aa","channelid_ios":"安卓市场","appkey_android":"5c905aca203657b6f10014d6","channelid_android":"安卓市场"}},
+				"payment": {
+					"weixin": {
+						"description": "微信支付",
+						"appid": "wx511b4d69d6fb80b5"
+					},
+					"alipay": {
+						"description": "阿里支付",
+						"scheme": ""
+					}
+				},
+				"oauth": {
+					"weixin": {
+						"appid": "wx511b4d69d6fb80b5",
+						"appsecret": "5826ce238de86b934e456ad5809a07c6"
+					}
+				},
+
+				"share": {
+
+					"weixin": {
+
+						"appid": "wx511b4d69d6fb80b5",
+
+						"appsecret": "5826ce238de86b934e456ad5809a07c6",
+
+						"discription": "微信分享"
+					}
+				}
+			},
+			"debug": "", /*可选，是否为debug模式，可取值：true表示debug模式运行，false表示release模式运行，默认值为false*/
+			"apple": {
+				"appid": "", /*iOS必选，苹果开发网站申请的appid，如io.dcloud.HelloMUI*/
+				"mobileprovision": "", /*iOS必选，打包配置文件*/
+				"password": "", /*iOS必选，导入配置文件密码*/
+				"p12": "", /*iOS必选，打包配置文件关联的个人证书*/
+				"devices": "universal", /*iphone，可取值iphone/ipad/universal*/
+				"frameworks": [],
+				"UIReserveStatusbarOffset": "ture",
+				"plistcmds": [
+					"Set :NSPhotoLibraryUsageDescription 打开相册上传头像",
+					"Set :NSCameraUsageDescription 打开相机拍摄上传头像"
+				]
+			},
+			"google": {
+				"packagename": "", /*Android必选，程序包名，如io.dcloud.HelloMUI*/
+				"keystore": "", /*Android必选，打包证书文件*/
+				"password": "", /*Android必选，打包证书密码*/
+				"aliasname": "", /*Android必选，打包证书别名*/
+				"ImmersedStatusbar": false, /*设置为沉浸栏模式*/
+				"permissions": ["<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.INTERNET\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>","<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"]
+			},
+			"orientation": [
+				"portrait-primary"
+			], /*必选*/
+			"icons": {
+				"ios": {
+					"prerendered": "", /*必选，是否高亮显示*/
+
+					/*可选，512x512，用于自动生成各种尺寸图标的大分辨率程序图标*/
+					"iphone": {
+						"normal": "", /*可选，57x57，iPhone普通屏幕程序图标*/
+						"retina": "", /*可选，114x114，iPhone高分屏程序图标*/
+
+						/*可选，120x120，iPhone iOS7高分屏程序图标*/
+						"spotlight-normal": "", /*可选，29x29，iPhone Spotlight搜索程序图标*/
+						"spotlight-retina": "", /*可选，58x58，iPhone高分屏Spotlight搜索程序图标*/
+
+						/*可选，80x80，iPhone iOS7高分屏Spotlight搜索程序图标*/
+						"settings-normal": "", /*可选，29x29，iPhone设置页面程序图标*/
+						"app@2x": "unpackage/res/icons/120x120.png",
+						"app@3x": "unpackage/res/icons/180x180.png",
+						"settings@3x": "unpackage/res/icons/87x87.png",
+						"settings@2x": "unpackage/res/icons/58x58.png",
+						"spotlight@2x": "unpackage/res/icons/80x80.png",
+						"spotlight@3x": "unpackage/res/icons/120x120.png",
+						"notification@3x": "unpackage/res/icons/60x60.png",
+						"notification@2x": "unpackage/res/icons/40x40.png"
+					},
+					"ipad": {
+						"normal": "", /*可选，72x72，iPad普通屏幕程序图标*/
+						"retina": "", /*可选，144x144，iPad高分屏程序图标*/
+
+						/*可选，76x76，iPad iOS7程序图标*//*可选，152x152，iPad iOS7高分屏程序图标*/
+						"spotlight-normal": "", /*可选，50x50，iPad Spotlight搜索程序图标*/
+						"spotlight-retina": "", /*可选，100x100，iPad高分屏Spotlight搜索程序图标*/
+
+						/*可选，40x40，iPad iOS7 Spotlight搜索程序图标*//*可选，80x80，iPad iOS7高分屏Spotlight搜索程序图标*//*可选，29x29，iPad设置页面程序图标*/
+						"app": "unpackage/res/icons/76x76.png",
+						"app@2x": "unpackage/res/icons/152x152.png",
+						"settings": "unpackage/res/icons/29x29.png",
+						"proapp@2x": "unpackage/res/icons/167x167.png",
+						"spotlight": "unpackage/res/icons/40x40.png",
+						"settings@2x": "unpackage/res/icons/58x58.png",
+						"spotlight@2x": "unpackage/res/icons/80x80.png",
+						"notification": "unpackage/res/icons/20x20.png",
+						"notification@2x": "unpackage/res/icons/40x40.png"
+					},
+					"appstore": "unpackage/res/icons/1024x1024.png"
+				},
+				"android": {
+					"mdpi": "unpackage/res/icons/48x48.png", /*必选，48x48，普通屏程序图标*/
+					"ldpi": "unpackage/res/icons/48x48.png", /*必选，48x48，大屏程序图标*/
+					"hdpi": "unpackage/res/icons/72x72.png", /*必选，72x72，高分屏程序图标*/
+					"xhdpi": "unpackage/res/icons/96x96.png", /*必选，96x96，720P高分屏程序图标*/
+					"xxhdpi": "unpackage/res/icons/144x144.png",
+					"xxxhdpi": "unpackage/res/icons/192x192.png"
+				}
+			},
+			"splashscreen": {
+				"ios": {
+					"iphone": {
+						"default": ""
+					},
+					"ipad": {
+						"portrait": "", /*可选，768x1004，需支持iPad时必选，iPad竖屏启动图片*/
+						"portrait-retina": "", /*可选，1536x2008，需支持iPad时必选，iPad高分屏竖屏图片*/
+						"landscape": "", /*可选，1024x748，需支持iPad时必选，iPad横屏启动图片*/
+						"landscape-retina": "", /*可选 ，2048x1496，需支持iPad时必选，iPad高分屏横屏启动图片*/
+						"portrait7": "", /*可选，768x1024，需支持iPad iOS7时必选，iPad竖屏启动图片*/
+						"portrait-retina7": "", /*可选，1536x2048，需支持iPad iOS7时必选，iPad高分屏竖屏图片*/
+						"landscape7": "", /*可选，1024x768，需支持iPad iOS7时必选，iPad横屏启动图片*/
+						"landscape-retina7": ""
+					}
+				},
+				"android": {
+					"mdpi": "", /*必选，240x282，普通屏启动图片*/
+					"ldpi": "", /*必选，320x442，大屏启动图片*/
+					"hdpi": "D:/素材/app/480-762.png", /*必选，480x762，高分屏启动图片*/
+					"xhdpi": "D:/素材/app/720-1242.png", /*必选，720x1242，720P高分屏启动图片*/
+					"xxhdpi": "D:/素材/app/1080-1882.png"
+				}
+			}
+		},
+		"schemeWhitelist": [
+			"market"
+		],
+		"ads": {
+			"rp": false,
+			"splash": false,
+			"push": false,
+			"spot": false
+		},
+		"adid": "128218100412"
+	},
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/update.js",
+					"list.html",
+					"img/home_img_babycar.png",
+					"img/icon_ones2.png",
+					"img/icon_aboutUs.png",
+					"img/home_icon_food.png",
+					"img/icon_teach.png",
+					"img/home_icon_men.png",
+					"img/home_img_clothes.png",
+					"img/home_img_doll.png",
+					"img/home_icon_more.png",
+					"img/home_img_bag.png",
+					"img/profile.jpg",
+					"img/home_icon_bag.png",
+					"img/home_icon_baby.png",
+					"img/home_icon_girl.png",
+					"img/home_img_sweater.png",
+					"img/myselfImg.png",
+					"img/home_icon_cosmetics.png",
+					"img/home_smallbanner.png",
+					"img/home_icon_shoes.png",
+					"img/icon_share.png",
+					"img/icon_msg_dd.png",
+					"css/animate.css",
+					"css/index.css",
+					"css/common.css",
+					"css/iphonex.css",
+					"sign.html"
+				],
+				"refer": [
+					"index-menu.html",
+					"examples/guide.html",
+					"examples/pullrefresh.html",
+					"examples/pullrefresh_main.html",
+					"examples/im-chat.html",
+					"examples/checkbox.html",
+					"login.html",
+					"userknow.html",
+					"set.html",
+					"particulars.html",
+					"search.html",
+					"tailor.html",
+					"edd.html",
+					"update.html",
+					"order.html",
+					"searchHistory.html",
+					"outLink.html",
+					"update2.html",
+					"sign2.html",
+					"prizeHistory.html",
+					"integralstate.html",
+					"text.html",
+					"mescroll-master/demo/beibei/beibei.html",
+					"share.html",
+					"wallet.html",
+					"page1.html",
+					"packet_memory.html",
+					"cash_info.html",
+					"page2.html",
+					"womanDay.html",
+					"womanDay2.html",
+					"1.html",
+					"text2.html",
+					"harvest.html"
+				],
+				"priority": 0
+			},
+			"examples/tab-webview-subpage-contact.html": {
+				"resources": [
+					"images/60x60.gif",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-webview-main.html": {
+				"resources": [
+					"examples/tab-webview-subpage-setting.html",
+					"examples/tab-webview-subpage-chat.html",
+					"examples/tab-webview-subpage-contact.html",
+					"examples/tab-webview-subpage-about.html",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"list.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"examples/template.html",
+					"examples/tab-webview-main.html",
+					"examples/pullrefresh_main.html",
+					"examples/ajax.html",
+					"examples/accordion.html",
+					"examples/buttons.html",
+					"examples/guide.html",
+					"examples/badges.html",
+					"examples/actionsheet.html",
+					"examples/actionsheet-plus.html",
+					"examples/ad.html",
+					"examples/buttons-with-icons.html",
+					"examples/buttons-with-badges.html",
+					"examples/buttons-with-block.html",
+					"examples/checkbox.html",
+					"examples/clouddb_wilddog.html",
+					"examples/dtpicker.html",
+					"examples/date.html",
+					"examples/dialog.html",
+					"examples/slider-default.html",
+					"examples/slider-with-title.html",
+					"examples/slider-table-default.html",
+					"examples/slider-table-pagination.html",
+					"examples/grid-default.html",
+					"examples/grid-pagination.html",
+					"examples/icons.html",
+					"examples/input.html",
+					"examples/echarts.html",
+					"examples/imageviewer.html",
+					"examples/indexed-list.html",
+					"examples/indexed-list-select.html",
+					"examples/lazyload-image.html",
+					"examples/locker-dom.html",
+					"examples/login.html",
+					"examples/setting.html",
+					"examples/offcanvas-drag-right-plus-main.html",
+					"examples/offcanvas-drag-left-plus-main.html",
+					"examples/offcanvas-drag-right.html",
+					"examples/offcanvas-drag-left.html",
+					"examples/offcanvas-drag-down.html",
+					"examples/picker.html",
+					"examples/pagination.html",
+					"examples/popovers.html",
+					"examples/pullrefresh_with_tab.html",
+					"examples/radio.html",
+					"examples/range.html",
+					"examples/switches.html",
+					"examples/tabbar.html",
+					"examples/tabbar-with-submenus.html",
+					"examples/tab-with-viewpagerindicator.html",
+					"examples/tab-with-segmented-control.html",
+					"examples/tab-with-segmented-control-vertical.html",
+					"examples/typography.html",
+					"examples/im-chat.html",
+					"examples/info.html",
+					"examples/tableviews.html",
+					"examples/tableviews-with-badges.html",
+					"examples/list-with-input.html",
+					"examples/list-triplex-row.html",
+					"examples/tableviews-with-collapses.html",
+					"examples/tableviews-with-swipe.html",
+					"examples/media-list.html",
+					"examples/nav.html",
+					"examples/numbox.html"
+				],
+				"priority": 0
+			},
+			"examples/pullrefresh_main.html": {
+				"resources": [
+					"examples/pullrefresh_sub.html",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/ajax.html": {
+				"resources": [
+					"css/app.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/accordion.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/muwu.jpg",
+					"images/yuantiao.jpg",
+					"images/shuijiao.jpg",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-webview-subpage-setting.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"index-menu.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"examples/offcanvas-drag-left.html"
+				],
+				"priority": 0
+			},
+			"examples/template.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-webview-subpage-about.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/guide.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/badges.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/actionsheet.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/actionsheet-plus.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/ad.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/ad.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/buttons.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/buttons-with-icons.html": {
+				"resources": [
+					"css/app.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/buttons-with-badges.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/buttons-with-block.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/checkbox.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-webview-subpage-chat.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/clouddb_wilddog.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/dtpicker.html": {
+				"resources": [
+					"js/mui.picker.min.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/mui.picker.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/date.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/dialog.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/slider-default.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/muwu.jpg",
+					"images/yuantiao.jpg",
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"images/shuijiao.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/slider-with-title.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/yuantiao.jpg",
+					"images/muwu.jpg",
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"images/shuijiao.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/slider-table-default.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/yuantiao.jpg",
+					"images/muwu.jpg",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/shuijiao.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/slider-table-pagination.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/muwu.jpg",
+					"images/yuantiao.jpg",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/shuijiao.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/grid-default.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/grid-pagination.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/icons.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/input.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/pullrefresh_sub.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/echarts.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"libs/echarts-all.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/imageviewer.html": {
+				"resources": [
+					"js/mui.zoom.js",
+					"images/muwu.jpg",
+					"images/yuantiao.jpg",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/mui.previewimage.js",
+					"images/shuijiao.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/indexed-list.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/mui.indexedlist.css",
+					"js/mui.indexedlist.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/indexed-list-select.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/mui.indexedlist.css",
+					"js/mui.indexedlist.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/lazyload-image.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"images/60x60.gif",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/mui.lazyload.js",
+					"js/mui.lazyload.img.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/locker-dom.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/mui.locker.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/login.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"images/login-1.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/setting.html": {
+				"resources": [
+					"images/logo.png",
+					"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"libs/easymob-webim-sdk/json2.js",
+					"libs/easymob-webim-sdk/jquery-1.11.1.js",
+					"js/feedback.js",
+					"css/feedback-page.css",
+					"js/feedback-page.js",
+					"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+					"js/mui.view.js",
+					"images/iconfont-tianjia.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-right-plus-main.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"examples/offcanvas-drag-right-plus-menu.html"
+				],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-right-plus-menu.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-left-plus-menu.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-left-plus-main.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"examples/offcanvas-drag-left-plus-menu.html"
+				],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-right.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-left.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-down.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/picker.html": {
+				"resources": [
+					"js/mui.picker.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"js/mui.poppicker.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/city.data.js",
+					"css/mui.poppicker.css",
+					"css/mui.picker.css",
+					"js/city.data-3.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/pagination.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/popovers.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/pullrefresh_with_tab.html": {
+				"resources": [
+					"js/mui.pullToRefresh.js",
+					"js/mui.min.js",
+					"js/mui.pullToRefresh.material.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/radio.html": {
+				"resources": [
+					"css/app.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/range.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/switches.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tabbar.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"images/60x60.gif",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tabbar-with-submenus.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-with-viewpagerindicator.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-with-segmented-control.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-with-segmented-control-vertical.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/typography.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/im-chat.html": {
+				"resources": [
+					"js/mui.imageViewer.js",
+					"images/logo.png",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/mui.imageviewer.css",
+					"js/arttmpl.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/info.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"images/qrcode.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/beecloud.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/beecloud.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tableviews.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tableviews-with-badges.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/list-with-input.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/list-triplex-row.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tableviews-with-collapses.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tableviews-with-swipe.html": {
+				"resources": [
+					"css/app.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/media-list.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/yuantiao.jpg",
+					"images/muwu.jpg",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/shuijiao.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/nav.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/numbox.html": {
+				"resources": [
+					"css/app.css",
+					"css/mui.min.css",
+					"js/mui.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"set.html": {
+				"resources": [],
+				"refer": [
+					"setphone.html",
+					"setads.html",
+					"login.html",
+					"userknow.html",
+					"setpsw.html",
+					"index.html",
+					"outLink.html",
+					"tab_index_main.html"
+				],
+				"priority": 0
+			},
+			"setphone.html": {
+				"resources": [],
+				"refer": [
+					"changephone.html"
+				],
+				"priority": 0
+			},
+			"particulars.html": {
+				"resources": [],
+				"refer": [
+					"atext.html",
+					"addorder.html",
+					"affirm.html"
+				],
+				"priority": 0
+			},
+			"search.html": {
+				"resources": [],
+				"refer": [
+					"particulars.html",
+					"particulars2.html",
+					"login.html",
+					"particulars3.html",
+					"particulars4.html"
+				],
+				"priority": 0
+			},
+			"login.html": {
+				"resources": [],
+				"refer": [
+					"userknow.html",
+					"forgetpsw.html",
+					"index.html",
+					"register.html",
+					"bindingPhone.html",
+					"update.html",
+					"search.html",
+					"sign2.html",
+					"tab_index_main.html"
+				],
+				"priority": 0
+			},
+			"setads.html": {
+				"resources": [],
+				"refer": [
+					"site.html"
+				],
+				"priority": 0
+			},
+			"update.html": {
+				"resources": [],
+				"refer": [
+					"particulars.html",
+					"login.html",
+					"newparticulars.html"
+				],
+				"priority": 0
+			},
+			"register.html": {
+				"resources": [],
+				"refer": [
+					"index.html"
+				],
+				"priority": 0
+			},
+			"searchHistory.html": {
+				"resources": [],
+				"refer": [
+					"login.html",
+					"particulars.html"
+				],
+				"priority": 0
+			},
+			"affirm.html": {
+				"resources": [],
+				"refer": [
+					"site.html",
+					"manageAds.html",
+					"order.html"
+				],
+				"priority": 0
+			},
+			"manageAds.html": {
+				"resources": [],
+				"refer": [
+					"site.html"
+				],
+				"priority": 0
+			},
+			"bindingPhone.html": {
+				"resources": [],
+				"refer": [
+					"index.html"
+				],
+				"priority": 0
+			},
+			"sign.html": {
+				"resources": [
+					"1.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"1.html": {
+				"resources": [
+					"sign.html",
+					"2.html"
+				],
+				"refer": [
+					"particulars.html"
+				],
+				"priority": 0
+			},
+			"sign2.html": {
+				"resources": [],
+				"refer": [
+					"index.html",
+					"prizeHistory.html",
+					"particulars.html",
+					"login.html",
+					"outLink.html",
+					"tab_index_main.html"
+				],
+				"priority": 0
+			},
+			"prizeHistory.html": {
+				"resources": [],
+				"refer": [
+					"site2.html",
+					"site.html"
+				],
+				"priority": 0
+			},
+			"update2.html": {
+				"resources": [],
+				"refer": [
+					"particulars.html"
+				],
+				"priority": 0
+			},
+			"mescroll-master/demo/beibei/beibei.html": {
+				"resources": [],
+				"refer": [
+					"mescroll-master/demo/index.html"
+				],
+				"priority": 0
+			},
+			"mescroll-master/demo/index.html": {
+				"resources": [],
+				"refer": [
+					"mescroll-master/demo/beibei/beibei.html"
+				],
+				"priority": 0
+			},
+			"share.html": {
+				"resources": [
+					"/img/myselfImg.png",
+					"/img/text.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"wallet.html": {
+				"resources": [
+					"wallet2.html"
+				],
+				"refer": [
+					"packet_memory.html"
+				],
+				"priority": 0
+			},
+			"page1.html": {
+				"resources": [
+					"page2.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page2.html": {
+				"resources": [],
+				"refer": [
+					"packet_memory.html",
+					"cash_info.html"
+				],
+				"priority": 0
+			},
+			"womanDay.html": {
+				"resources": [
+					"1.html",
+					"0.html"
+				],
+				"refer": [
+					"2.html",
+					"3.html",
+					"4.html",
+					"5.html",
+					"6.html",
+					"7.html",
+					"9.html",
+					"8.html"
+				],
+				"priority": 0
+			},
+			"0.html": {
+				"resources": [],
+				"refer": [
+					"particulars.html",
+					"newparticulars.html"
+				],
+				"priority": 0
+			},
+			"text.html": {
+				"resources": [],
+				"refer": [
+					"particulars.html",
+					"affirm.html"
+				],
+				"priority": 0
+			},
+			"edd.html": {
+				"resources": [],
+				"refer": [
+					"index.html"
+				],
+				"priority": 0
+			},
+			"tab_index_main.html": {
+				"resources": [
+					"tab_index.html",
+					"css/tab_index_main.css",
+					"css/mui.min.css",
+					"tab_help.html"
+				],
+				"refer": [
+					"tab_integral.html",
+					"tab_my.html",
+					"tab_index_main.html",
+					"login.html"
+				],
+				"priority": 0
+			},
+			"tab_index.html": {
+				"resources": [
+					"css/tab_index.css",
+					"img/home_img_babycar.png",
+					"css/common.css",
+					"img/close.png",
+					"img/home_img_sweater.png",
+					"css/vant.css",
+					"css/mui.min.css",
+					"css/iphonex.css",
+					"img/home_img_clothes.png",
+					"img/home_img_doll.png",
+					"img/home_img_bag.png"
+				],
+				"refer": [
+					"particulars.html",
+					"update.html",
+					"womanDay.html",
+					"search.html",
+					"update2.html",
+					"login.html",
+					"active_box.html",
+					"text.html",
+					"sign_img.html",
+					"newparticulars.html",
+					"msg_center.html"
+				],
+				"priority": 0
+			},
+			"tab_integral.html": {
+				"resources": [
+					"css/tab_integral.css",
+					"css/common.css",
+					"css/vant.css",
+					"css/mui.min.css",
+					"css/iphonex.css"
+				],
+				"refer": [
+					"particulars.html",
+					"harvest.html",
+					"searchHistory.html",
+					"integral_particulars.html",
+					"text.html"
+				],
+				"priority": 0
+			},
+			"tab_help.html": {
+				"resources": [
+					"css/tab_help.css",
+					"css/common.css",
+					"css/mui.min.css",
+					"css/iphonex.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"tab_my.html": {
+				"resources": [
+					"css/tab_my.css",
+					"css/common.css",
+					"img/icon_aboutUs.png",
+					"css/mui.min.css",
+					"css/iphonex.css"
+				],
+				"refer": [
+					"tailor.html",
+					"outLink.html",
+					"share.html",
+					"page1.html",
+					"sign2.html",
+					"integralstate.html",
+					"set.html",
+					"particulars4.html",
+					"womanDay.html",
+					"edd.html",
+					"order.html",
+					"neworder.html",
+					"type.html"
+				],
+				"priority": 0
+			},
+			"active_box.html": {
+				"resources": [],
+				"refer": [
+					"search.html"
+				],
+				"priority": 0
+			},
+			"sign_img.html": {
+				"resources": [],
+				"refer": [
+					"sign2.html",
+					"wallet2.html",
+					"text.html",
+					"login.html",
+					"search.html"
+				],
+				"priority": 0
+			},
+			"msg_center.html": {
+				"resources": [],
+				"refer": [
+					"msg_detail.html"
+				],
+				"priority": 0
+			},
+			"integral_particulars.html": {
+				"resources": [],
+				"refer": [
+					"affirm.html"
+				],
+				"priority": 0
+			},
+			"neworder.html": {
+				"resources": [
+					"order_index.html"
+				],
+				"refer": [
+					"order_integral.html",
+					"1.html",
+					"1111.html"
+				],
+				"priority": 0
+			},
+			"order_index.html": {
+				"resources": [
+					"order_index_all.html"
+				],
+				"refer": [
+					"order_index_readyB.html",
+					"order_index_noB.html",
+					"order_index_alreadyB.html"
+				],
+				"priority": 0
+			},
+			"order_integral.html": {
+				"resources": [
+					"order_integral_all.html"
+				],
+				"refer": [
+					"neworder.html",
+					"order_integral_alreadyB.html",
+					"order_integral_readyB.html",
+					"order_integral_noB.html"
+				],
+				"priority": 0
+			},
+			"order.html": {
+				"resources": [
+					"order_index.html"
+				],
+				"refer": [
+					"order_integral.html"
+				],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"js/mui.dtpicker.js",
+				"css/mui.listpicker.css",
+				"css/mui.dtpicker.css",
+				"css/mui.picker.all.css",
+				"examples/modals.html",
+				"examples/tabbar-labels-only.html",
+				"js/mui.listpicker.js",
+				"libs/easymob-webim-sdk/quickstart.md",
+				"js/mui.picker.all.js"
+			]
+		}
+	},
+	"fullscreen": false
+}

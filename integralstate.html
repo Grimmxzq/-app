@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>积分明细</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+    </head>
+    <body class="integralstate">
+        <header class="mui-bar mui-bar-nav" data-header>
+            <a class="mui-action-back c-icon-back mui-pull-left"></a>
+            <h1 class="mui-title">积分明细</h1>
+        </header>
+        <div class="mui-content" data-content>
+            <div id="pullrefresh" class="mui-content mui-scroll-wrapper " data-content>
+              <div class="mui-scroll">
+                <!--数据列表-->
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="lis" v-for="todo in todos">
+                        <div class="text-box">
+                            <p class="lit" >{{todo.beizhu}}</p>
+                            <p class="time" >{{new Date(parseInt(todo.update_time) * 1000).format('yyyy-M-d h:m:s')}}</p>
+                        </div>
+                        <div class="money" :class="{'jia': todo.addtype!=0}" ><em v-text=" todo.addtype==2 ? '-' : '+'"></em>{{todo.point}}</div>
+                    </li>
+                </ul>
+              </div>
+            </div>
+            
+        </div>
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/integralstate.js"></script>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <script src="js/initsize.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/iphonex.css"/>
+    <title>站内信详情</title>
+</head>
+<body  >
+    <div class="msg_detail" id="msg_detail">
+        <!-- <header class="mui-bar mui-bar-nav" data-header>
+            <a class="mui-action-back mui-pull-left mui-icon mui-icon-back" style="color:#333"></a>
+            <h1 class="mui-title">{{detail_msg.title}}</h1>
+        </header> -->
+        <div id="mui-content" data-content>
+            <div class="mui-scroll-wrapper">
+                <div class="mui-scroll" v-html="detail_msg.content">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/mui.min.js"></script>
+<script src="js/jquery2.1.0.min.js"></script>
+<script src="js/md5.js"></script>
+<script src="js/post_sign.js"></script>
+<script src="js/common2.0.0.js"></script>
+<script>
+    mui.init();
+    common.format();
+    var id = common.getUrlParam('id');
+    var msg_detail = new Vue({
+        el:"#msg_detail",
+        data:{
+            detail_msg:{}
+        },
+        methods:{
+            get_msg_detail:function(){
+                var vm = this;
+                $.ajax({
+                    type:"get",
+                    url:common.config+"/newapi/users/get_message_detail",
+                    data:{
+                        id:id
+                    },
+                    headers:{
+                        key:localStorage.userKey
+                    },
+                    success:function(data){
+                        console.log(data);
+                        if(data.code==403){
+                            mui.toast(data.msg);
+                            mui.openWindow({
+                                url:"login.html",
+                                id:"login"
+                            });
+                        }else{
+                            vm.detail_msg = data.data;
+                        }
+                    }
+                });
+            }
+        },
+        created:function(){
+            this.get_msg_detail()
+        }
+    })
+    mui('.mui-scroll-wrapper').scroll({
+        indicators: false,      //是否显示滚动条 默认为true
+        deceleration: 0.0006,    //阻尼系数,系数越小滑动越灵敏 默认0.0006
+        bounce: true           //是否启用回弹 默认true
+    });
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/common.css">
+		<script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+		<script src="js/vue-resource.js"></script>
+</head>
+<body>
+	<div style="width: 100%;height: 500px;">
+		
+	</div>
+	<button>点击前往授权</button>
+</body>
+<script src="js/mui.min.js"></script>
+	<script src="js/jquery2.1.0.min.js"></script>
+	<script src="js/common2.0.0.js"></script>
+<script>
+	mui.init();
+	$("button").click(function(){
+		alert('111');
+		window.location.href="taobao://oauth.taobao.com/authorize?response_type=code&client_id=26024402&redirect_uri=https://www.ycyz-yt.com/newapi/app/back&state=129&view=wap";
+//		mui.openWindow({
+//			url:'taobao://oauth.taobao.com/authorize?response_type=code&client_id=26024402&redirect_uri=https://www.ycyz-yt.com/newapi/app/back&state=129&view=wap',
+//			show:{
+//				autoShow:false,//页面loaded事件发生后自动显示，默认为true
+//				aniShow:"slide-in-right",//页面显示动画，默认为”slide-in-right“；
+//				duration:'100'//页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+//			},
+//			waiting:{
+//				autoShow:false,//自动显示等待框，默认为true
+//				title:'正在加载...',//等待对话框上显示的提示内容
+//				options:{
+//					padlock:"ture"
+//				}
+//			},
+//		})
+	})
+</script>
+</html>

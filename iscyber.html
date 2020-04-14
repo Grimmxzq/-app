@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>我是网红</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+    </head>
+    <body class="iscyber">
+        <div class="iscyber-box">
+            <header class="mui-bar mui-bar-nav " data-header >
+                <a class="mui-action-back c-icon-back mui-pull-left"></a>
+                <a class="mui-pull-right b-right" @tap="userknow">直推奖规则</a>
+            </header>
+            <div class="mui-content " id="app" data-content>
+                <div class="top" data-header >
+                    <div class="tp-box">
+                        <div class="img"><img v-bind:src="myurl" /></div>
+                        <p class="p1 ovf">
+                            <span class="name"><em class="only-android">{{ name }}</em></span> 
+                            <em class="label" :class="vip"  ><em class="only-android" v-text="vip=='normal'? '未开通' : vip=='silver'? '银牌' : '金牌'"></em></em> 
+                            <em class="" :class="{jewel:isjewel}"></em>
+                        </p>
+                    </div>
+                    <div class="my-msg ovf">
+                        <a class="fans">粉丝：{{fans}}</a>
+                        <a class="my-integral">偶像粉丝：{{integral}}</a>
+                        <a class="my-qrcord" >偶像等级：{{ qrcord=='diamondnetred'? '钻石' : qrcord=='silver'? '银牌' :qrcord=='gold'? '金牌' : '未开通'}}</a>
+                    </div>
+                </div>
+                <div v-if="seen" class="rou" @tap="row" :class="{'active':qrcord=='diamondnetred'}"></div>
+                <div class="main">
+                    <div class="li" v-for="item in items">
+                        <div class="img"><img :src="item.face"/></div>
+                        <p class="id">ID：{{item.uid}}</p>
+                        <p class="list-site" v-text="item.role=='diamondnetred' ? '钻石会员' :item.vip=='gold'? '金牌会员': item.vip=='silver'? '银牌会员' :'普通会员'"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/iscyber.js"></script>
+    </body>
+</html>

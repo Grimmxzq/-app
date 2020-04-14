@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>积分充值</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/iphonex.css"/>
+    </head>
+    <body class=" recharge">
+        <div class="ys-modal-loading active" id="ysLoading"><div class="spinner-content"><div class="mui-spinner"></div></div></div>
+        <header class="mui-bar mui-bar-nav" data-header>
+            <a class="mui-action-back c-icon-back mui-pull-left"></a>
+            <h1 class="mui-title">积分充值</h1>
+        </header>
+        <div class="mui-content" data-content>
+            <div class="lis">
+                <p class="lit">我的积分</p>
+                <div class="integral"><em class="only-android">{{integral}}</em></div>
+            </div>
+            <div class="lis">
+                <p class="lit">充值积分（1元={{money_point}}个积分）：
+                <input type="number" @input="inputsub" v-model="sub" id="sub" class="sub" placeholder="可自行填写" /></p>
+            </div>
+            <div class="box" id="app">
+                <p v-for='(data ,key) in datas' :data-id="key" class="li">
+                    <a  class="box-li" @tap="addClassFun(key)" :class="{'active' :qwerqwre==key }" >{{data}}元</a>
+                </p>
+            </div>
+            <div class="pay-way" id="chebox">
+                <p class="pay-title">支付方式</p>
+                <div class="lis"  v-for='(data ,key) in data' :data-id="key" @tap="addClassFun2(key)" :class='{active:qwerqwre2==key}'>
+                    <p class="lit">{{data}}</p>
+                    <em class="chebx"></em>
+                </div>
+            </div>
+        	<footer class="fot" @tap='onbtn'><em class="only-android">确认支付</em></footer>
+        </div>
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/recharge.js"></script>
+    </body>
+</html>

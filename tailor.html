@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>裁剪</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+    </head>
+    <body ontouchstart="" class="tailor">
+        <header class="mui-bar mui-bar-nav" id="header" data-header>
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left tailorBack"></a>
+            <a class="right-btn" id="clipBtn">确定</a>
+            <h1 class="mui-title">裁剪</h1>
+        </header>
+        <div class="mui-content" id="content" data-content>
+            <div id="clipArea">
+            	<div style="width: 100%;height: 100%;background: rgba(0, 0, 0, 1);position: relative;" id="clipssss">
+            		<div style="width: 300px;height: 300px;border: 1px dashed #fff;position: absolute;top: 50%;left: 50%;margin-left: -150px;margin-top: -150px"></div>
+            	</div>
+            </div>
+        </div>
+        <div class="bottom" id="changeImage">
+            <a class="choiceimg"><span class="only-android">选择图片</span></a>
+			<input type="file" id="file" class="filebtn">
+        	<img class="filebtn" id="filess" src="" />
+        </div>
+        <script src="js/mui.min.js "></script>
+		<script src="js/common2.0.0.js"></script>
+		<script src="js/jquery2.1.0.min.js"></script>
+		<script src="js/md5.js"></script>
+    	<script src="js/post_sign.js"></script>
+        <script src="js/PhotoClip.min.js"></script>
+        <script>
+			mui.init();
+            var imgData = "";
+            var ratio = common.getUrlParam('ratio') || 1;
+            var __file = document.getElementById('file');
+            document.getElementById('changeImage').addEventListener('tap',function () {
+               common.actionSheet('选择照片', '', [{title:"相机"},{title:"从相册选择图片"}], function(e){
+               	  	if(e == 2) {
+               	  	common.galleryImg(function(s){
+						// 删除上一个的img图片
+						$("body img").remove();
+						$("#changeImage").append("<img class='filebtn' id='filess+' src="+ s +" />");
+
+						console.log($("#changeImage").length);
+               	  		// document.getElementById('clipssss').style.display = 'none';
+               	  		var pc = new PhotoClip('#clipArea', {
+			                size: [Math.floor(15 * rem), Math.floor(15 * rem * ratio)],
+			                outputSize: [Math.floor(18.75 * rem), Math.floor(18.75 * rem * ratio)],
+			                rotateFree: false,
+			                outputQuality: 0.5, 
+			                lrzOption: {
+			                    quality: 1
+			                },
+			                img: s,
+			                ok: '#clipBtn',
+			                errorMsg: {
+			                    noSupport: '您的系统浏览器版本过于陈旧，无法支持裁图功能，请升级系统！',
+			                    clipError: '截图失败！当前图片文件不是本机图片！'
+			                },
+			                loadStart: function() {
+			                    console.log('开始读取照片');
+			                },
+			                loadComplete: function() {
+			                    console.log('照片读取完成');
+			                },
+			                done: function(dataURL) {
+			                    imgData = dataURL;
+								localStorage.face=imgData;
+								var request_obj = {
+									face:imgData
+								}
+								common.curl(common.config +'/newapi/users/upload_img_new',request_obj,{sign:create_sign(request_obj),key: localStorage.userKey},'post',function(e){
+									if(e.code==1){
+										mui.back();
+										 //获得父页面的webview
+										var list = plus.webview.currentWebview().opener();
+										//触发父页面的自定义事件(refresh),从而进行刷新
+										mui.fire(list, 'change_point');
+										//返回true,继续页面关闭逻辑
+										return true;
+									}else{
+										mui.toast(e.msg);
+									}
+								}) 
+			                },
+			                fail: function(msg) {
+			                    mui.toast(msg);
+			                }
+			            });
+               	  	});
+					}if(e == 1 ){
+						common.cameraImg(function(s){
+							$("body img").remove();
+							$("#changeImage").append("<img class='filebtn' id='filess+' src="+ s +" />");
+							// document.getElementById('filess').setAttribute('src', s);
+							document.getElementById('clipssss').style.display = 'none';
+							var pc = new PhotoClip('#clipArea', {
+								size: [Math.floor(15 * rem), Math.floor(15 * rem * ratio)],
+								outputSize: [Math.floor(18.75 * rem), Math.floor(18.75 * rem * ratio)],
+								rotateFree: false,
+								outputQuality: 0.5, 
+								lrzOption: {
+									quality: 1
+								},
+								img: s,
+								ok: '#clipBtn',
+								errorMsg: {
+									noSupport: '您的系统浏览器版本过于陈旧，无法支持裁图功能，请升级系统！',
+									clipError: '截图失败！当前图片文件不是本机图片！'
+								},
+								loadStart: function() {
+									console.log('开始读取照片');
+								},
+								loadComplete: function() {
+									console.log('照片读取完成');
+								},
+								done: function(dataURL) {
+									imgData = dataURL;
+									localStorage.face=imgData;
+									var request_obj = {
+										face:imgData
+									}
+									common.curl(common.config +'/newapi/users/upload_img_new',request_obj,{sign:create_sign(request_obj),key: localStorage.userKey},'post',function(e){
+										if(e.code==1){
+											mui.back();
+											//获得父页面的webview
+											var list = plus.webview.currentWebview().opener();
+											//触发父页面的自定义事件(refresh),从而进行刷新
+											mui.fire(list, 'change_point');
+											//返回true,继续页面关闭逻辑
+											return true;
+										}else{
+											mui.toast(e.msg);
+										}
+									}) 
+								},
+								fail: function(msg) {
+									mui.toast(msg);
+								}
+							});
+               	  	});
+						
+
+					}
+               })
+			});
+			
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>绑定手机号</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+    </head>
+    <body class="changephone getphone">
+        <header class="mui-bar mui-bar-nav" data-header>
+            <a class="mui-action-back c-icon-back mui-pull-left"></a>
+            <h1 class="mui-title">绑定手机号</h1>
+        </header>
+        <div class="mui-content" data-content>
+            <div class="lis">
+                <input type="number" name="phone" id="phone" value="" class="phone" v-model="phone" placeholder="请输入您的新手机号" />
+                <em class="getcode" @tap="ongetcode">验证</em>
+            </div>
+            <div class="lis"><input type="number" name="cord" id="cord" class="cord" v-model="code" value="" placeholder="验证码" /></div>
+            <div class="btn btn-public">
+                <div class="btns" @tap="changephone">绑定手机号</div>
+            </div>
+        </div>
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/getphone.js"></script>
+    </body>
+</html>

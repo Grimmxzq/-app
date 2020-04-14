@@ -1,0 +1,61 @@
+.update .mui-bar .mui-title{
+    display: block;
+}
+.update .mui-bar .mui-title.active{
+    display: none;
+}
+.update .right{
+    left:0;
+    width:100%;
+}
+.update .mui-content .mui-scroll .main .con img{
+    width:5rem;
+    height:5rem;
+    margin-top: 10%;
+    background-color: #f0f0f0;
+}
+.update .muea-bbox{
+    position: fixed;
+    z-index: 1001;
+    left:0;
+    top:2.2rem;
+    width: 100%;
+}
+.list{
+    padding-top: 3.3rem;
+    display: none;
+}
+.list.active{
+    padding-top: 3.3rem;
+    display: block;
+}
+.con{
+    display: flex;
+    border:1px solid #f0f0f0
+}
+.conDivImg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+.con-text{
+    display: flex;
+    padding: 0.5rem 0.5rem;
+    flex-direction: column;
+}
+.title{
+    font-size: 0.6rem;
+    line-height: 0.8rem;
+}
+.update .con .quan{
+    padding-top: 0.2rem;
+}
+.show-loading{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: #fff;
+
+}

@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>商品详情</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/animate.css" />
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/iphonex.css"/>
+        <link rel="stylesheet" type="text/css" href="css/particulars.css" />
+    </head>
+    <style>        
+                      
+    </style> 
+    <body class="particulars" >
+            <!-- loading加载动画 -->
+        <!-- <div class="mui-loading " id="particularsLoading" style="position: fixed;left:0;right: 0;top:0;bottom:0;margin:auto;z-index: 999999;color:#000;width:2rem;height:2rem; display: none;" :class="active?'flag':''">
+            <div class="mui-spinner" >
+            </div>
+        </div> -->
+        <div id="particularsTop">
+            <div id="main-box" >
+                <footer class="fots" :class="type === 1 ? 'active' : '' ">
+                    <a class="buy" @tap="buy">
+                        <div class="getTicketAndBuy">购买</div>
+                    </a>
+                </footer>
+                <div class="mui-content" data-content :class="type === 3 ? '' : 'active' " >
+                    <div class="top">
+                        <div class="taobao-banner" ><a><img :src=banner /></a></div>
+                        <div class="title" v-text="type === 1 ? title : datas.title"></div>
+                        <!-- 有券就显示 -->
+                        <div :class="">
+                            <div class="money-box">
+                                <div class="money-em" :class="{'active' :type === 1}">原价</div>
+                                <div class="money-ems" :class="{'active' :type === 1}">￥</div>
+                                <div class="money" v-html="type === 1?oldprice: datas.jifen+'<em>积分</em>'"></div>
+                                <p class="money-msg" :class="type === 1 ? 'active' : '' " style="float:right;padding:0">
+                                    <span style="float: left;">已售</span>
+                                    <span class="msg-face" v-text="saled < 10000 ? saled :  (saled / 10000).toFixed(1)+'万'"></span>
+                                </p>
+                            </div>
+                            
+                        </div>
+                        
+                        <!-- 有券就显示 -->
+
+                        <!-- 没券就显示这里 -->
+
+                    </div>
+                    <div class="show-title">
+                        <span class="span" v-text="picAndFontDetail"></span>
+                    </div>
+                    <div class="show-img-box">
+                        <!-- type=1表示是首页商城的商品 -->
+                        <div class="img-box" :class="type === 1 ? 'active' : '' ">
+                            <ul>
+                                <li v-for="(item,index) in detailAllImg" :key="index">
+                                    <!-- {{item[1]}} -->
+                                    <div v-html="type === 1 ? '' : item[1]"></div>
+                                    <img :src="type === 1 ? item : '' " alt="">
+                                </li>
+                                <li>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- 积分商城的商品 -->
+                        <div class="img-box" :class="type === 2 ? 'jifen' : '' ">
+                            <div class="detailMsg" v-html="detailImg"></div> 
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/mui.min.js"></script>
+        <script type="text/javascript" src="http://g.alicdn.com/mtb/lib-applink/0.3.8/??callApp.js,linksdk.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/particulars3.js"></script>
+    </body>
+
+</html>

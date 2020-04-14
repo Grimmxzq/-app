@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>淘宝口令搜索</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+        <link rel="stylesheet" href="css/common.css">
+        
+		<link rel="stylesheet" href="css/vant.css">
+		<script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+		<script src="js/vue-resource.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/iphonex.css"/>
+        <style>
+            html,
+			body {
+				background: transparent;
+				width: 100%;
+				height: 100%;
+			}
+            /* 打开app出现的搜索弹框 */
+            .search_goodsname{
+                position: fixed;
+                width:100%;
+                height:100%;
+                background-color: rgba(0,0,0, .5);
+                z-index: 9999999;
+                display: none;
+            }
+            .search_goodsname .mui-card{
+                position: fixed;
+                left:0;
+                right:0;
+                top:0;
+                bottom: 0;
+                margin: auto;
+                width:13rem;
+                height:10rem;
+                border-radius: 10px;
+                background-color: #fff;
+            }
+            .search_goodsname .mui-card{
+                position: fixed;
+                left:0;
+                right:0;
+                top:0;
+                bottom: 0;
+                margin: auto;
+                width:13rem;
+                height:10rem;
+                border-radius: 10px;
+                background-color: #fff;
+            }
+            .mui-card-content{
+                text-align: center;
+                line-height: 1.1rem;
+                font-size: 0.75rem;
+                margin:0.7rem 1rem;
+                overflow : hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
+            .go_search{
+                color:#f1341c!important;
+                border-left:1px solid #ccc;
+                /* padding-left: 2.5rem; */
+            }
+            .search_icon{
+                display: inline-block;
+            }
+            .search_icon img{
+                height:2.3rem;
+                width:2.2rem;
+            }
+            .search_title{
+                font-size: 0.9rem;
+                padding-top: 0.2rem;
+            }
+            .search_goodsname_footer{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+            .search_goodsname .cancel{
+                width:50%;
+                height:1.2rem;
+                text-align: center;
+            }
+            .search_goodsname .go_search{
+                width:50%;
+                height:1.2rem;
+                text-align: center;
+            }
+            /* 打开app出现的搜索弹框 */
+        </style>
+	</head>
+	<body>
+		<!-- 打开app出现的搜索弹框 -->
+        <div class="search_goodsname">
+            <div class="mui-card" >
+                <div class="mui-card-header mui-card-media" style="height:5rem;background-color: #f1341c;text-align: center;">
+                    <div class="search_icon">
+                        <img src="./img/search_icon.png" alt="">
+                    </div>
+                    <div class="search_title">
+                        您是否想搜索一下商品
+                    </div>
+                </div>
+                <div class="mui-card-content">
+                    
+                </div>
+                <div class="search_goodsname_footer">
+                    <div class="cancel" >取消</div>
+                    <div class="go_search" >搜索</div>
+                </div>
+            </div>
+        </div>
+        <!-- 打开app出现的搜索弹框 -->
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/jquery2.1.0.min.js"></script>
+    <script src="js/common2.0.0.js"></script>
+    <script>
+        mui.init();
+        var active_box = new Vue({
+            el:"#active_box",
+            data:{
+                url:""
+            },
+            created:function(){
+                mui.plusReady(function(){
+                    var Context = plus.android.importClass("android.content.Context");
+                    var main = plus.android.runtimeMainActivity();
+                    var clip = main.getSystemService(Context.CLIPBOARD_SERVICE);
+                    var msg_title = plus.android.invoke(clip, "getText");//复制的标题
+                    localStorage.search_goods_name = msg_title;
+                    $(".mui-card-content").html(msg_title);
+                    $(".search_goodsname").css("display","block");
+                })
+            }
+        })
+        var wsId = localStorage.getItem('copySearchId');
+        
+        document.querySelector('.search_goodsname_footer .cancel').addEventListener('click', function() {
+            var ws = plus.webview.currentWebview();
+            id = plus.webview.getWebviewById(wsId);
+            id && id.setStyle({
+                mask: 'none'
+            });
+            ws.hide();
+            ws.close();
+        });
+        document.querySelector('.search_goodsname_footer .go_search').addEventListener('click', function() {
+            // 跳转去搜索页面
+            var ws = plus.webview.currentWebview();
+            console.log(JSON.stringify(ws));
+            var serch_content = $(".mui-card-content").html();
+            mui.openWindow({
+                url:"search.html?serch_content="+serch_content,
+                id:"pagesearch",
+                show:{
+                    autoShow: true,
+                    aniShow: 'slide-in-right',
+                    duration: 300,
+                    event: 'loaded', 
+                },
+                waiting:{
+                    autoShow: false,
+                }
+            });
+            // $(".search_goodsname").css("display","none");
+            id = plus.webview.getWebviewById(wsId);
+            id && id.setStyle({
+                mask: 'none'
+            });
+            ws.hide();
+            // ws.close();
+        });
+    </script>
+</html>

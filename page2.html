@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>我的钱包</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="./css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/animate.css" />
+		<link rel="stylesheet" type="text/css" href="css/wallet.css"/>
+		<script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/iphonex.css"/>
+	</head>
+
+	<body>
+		<!--下拉刷新容器-->
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<div class="mui-table-view mui-table-view-chevron">
+						
+					<div class="how_Money">
+						<div class="money">
+							<div class="money_Num" v-html="money">
+								0.00
+							</div>
+							<div class="money_Name">
+								账户余额（元）
+							</div>
+						</div>
+						<div class="cash">
+							<div class="cash_deposit" @tap="cash_deposit">
+								<img src="./img/lastMoney.png" alt="">
+								<div class="cash_deposit_name">
+									立即提现
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="integralstate_packet">
+						<div class="integralstate">
+							<div class="integralstateImg">
+								<img src="./img/integralstateNum.png" alt="">
+							</div>
+							<div class="integralstateNum">
+								<div>
+									<div class="num">{{point}}</div>
+									<div class="all">积分总计（分）</div>
+								</div>
+							</div>
+						</div>
+						<div class="packet" @tap="play_packet">
+							<div class="packetimg">
+								<img src="./img/packet.png" alt="">
+							</div>
+							<div class="play_packet">
+								开红包
+							</div>
+							<div class="lastNum" v-html="count_dkhb">0</div>
+						</div>
+					</div>
+					<div class="water">
+						<ul>
+							<li v-for="item in msg">
+								<div class="leftName_time">
+									<div class="msg" v-text='item.comment'></div>
+									<div class="time" v-text='item.time'>{{item.time}}</div>
+								</div>
+								<div class="right_num" :class="{'active' :item.addtype!=1}" v-text='item.m_money'></div>
+							</li>
+						</ul>
+					</div>
+					<!-- 红包 -->
+					<div class="click_red_packet">
+						<div class="red_packet" @tap="jump_packet">
+							<div class="main_title">
+								{{packet_title}}
+							</div>
+							<div class="extra_title">
+								{{packet_description}}
+							</div>
+						</div>
+						<div class="close_red_packet" @tap="close_red_packet">
+							<img src="./img/close_3.png" alt="">
+						</div>
+					</div>
+					<!-- 立即提现 -->
+					<div class="cash_box_shadow">
+							<div class="cash_box">
+								<div class="cash_title">
+									<div class="title">
+										请选择提现金额
+									</div>
+									<div class="close" @tap="close_cashBox">
+										<img src="./img/close_2.png" alt="">
+									</div>
+								</div>
+								<div class="much_money"> 
+									<ul>
+										<li class="con" v-for="(item,index) in text" @tap="click_money(index,item.info)">
+											<div class="money">
+												{{item.info}}元
+											</div>
+											<div class="rules">
+												{{item.rule}}
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div>
+									<form class="mui-input-group">
+										<div class="mui-input-row mui-radio" @tap="change(1)">
+											<img src="./img/zfb.png" alt="">
+											<label>支付宝</label>
+											<input name="radio1" type="radio">
+										</div>
+										<div class="mui-input-row mui-radio" @tap="change(2)">
+												<img src="./img/weixin.png" alt="">
+											<label>微信</label>
+											<input name="radio1" type="radio" checked>
+										</div>
+									</form>
+								</div>
+								<div class="click_cash" @tap="go_cash()">
+									提现
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>	
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+		<script src="js/utils.js"></script>
+		<script src="js/vuex.js"></script>
+		<script src="js/store.js"></script>
+		<script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+		<script src="js/wallet2.js"></script>
+	</body>
+
+</html>

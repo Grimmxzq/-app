@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>我的收货地址</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script src="js/initsize.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/setads.css"/>
+        <link rel="stylesheet" type="text/css" href="css/manageAds.css"/>
+    </head>
+    <body class="setads" id="setads">
+        <header class="mui-bar mui-bar-nav"  data-header>
+            <a class="mui-action-back c-icon-back mui-pull-left"></a>
+            <h1 class="mui-title"></h1>
+            <!-- <a class="mui-pull-right set" style="color: #fff;">管理</a> -->
+        </header>
+        <div class="mui-content"  data-content>
+            <ul class="main "  >
+                <li class="addInfo" v-for="(item,index) in items" :id="item.address_id" @tap='oncon(item.address_id)'>
+                    <div class="addInfo_editChoose">
+                        <img src="./img/adsAgree.png" alt="" :class="{'active' : item.is_default!=1}">
+                        <img src="./img/adsDisAgree.png" alt="" :class="{'active' : item.is_default==1}">
+                    </div>
+                    <div class="addInfo_top" >
+                        <span class="accepter">{{item.real_name}}</span>
+                        <span class="accepter_phone">{{item.phone}}</span>
+                    </div>
+                    <div class="addInfo_detail">
+                        <p><span>默认地址</span>{{item.province}}{{item.city}}{{item.area}}{{item.address}}</p>
+                    </div>
+                    <!-- <div class="addInfo_edit">
+                        <div class="addInfo_editChoose">
+                            <img src="./img/redRight.png" alt="" :class="{'active' : item.is_default!=1}">
+                            <img src="./img/grayRight.png" alt="" :class="{'active' : item.is_default==1}">
+                            <span>默认地址</span>
+                        </div>
+                        <div class="addInfo_editdetail">
+                            <span class="edit" @tap="onedd(item.address_id)">
+                                <img src="./img/pencil.png" alt="">
+                                <span>编辑</span>
+                            </span>
+                            <span class="delete" @tap="ondel(index,item.address_id)">
+                                <img src="./img/trash.png" alt="">
+                                <span>删除</span>
+                            </span>
+                        </div>
+                    </div> -->
+                </li>
+            </ul>
+            <div class="btn btn-public">
+                <div class="btns" @tap="addsite">添加新地址</div>
+            </div>
+        </div>
+        <script src="js/mui.min.js"></script>
+        <script src="js/common2.0.0.js"></script>
+        <script src="js/jquery2.1.0.min.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/post_sign.js"></script>
+        <script src="js/manageAds.js"></script>
+    </body>
+</html>
